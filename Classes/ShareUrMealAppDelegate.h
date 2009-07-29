@@ -13,6 +13,9 @@
     NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
     UIWindow *window;
+    
+    UITabBarController *tabBarController;
+
 }
 
 - (IBAction)saveAction:sender;
