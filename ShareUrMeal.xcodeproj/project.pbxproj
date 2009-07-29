@@ -23,6 +23,8 @@
 		2D9AC115101FD63200BD388D /* RestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9AC114101FD63200BD388D /* RestaurantViewController.m */; };
 		2D9AC117101FD63D00BD388D /* RestaurantView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D9AC116101FD63D00BD388D /* RestaurantView.xib */; };
 		2D9AC11C101FD6B400BD388D /* BookmarksView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D9AC11B101FD6B400BD388D /* BookmarksView.xib */; };
+		2DC5D777101FDD1A00F3E3B1 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5D775101FDD1A00F3E3B1 /* ShareViewController.m */; };
+		2DC5D778101FDD1A00F3E3B1 /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5D776101FDD1A00F3E3B1 /* ShareViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,9 @@
 		2D9AC114101FD63200BD388D /* RestaurantViewController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = RestaurantViewController.m; sourceTree = "<group>"; };
 		2D9AC116101FD63D00BD388D /* RestaurantView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RestaurantView.xib; sourceTree = "<group>"; };
 		2D9AC11B101FD6B400BD388D /* BookmarksView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookmarksView.xib; sourceTree = "<group>"; };
+		2DC5D774101FDD1A00F3E3B1 /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
+		2DC5D775101FDD1A00F3E3B1 /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
+		2DC5D776101FDD1A00F3E3B1 /* ShareViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareViewController.xib; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* ShareUrMeal_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareUrMeal_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ShareUrMeal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ShareUrMeal-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +74,9 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				2DC5D774101FDD1A00F3E3B1 /* ShareViewController.h */,
+				2DC5D775101FDD1A00F3E3B1 /* ShareViewController.m */,
+				2DC5D776101FDD1A00F3E3B1 /* ShareViewController.xib */,
 				1D3623240D0F684500981E51 /* ShareUrMealAppDelegate.h */,
 				1D3623250D0F684500981E51 /* ShareUrMealAppDelegate.m */,
 				2D9AC107101FD52B00BD388D /* TabBarController.h */,
@@ -184,6 +192,7 @@
 				2D9AC10F101FD53800BD388D /* search.png in Resources */,
 				2D9AC117101FD63D00BD388D /* RestaurantView.xib in Resources */,
 				2D9AC11C101FD6B400BD388D /* BookmarksView.xib in Resources */,
+				2DC5D778101FDD1A00F3E3B1 /* ShareViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +209,7 @@
 				2D9AC109101FD52B00BD388D /* TabBarController.m in Sources */,
 				2D9AC112101FD61E00BD388D /* BookmarksViewController.m in Sources */,
 				2D9AC115101FD63200BD388D /* RestaurantViewController.m in Sources */,
+				2DC5D777101FDD1A00F3E3B1 /* ShareViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
