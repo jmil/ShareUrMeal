@@ -13,7 +13,7 @@
 @implementation ShareUrMealAppDelegate
 
 @synthesize window;
-
+@synthesize tabBarController;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -23,46 +23,45 @@
     // Override point for customization after app launch    
 
     
-    tabBarController = [[UITabBarController alloc] init];
-    
-    
-    // Create a few view controllers
-    UIViewController *redViewController = [[UIViewController alloc] init];
-    redViewController.title = @"Calculator";
-    
-    UITabBarItem *calculator = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMostRecent tag:1];
-    calculator.title = @"hello";
-    redViewController.tabBarItem = calculator;
-    [calculator release];
-    
-    
-    redViewController.tabBarItem.image = [UIImage imageNamed:@"faves.png"];
-    redViewController.view.backgroundColor = [UIColor redColor];
-    
-    UIViewController *blueViewController = [[UIViewController alloc] init];
-    blueViewController.title = @"About";
-    blueViewController.tabBarItem.image = [UIImage imageNamed:@"search.png"];
-    blueViewController.view.backgroundColor = [UIColor blueColor];
-    
-    
-    UINavigationController *navigationController = [[UINavigationController alloc] init];
-    
-    BookmarksViewController *bookmarksViewController = [[BookmarksViewController alloc] initWithNibName:@"BookmarksView" bundle:nil];
-    
-    [navigationController pushViewController:bookmarksViewController animated:NO];
-    [bookmarksViewController release];
-    
-    // Add them as children of the tab bar controller
-    tabBarController.viewControllers = [NSArray arrayWithObjects:redViewController, navigationController, blueViewController, nil];
-    
-    
-    // Don't forget memory management
-    [redViewController release];
-    [blueViewController release];
-    [navigationController release];
-    
+//    tabBarController = [[UITabBarController alloc] init];
+//    
+//    
+//    // Create a few view controllers
+//    UIViewController *redViewController = [[UIViewController alloc] init];
+//    redViewController.title = @"Calculator";
+//    
+//    UITabBarItem *calculator = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMostRecent tag:1];
+//    calculator.title = @"hello";
+//    redViewController.tabBarItem = calculator;
+//    [calculator release];
+//    
+//    
+//    redViewController.tabBarItem.image = [UIImage imageNamed:@"faves.png"];
+//    redViewController.view.backgroundColor = [UIColor redColor];
+//    
+//    UIViewController *blueViewController = [[UIViewController alloc] init];
+//    blueViewController.title = @"About";
+//    blueViewController.tabBarItem.image = [UIImage imageNamed:@"search.png"];
+//    blueViewController.view.backgroundColor = [UIColor blueColor];
+//    
+//    
+//    UINavigationController *navigationController = [[UINavigationController alloc] init];
+//    
+//    BookmarksViewController *bookmarksViewController = [[BookmarksViewController alloc] initWithNibName:@"BookmarksView" bundle:nil];
+//    
+//    [navigationController pushViewController:bookmarksViewController animated:NO];
+//    [bookmarksViewController release];
+//    
+//    // Add them as children of the tab bar controller
+//    tabBarController.viewControllers = [NSArray arrayWithObjects:redViewController, navigationController, blueViewController, nil];
+//    
+//    
+//    // Don't forget memory management
+//    [redViewController release];
+//    [blueViewController release];
+//    [navigationController release];
+//    
     [window addSubview:tabBarController.view];
-    
     
     
     

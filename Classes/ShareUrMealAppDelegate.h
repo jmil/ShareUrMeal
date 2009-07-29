@@ -14,11 +14,13 @@
 
     UIWindow *window;
     
-    UITabBarController *tabBarController;
+    IBOutlet UITabBarController *tabBarController;
 
 }
 
 - (IBAction)saveAction:sender;
+
+@property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
