@@ -24,6 +24,7 @@
     }
     
     [self presentModalViewController:picker animated:YES];
+    [picker release];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
