@@ -59,7 +59,7 @@
         [emailer release];
     }        
     
-
+    // If we have cancelled an image Pick or image capture with camera, then also dismiss the modal view controller!
     [picker dismissModalViewControllerAnimated:YES];
     
     // Save to our Library ONLY IF FROM CAMERA!!
@@ -73,9 +73,12 @@
 }
 
 
-- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
-        [controller dismissModalViewControllerAnimated:YES];
-    
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {    
+    // Now we have dismissed the mail; if we clicked either send or cancel then we also want to dismiss the entire image picker!
+    // Here controller is the controller of the mailComposeController, which is our imagepicker.
+    // Since we have two nested modal view controllers we need to dismiss both of them. This can easily be achieved by dismissing the bottom one.
+    // Since self is the rootViewController of the original modal view controller, then we can simply tell self to dismissModalViewControllerAnimated:YES!! This will cause both Mail and ImageViewController to both pop off and go away.
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 
