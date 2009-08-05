@@ -22,6 +22,7 @@
 		2D9AC115101FD63200BD388D /* RestaurantViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9AC114101FD63200BD388D /* RestaurantViewController.m */; };
 		2D9AC117101FD63D00BD388D /* RestaurantView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D9AC116101FD63D00BD388D /* RestaurantView.xib */; };
 		2D9AC11C101FD6B400BD388D /* BookmarksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D9AC11B101FD6B400BD388D /* BookmarksViewController.xib */; };
+		2DA04B56102922CD00129F6C /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA04B55102922CD00129F6C /* MessageUI.framework */; };
 		2DC5D777101FDD1A00F3E3B1 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5D775101FDD1A00F3E3B1 /* ShareViewController.m */; };
 		2DC5D778101FDD1A00F3E3B1 /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5D776101FDD1A00F3E3B1 /* ShareViewController.xib */; };
 		2DC5D789101FE10C00F3E3B1 /* 44-shoebox.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5D787101FE10C00F3E3B1 /* 44-shoebox.png */; };
@@ -55,6 +56,7 @@
 		2D9AC114101FD63200BD388D /* RestaurantViewController.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = RestaurantViewController.m; sourceTree = "<group>"; };
 		2D9AC116101FD63D00BD388D /* RestaurantView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = RestaurantView.xib; path = ../RestaurantView.xib; sourceTree = "<group>"; };
 		2D9AC11B101FD6B400BD388D /* BookmarksViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookmarksViewController.xib; sourceTree = "<group>"; };
+		2DA04B55102922CD00129F6C /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		2DC5D774101FDD1A00F3E3B1 /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
 		2DC5D775101FDD1A00F3E3B1 /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		2DC5D776101FDD1A00F3E3B1 /* ShareViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareViewController.xib; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */,
+				2DA04B56102922CD00129F6C /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +136,7 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				2DA04B55102922CD00129F6C /* MessageUI.framework */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";

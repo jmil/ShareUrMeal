@@ -11,7 +11,7 @@
 
 @implementation ShareViewController
 
-@synthesize imageView, choosePhotoButton, takePhotoButton;
+@synthesize imageView, choosePhotoButton, takePhotoButton, sendMailButton;
 
 -(IBAction) getPhoto:(id) sender {
     UIImagePickerController * picker = [[UIImagePickerController alloc] init];
@@ -24,7 +24,7 @@
     }
     
     [self presentModalViewController:picker animated:YES];
-    //[picker release];
+    [picker release];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
@@ -35,7 +35,48 @@
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
         UIImageWriteToSavedPhotosAlbum([info objectForKey:@"UIImagePickerControllerOriginalImage"], nil, nil, nil);
     }
+    
+//    [self performSelector:@selector(showMailer) withObject:nil afterDelay:0.0];
+}
 
+
+// Displays an email composition interface inside the application. Populates all the Mail fields. 
+-(IBAction) showMailer:(id)sender {
+        if (YES == [MFMailComposeViewController canSendMail]) {
+        MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+        picker.mailComposeDelegate = self;
+        
+        [picker setSubject:@"Loved it!"];
+        
+        
+        // Set up recipients
+        NSArray *toRecipients = [NSArray arrayWithObject:@"post@shareurmeal.com"]; 
+        //NSArray *ccRecipients = [NSArray arrayWithObjects:@"second@example.com", @"third@example.com", nil]; 
+        //NSArray *bccRecipients = [NSArray arrayWithObject:@"fourth@example.com"]; 
+        
+        [picker setToRecipients:toRecipients];
+        //[picker setCcRecipients:ccRecipients];	
+        //[picker setBccRecipients:bccRecipients];
+        
+        // Attach an image to the email
+        //    NSString *path = [[NSBundle mainBundle] pathForResource:@"rainy" ofType:@"png"];
+        NSData *myData = UIImagePNGRepresentation(self.imageView.image);
+        [picker addAttachmentData:myData mimeType:@"image/png" fileName:@"ShareUrMeal"];
+        
+        // Fill out the email body text
+        NSString *emailBody = @"My meal!";
+        [picker setMessageBody:emailBody isHTML:NO];
+        
+        [self presentModalViewController:picker animated:YES];
+        [picker release];
+    }    
+}
+
+
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+        [self dismissModalViewControllerAnimated:YES];
+    
 }
 
 
