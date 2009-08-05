@@ -18,17 +18,22 @@
     picker.delegate = self;
     
     if((UIButton *) sender == choosePhotoButton) {
-        picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     } else {
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     }
     
     [self presentModalViewController:picker animated:YES];
+    //[picker release];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     [picker dismissModalViewControllerAnimated:YES];
     self.imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    
+    // Save to our Library!!
+    UIImageWriteToSavedPhotosAlbum([info objectForKey:@"UIImagePickerControllerOriginalImage"], nil, nil, nil);
+
 }
 
 
