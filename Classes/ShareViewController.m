@@ -60,7 +60,8 @@
     }        
     
     // If we have cancelled an image Pick or image capture with camera, then also dismiss the modal view controller!
-    [picker dismissModalViewControllerAnimated:YES];
+    // For some reason this doesn't affect anything; whether we have this or not...
+    //[picker dismissModalViewControllerAnimated:YES];
     
     // Save to our Library ONLY IF FROM CAMERA!!
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {

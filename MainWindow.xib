@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="61"/>
+			<integer value="26"/>
 			<integer value="12"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -49,18 +49,18 @@
 			<object class="IBUITabBarController" id="441797357">
 				<object class="IBUISimulatedTabBarMetrics" key="IBUISimulatedBottomBarMetrics"/>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
-				<object class="IBUINavigationController" key="IBUISelectedViewController" id="160003550">
-					<object class="IBUITabBarItem" key="IBUITabBarItem" id="730879720">
-						<string key="IBUITitle">Bookmarks</string>
+				<object class="IBUINavigationController" key="IBUISelectedViewController" id="643030161">
+					<object class="IBUITabBarItem" key="IBUITabBarItem" id="459572317">
+						<string key="IBUITitle">Share</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">44-shoebox.png</string>
+							<string key="NSResourceName">all.png</string>
 						</object>
 						<reference key="IBUITabBar"/>
 					</object>
 					<reference key="IBUIParentViewController" ref="441797357"/>
 					<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
-					<object class="IBUINavigationBar" key="IBUINavigationBar" id="817397510">
+					<object class="IBUINavigationBar" key="IBUINavigationBar" id="30109946">
 						<nil key="NSNextResponder"/>
 						<int key="NSvFlags">256</int>
 						<string key="NSFrameSize">{0, 0}</string>
@@ -70,29 +70,31 @@
 					</object>
 					<object class="NSMutableArray" key="IBUIViewControllers">
 						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="IBUIViewController" id="675332882">
-							<object class="IBUINavigationItem" key="IBUINavigationItem" id="889364048">
+						<object class="IBUIViewController" id="212891480">
+							<object class="IBUINavigationItem" key="IBUINavigationItem" id="639217570">
 								<reference key="IBUINavigationBar"/>
-								<string key="IBUITitle">Bookmarks</string>
+								<string key="IBUITitle"/>
 							</object>
-							<reference key="IBUIParentViewController" ref="160003550"/>
+							<reference key="IBUIParentViewController" ref="643030161"/>
 						</object>
 					</object>
+					<bool key="IBUINavigationBarHidden">YES</bool>
 				</object>
 				<object class="NSMutableArray" key="IBUIViewControllers">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="IBUINavigationController" id="643030161">
-						<object class="IBUITabBarItem" key="IBUITabBarItem" id="459572317">
-							<string key="IBUITitle">Share</string>
+					<reference ref="643030161"/>
+					<object class="IBUINavigationController" id="160003550">
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="730879720">
+							<string key="IBUITitle">Bookmarks</string>
 							<object class="NSCustomResource" key="IBUIImage">
 								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">all.png</string>
+								<string key="NSResourceName">44-shoebox.png</string>
 							</object>
 							<reference key="IBUITabBar"/>
 						</object>
 						<reference key="IBUIParentViewController" ref="441797357"/>
 						<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
-						<object class="IBUINavigationBar" key="IBUINavigationBar" id="30109946">
+						<object class="IBUINavigationBar" key="IBUINavigationBar" id="817397510">
 							<nil key="NSNextResponder"/>
 							<int key="NSvFlags">256</int>
 							<string key="NSFrameSize">{0, 0}</string>
@@ -102,16 +104,14 @@
 						</object>
 						<object class="NSMutableArray" key="IBUIViewControllers">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBUIViewController" id="212891480">
-								<object class="IBUINavigationItem" key="IBUINavigationItem" id="639217570">
-									<string key="IBUITitle">Root View Controller</string>
+							<object class="IBUIViewController" id="675332882">
+								<object class="IBUINavigationItem" key="IBUINavigationItem" id="889364048">
+									<string key="IBUITitle">Bookmarks</string>
 								</object>
-								<reference key="IBUIParentViewController" ref="643030161"/>
+								<reference key="IBUIParentViewController" ref="160003550"/>
 							</object>
 						</object>
-						<bool key="IBUINavigationBarHidden">YES</bool>
 					</object>
-					<reference ref="160003550"/>
 				</object>
 				<object class="IBUITabBar" key="IBUITabBar" id="137228348">
 					<nil key="NSNextResponder"/>
@@ -305,9 +305,9 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>UIApplication</string>
 					<string>UIResponder</string>
-					<string>{{-964, 758}, {320, 480}}</string>
+					<string>{{539, 238}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-					<string>{{-1322, 710}, {320, 480}}</string>
+					<string>{{801, 239}, {320, 480}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>ShareUrMealAppDelegate</string>
@@ -351,11 +351,7 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
 					<string key="className">BookmarksViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">push:</string>
-						<string key="NS.object.0">id</string>
-					</object>
+					<string key="superclassName">UITableViewController</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Classes/BookmarksViewController.h</string>
@@ -397,6 +393,25 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">ShareViewController</string>
 					<string key="superclassName">UIViewController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">getPhoto:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="outlets">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSMutableArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>choosePhotoButton</string>
+							<string>imageView</string>
+							<string>takePhotoButton</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIButton</string>
+							<string>UIImageView</string>
+							<string>UIButton</string>
+						</object>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">Classes/ShareViewController.h</string>
