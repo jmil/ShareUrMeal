@@ -9,8 +9,16 @@
 #import <UIKit/UIKit.h>
 
 
-@interface ShareViewController : UIViewController {
-
-}
-
+@interface ShareViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
+	UIImageView *imageView;
+	UIButton *choosePhotoButton;
+	UIButton *takePhotoButton;
+    }
+    
+    @property (nonatomic, retain) IBOutlet UIImageView *imageView;
+    @property (nonatomic, retain) IBOutlet UIButton *choosePhotoButton;
+    @property (nonatomic, retain) IBOutlet UIButton *takePhotoButton;
+    
+    -(IBAction) getPhoto:(id) sender;
+    
 @end
