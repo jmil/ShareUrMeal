@@ -79,7 +79,33 @@
     // Here controller is the controller of the mailComposeController, which is our imagepicker.
     // Since we have two nested modal view controllers we need to dismiss both of them. This can easily be achieved by dismissing the bottom one.
     // Since self is the rootViewController of the original modal view controller, then we can simply tell self to dismissModalViewControllerAnimated:YES!! This will cause both Mail and ImageViewController to both pop off and go away.
-    [self dismissModalViewControllerAnimated:YES];
+    
+    // Notifies users about errors associated with the interface
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Result: canceled");
+            // If the user cancelled the email then revert back one level to allow her to pick another image
+            [controller dismissModalViewControllerAnimated:YES];
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Result: saved to drafts folder");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Result: sent to outbox; will be delivered next time you check mail");
+            // If the user pressed the Send button then shut all modal view controllers and revert back to ShareViewController properly
+            [self dismissModalViewControllerAnimated:YES];
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Result: message sending or delivery failed...");
+            break;
+        default:
+            NSLog(@"Result: email was not sent; don't know why.");
+            break;
+    }
+    
+    
+    
 }
 
 
