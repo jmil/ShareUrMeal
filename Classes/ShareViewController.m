@@ -31,8 +31,10 @@
     [picker dismissModalViewControllerAnimated:YES];
     self.imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     
-    // Save to our Library!!
-    UIImageWriteToSavedPhotosAlbum([info objectForKey:@"UIImagePickerControllerOriginalImage"], nil, nil, nil);
+    // Save to our Library ONLY IF FROM CAMERA!!
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+        UIImageWriteToSavedPhotosAlbum([info objectForKey:@"UIImagePickerControllerOriginalImage"], nil, nil, nil);
+    }
 
 }
 
