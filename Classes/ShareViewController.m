@@ -24,16 +24,88 @@
     }
     
     [self presentModalViewController:picker animated:YES];
-    //[picker release];
+    [picker release];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [picker dismissModalViewControllerAnimated:YES];
-    self.imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        
+    // Add a new modal view controller to EMAIL PHOTO to the current UIImagePickerController, here named picker
+    if (YES == [MFMailComposeViewController canSendMail]) {
+        MFMailComposeViewController *emailer = [[MFMailComposeViewController alloc] init];
+        emailer.mailComposeDelegate = self;
+        
+        [emailer setSubject:@"Loved it!"];
+        
+        
+        // Set up recipients
+        NSArray *toRecipients = [NSArray arrayWithObject:@"post@shareurmeal.com"]; 
+        //NSArray *ccRecipients = [NSArray arrayWithObjects:@"second@example.com", @"third@example.com", nil]; 
+        //NSArray *bccRecipients = [NSArray arrayWithObject:@"fourth@example.com"]; 
+        
+        [emailer setToRecipients:toRecipients];
+        //[emailer setCcRecipients:ccRecipients];	
+        //[emailer setBccRecipients:bccRecipients];
+        
+        // Attach an image to the email
+        //    NSString *path = [[NSBundle mainBundle] pathForResource:@"rainy" ofType:@"png"];
+        NSData *myData = UIImagePNGRepresentation([info objectForKey:@"UIImagePickerControllerOriginalImage"]);
+        [emailer addAttachmentData:myData mimeType:@"image/png" fileName:@"ShareUrMeal"];
+        
+        // Fill out the email body text
+        NSString *emailBody = @"My meal!";
+        [emailer setMessageBody:emailBody isHTML:NO];
+        
+        [picker presentModalViewController:emailer animated:YES];
+        [emailer release];
+    }        
     
-    // Save to our Library!!
-    UIImageWriteToSavedPhotosAlbum([info objectForKey:@"UIImagePickerControllerOriginalImage"], nil, nil, nil);
+    // If we have cancelled an image Pick or image capture with camera, then also dismiss the modal view controller!
+    // For some reason this doesn't affect anything; whether we have this or not...
+    //[picker dismissModalViewControllerAnimated:YES];
+    
+    // Save to our Library ONLY IF FROM CAMERA!!
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+        UIImageWriteToSavedPhotosAlbum([info objectForKey:@"UIImagePickerControllerOriginalImage"], nil, nil, nil);
+    }
+    
+    // Set the ImageView in ShareViewController to be the image we picked!
+    self.imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        
+}
 
+
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {    
+    // Now we have dismissed the mail; if we clicked either send or cancel then we also want to dismiss the entire image picker!
+    // Here controller is the controller of the mailComposeController, which is our imagepicker.
+    // Since we have two nested modal view controllers we need to dismiss both of them. This can easily be achieved by dismissing the bottom one.
+    // Since self is the rootViewController of the original modal view controller, then we can simply tell self to dismissModalViewControllerAnimated:YES!! This will cause both Mail and ImageViewController to both pop off and go away.
+    
+    // Notifies users about errors associated with the interface
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Result: canceled");
+            // If the user cancelled the email then revert back one level to allow her to pick another image
+            [controller dismissModalViewControllerAnimated:YES];
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Result: saved to drafts folder");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Result: sent to outbox; will be delivered next time you check mail");
+            // If the user pressed the Send button then shut all modal view controllers and revert back to ShareViewController properly; we do this by calling self rather than controller!
+            [self dismissModalViewControllerAnimated:YES];
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Result: message sending or delivery failed...");
+            break;
+        default:
+            NSLog(@"Result: email was not sent; don't know why.");
+            break;
+    }
+    
+    
+    
 }
 
 

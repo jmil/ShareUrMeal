@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
+#import <MessageUI/MFMailComposeViewController.h>
 
 
-@interface ShareViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
+@interface ShareViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate> {
 	UIImageView *imageView;
 	UIButton *choosePhotoButton;
 	UIButton *takePhotoButton;
