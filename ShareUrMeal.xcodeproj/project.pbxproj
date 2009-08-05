@@ -33,6 +33,13 @@
 		B3B5613510290C8E0034F584 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B5612C10290C8E0034F584 /* main.m */; };
 		B3B5613610290C8E0034F584 /* ShareUrMealDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B5612E10290C8E0034F584 /* ShareUrMealDocument.m */; };
 		B3B5614510290E0D0034F584 /* ShareUrMeal.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 28C3AD890F43EF2300507BA6 /* ShareUrMeal.xcdatamodel */; };
+		B3B561F510291FE10034F584 /* ShareUrMeal.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B3B561F410291FE10034F584 /* ShareUrMeal.sqlite */; };
+		B3B562621029248E0034F584 /* Area.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B5625B1029248E0034F584 /* Area.m */; };
+		B3B562631029248E0034F584 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B5625D1029248E0034F584 /* Post.m */; };
+		B3B562641029248E0034F584 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B5625F1029248E0034F584 /* User.m */; };
+		B3B562651029248E0034F584 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B562611029248E0034F584 /* Restaurant.m */; };
+		B3B56268102924E00034F584 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B56267102924E00034F584 /* CoreLocation.framework */; };
+		B3B56275102925610034F584 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B56274102925610034F584 /* MessageUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +80,17 @@
 		B3B5612D10290C8E0034F584 /* ShareUrMealDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareUrMealDocument.h; sourceTree = "<group>"; };
 		B3B5612E10290C8E0034F584 /* ShareUrMealDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareUrMealDocument.m; sourceTree = "<group>"; };
 		B3B5612F10290C8E0034F584 /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = version.plist; sourceTree = "<group>"; };
+		B3B561F410291FE10034F584 /* ShareUrMeal.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = ShareUrMeal.sqlite; sourceTree = "<group>"; };
+		B3B5625A1029248E0034F584 /* Area.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Area.h; path = Model/Area.h; sourceTree = "<group>"; };
+		B3B5625B1029248E0034F584 /* Area.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Area.m; path = Model/Area.m; sourceTree = "<group>"; };
+		B3B5625C1029248E0034F584 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Post.h; path = Model/Post.h; sourceTree = "<group>"; };
+		B3B5625D1029248E0034F584 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Post.m; path = Model/Post.m; sourceTree = "<group>"; };
+		B3B5625E1029248E0034F584 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Model/User.h; sourceTree = "<group>"; };
+		B3B5625F1029248E0034F584 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Model/User.m; sourceTree = "<group>"; };
+		B3B562601029248E0034F584 /* Restaurant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Restaurant.h; path = Model/Restaurant.h; sourceTree = "<group>"; };
+		B3B562611029248E0034F584 /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Restaurant.m; path = Model/Restaurant.m; sourceTree = "<group>"; };
+		B3B56267102924E00034F584 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		B3B56274102925610034F584 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +102,8 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */,
+				B3B56268102924E00034F584 /* CoreLocation.framework in Frameworks */,
+				B3B56275102925610034F584 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +120,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				B3B56249102923810034F584 /* Model */,
 				2DC5D774101FDD1A00F3E3B1 /* ShareViewController.h */,
 				2DC5D775101FDD1A00F3E3B1 /* ShareViewController.m */,
 				2DC5D776101FDD1A00F3E3B1 /* ShareViewController.xib */,
@@ -149,6 +170,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B3B561F410291FE10034F584 /* ShareUrMeal.sqlite */,
 				2DC5D787101FE10C00F3E3B1 /* 44-shoebox.png */,
 				2DC5D788101FE10C00F3E3B1 /* 48-fork-and-knife.png */,
 				28C3AD890F43EF2300507BA6 /* ShareUrMeal.xcdatamodel */,
@@ -164,10 +186,12 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3B56274102925610034F584 /* MessageUI.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
 				28D801B30F44B63D00FB423F /* CoreData.framework */,
+				B3B56267102924E00034F584 /* CoreLocation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -187,6 +211,21 @@
 				B3B5612F10290C8E0034F584 /* version.plist */,
 			);
 			path = DBTool;
+			sourceTree = "<group>";
+		};
+		B3B56249102923810034F584 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B3B5625A1029248E0034F584 /* Area.h */,
+				B3B5625B1029248E0034F584 /* Area.m */,
+				B3B5625C1029248E0034F584 /* Post.h */,
+				B3B5625D1029248E0034F584 /* Post.m */,
+				B3B5625E1029248E0034F584 /* User.h */,
+				B3B5625F1029248E0034F584 /* User.m */,
+				B3B562601029248E0034F584 /* Restaurant.h */,
+				B3B562611029248E0034F584 /* Restaurant.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +297,7 @@
 				2DC5D778101FDD1A00F3E3B1 /* ShareViewController.xib in Resources */,
 				2DC5D789101FE10C00F3E3B1 /* 44-shoebox.png in Resources */,
 				2DC5D78A101FE10C00F3E3B1 /* 48-fork-and-knife.png in Resources */,
+				B3B561F510291FE10034F584 /* ShareUrMeal.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +325,10 @@
 				2D9AC112101FD61E00BD388D /* BookmarksViewController.m in Sources */,
 				2D9AC115101FD63200BD388D /* RestaurantViewController.m in Sources */,
 				2DC5D777101FDD1A00F3E3B1 /* ShareViewController.m in Sources */,
+				B3B562621029248E0034F584 /* Area.m in Sources */,
+				B3B562631029248E0034F584 /* Post.m in Sources */,
+				B3B562641029248E0034F584 /* User.m in Sources */,
+				B3B562651029248E0034F584 /* Restaurant.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
