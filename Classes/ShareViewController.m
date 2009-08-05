@@ -93,7 +93,7 @@
             break;
         case MFMailComposeResultSent:
             NSLog(@"Result: sent to outbox; will be delivered next time you check mail");
-            // If the user pressed the Send button then shut all modal view controllers and revert back to ShareViewController properly
+            // If the user pressed the Send button then shut all modal view controllers and revert back to ShareViewController properly; we do this by calling self rather than controller!
             [self dismissModalViewControllerAnimated:YES];
             break;
         case MFMailComposeResultFailed:
