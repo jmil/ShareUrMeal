@@ -11,7 +11,7 @@
 
 @implementation ShareViewController
 
-@synthesize imageView, choosePhotoButton, takePhotoButton, sendMailButton;
+@synthesize imageView, choosePhotoButton, takePhotoButton;
 
 -(IBAction) getPhoto:(id) sender {
     UIImagePickerController * picker = [[UIImagePickerController alloc] init];
@@ -28,25 +28,13 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [picker dismissModalViewControllerAnimated:YES];
-    self.imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-    
-    // Save to our Library ONLY IF FROM CAMERA!!
-    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
-        UIImageWriteToSavedPhotosAlbum([info objectForKey:@"UIImagePickerControllerOriginalImage"], nil, nil, nil);
-    }
-    
-//    [self performSelector:@selector(showMailer) withObject:nil afterDelay:0.0];
-}
-
-
-// Displays an email composition interface inside the application. Populates all the Mail fields. 
--(IBAction) showMailer:(id)sender {
-        if (YES == [MFMailComposeViewController canSendMail]) {
-        MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
-        picker.mailComposeDelegate = self;
         
-        [picker setSubject:@"Loved it!"];
+    // Add a new modal view controller to EMAIL PHOTO to the current UIImagePickerController, here named picker
+    if (YES == [MFMailComposeViewController canSendMail]) {
+        MFMailComposeViewController *emailer = [[MFMailComposeViewController alloc] init];
+        emailer.mailComposeDelegate = self;
+        
+        [emailer setSubject:@"Loved it!"];
         
         
         // Set up recipients
@@ -54,28 +42,39 @@
         //NSArray *ccRecipients = [NSArray arrayWithObjects:@"second@example.com", @"third@example.com", nil]; 
         //NSArray *bccRecipients = [NSArray arrayWithObject:@"fourth@example.com"]; 
         
-        [picker setToRecipients:toRecipients];
-        //[picker setCcRecipients:ccRecipients];	
-        //[picker setBccRecipients:bccRecipients];
+        [emailer setToRecipients:toRecipients];
+        //[emailer setCcRecipients:ccRecipients];	
+        //[emailer setBccRecipients:bccRecipients];
         
         // Attach an image to the email
         //    NSString *path = [[NSBundle mainBundle] pathForResource:@"rainy" ofType:@"png"];
-        NSData *myData = UIImagePNGRepresentation(self.imageView.image);
-        [picker addAttachmentData:myData mimeType:@"image/png" fileName:@"ShareUrMeal"];
+        NSData *myData = UIImagePNGRepresentation([info objectForKey:@"UIImagePickerControllerOriginalImage"]);
+        [emailer addAttachmentData:myData mimeType:@"image/png" fileName:@"ShareUrMeal"];
         
         // Fill out the email body text
         NSString *emailBody = @"My meal!";
-        [picker setMessageBody:emailBody isHTML:NO];
+        [emailer setMessageBody:emailBody isHTML:NO];
         
-        [self presentModalViewController:picker animated:YES];
-        [picker release];
-    }    
+        [picker presentModalViewController:emailer animated:YES];
+        [emailer release];
+    }        
+    
+
+    [picker dismissModalViewControllerAnimated:YES];
+    
+    // Save to our Library ONLY IF FROM CAMERA!!
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+        UIImageWriteToSavedPhotosAlbum([info objectForKey:@"UIImagePickerControllerOriginalImage"], nil, nil, nil);
+    }
+    
+    // Set the ImageView in ShareViewController to be the image we picked!
+    self.imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+        
 }
 
 
-
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
-        [self dismissModalViewControllerAnimated:YES];
+        [controller dismissModalViewControllerAnimated:YES];
     
 }
 

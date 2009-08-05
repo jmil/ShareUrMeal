@@ -15,16 +15,12 @@
 	UIImageView *imageView;
 	UIButton *choosePhotoButton;
 	UIButton *takePhotoButton;
-        UIButton *sendMailButton;
     }
     
     @property (nonatomic, retain) IBOutlet UIImageView *imageView;
     @property (nonatomic, retain) IBOutlet UIButton *choosePhotoButton;
     @property (nonatomic, retain) IBOutlet UIButton *takePhotoButton;
-    @property (nonatomic, retain) IBOutlet UIButton *sendMailButton;
     
     -(IBAction) getPhoto:(id) sender;
-    -(IBAction) showMailer:(id)sender;
-
     
 @end
