@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 
 
-@interface BookmarksViewController : UIViewController {
+@interface BookmarksViewController : UITableViewController
+{
 
 }
 
 
-- (IBAction)push:(id)sender;
+//- (IBAction)push:(id)sender;
 
 @end

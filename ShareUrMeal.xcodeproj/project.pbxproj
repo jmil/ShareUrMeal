@@ -26,6 +26,13 @@
 		2DC5D778101FDD1A00F3E3B1 /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5D776101FDD1A00F3E3B1 /* ShareViewController.xib */; };
 		2DC5D789101FE10C00F3E3B1 /* 44-shoebox.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5D787101FE10C00F3E3B1 /* 44-shoebox.png */; };
 		2DC5D78A101FE10C00F3E3B1 /* 48-fork-and-knife.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5D788101FE10C00F3E3B1 /* 48-fork-and-knife.png */; };
+		B3B5613010290C8E0034F584 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B3B5612310290C8E0034F584 /* Credits.rtf */; };
+		B3B5613110290C8E0034F584 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3B5612510290C8E0034F584 /* InfoPlist.strings */; };
+		B3B5613210290C8E0034F584 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3B5612710290C8E0034F584 /* MainMenu.xib */; };
+		B3B5613310290C8E0034F584 /* ShareUrMealDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3B5612910290C8E0034F584 /* ShareUrMealDocument.xib */; };
+		B3B5613510290C8E0034F584 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B5612C10290C8E0034F584 /* main.m */; };
+		B3B5613610290C8E0034F584 /* ShareUrMealDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B5612E10290C8E0034F584 /* ShareUrMealDocument.m */; };
+		B3B5614510290E0D0034F584 /* ShareUrMeal.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 28C3AD890F43EF2300507BA6 /* ShareUrMeal.xcdatamodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +62,17 @@
 		2DC5D788101FE10C00F3E3B1 /* 48-fork-and-knife.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "48-fork-and-knife.png"; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* ShareUrMeal_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareUrMeal_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ShareUrMeal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ShareUrMeal-Info.plist"; sourceTree = "<group>"; };
+		B3B5610510290B1C0034F584 /* ShareUrMeal DBTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ShareUrMeal DBTool.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3B5612110290C8E0034F584 /* DBTool_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTool_Prefix.pch; sourceTree = "<group>"; };
+		B3B5612410290C8E0034F584 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = Credits.rtf; sourceTree = "<group>"; };
+		B3B5612610290C8E0034F584 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = InfoPlist.strings; sourceTree = "<group>"; };
+		B3B5612810290C8E0034F584 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = MainMenu.xib; sourceTree = "<group>"; };
+		B3B5612A10290C8E0034F584 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = ShareUrMealDocument.xib; sourceTree = "<group>"; };
+		B3B5612B10290C8E0034F584 /* ShareUrMeal DBTool-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ShareUrMeal DBTool-Info.plist"; sourceTree = "<group>"; };
+		B3B5612C10290C8E0034F584 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B3B5612D10290C8E0034F584 /* ShareUrMealDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareUrMealDocument.h; sourceTree = "<group>"; };
+		B3B5612E10290C8E0034F584 /* ShareUrMealDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareUrMealDocument.m; sourceTree = "<group>"; };
+		B3B5612F10290C8E0034F584 /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = version.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +84,13 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
 				28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B3B5610310290B1C0034F584 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				1D6058910D05DD3D006BFB54 /* ShareUrMeal.app */,
+				B3B5610510290B1C0034F584 /* ShareUrMeal DBTool.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				080E96DDFE201D6D7F000001 /* Classes */,
+				B3B5612010290C5C0034F584 /* DBTool */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -145,6 +172,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B3B5612010290C5C0034F584 /* DBTool */ = {
+			isa = PBXGroup;
+			children = (
+				B3B5612110290C8E0034F584 /* DBTool_Prefix.pch */,
+				B3B5612310290C8E0034F584 /* Credits.rtf */,
+				B3B5612510290C8E0034F584 /* InfoPlist.strings */,
+				B3B5612710290C8E0034F584 /* MainMenu.xib */,
+				B3B5612910290C8E0034F584 /* ShareUrMealDocument.xib */,
+				B3B5612B10290C8E0034F584 /* ShareUrMeal DBTool-Info.plist */,
+				B3B5612C10290C8E0034F584 /* main.m */,
+				B3B5612D10290C8E0034F584 /* ShareUrMealDocument.h */,
+				B3B5612E10290C8E0034F584 /* ShareUrMealDocument.m */,
+				B3B5612F10290C8E0034F584 /* version.plist */,
+			);
+			path = DBTool;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -165,6 +209,23 @@
 			productReference = 1D6058910D05DD3D006BFB54 /* ShareUrMeal.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B3B5610410290B1C0034F584 /* ShareUrMeal DBTool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B3B5610A10290B1E0034F584 /* Build configuration list for PBXNativeTarget "ShareUrMeal DBTool" */;
+			buildPhases = (
+				B3B5610110290B1C0034F584 /* Resources */,
+				B3B5610210290B1C0034F584 /* Sources */,
+				B3B5610310290B1C0034F584 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ShareUrMeal DBTool";
+			productName = "ShareUrMeal DBTool";
+			productReference = B3B5610510290B1C0034F584 /* ShareUrMeal DBTool.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -178,6 +239,7 @@
 			projectRoot = "";
 			targets = (
 				1D6058900D05DD3D006BFB54 /* ShareUrMeal */,
+				B3B5610410290B1C0034F584 /* ShareUrMeal DBTool */,
 			);
 		};
 /* End PBXProject section */
@@ -199,6 +261,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B3B5610110290B1C0034F584 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3B5613010290C8E0034F584 /* Credits.rtf in Resources */,
+				B3B5613110290C8E0034F584 /* InfoPlist.strings in Resources */,
+				B3B5613210290C8E0034F584 /* MainMenu.xib in Resources */,
+				B3B5613310290C8E0034F584 /* ShareUrMealDocument.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -215,7 +288,56 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B3B5610210290B1C0034F584 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B3B5614510290E0D0034F584 /* ShareUrMeal.xcdatamodel in Sources */,
+				B3B5613510290C8E0034F584 /* main.m in Sources */,
+				B3B5613610290C8E0034F584 /* ShareUrMealDocument.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B3B5612310290C8E0034F584 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3B5612410290C8E0034F584 /* English */,
+			);
+			name = Credits.rtf;
+			path = English.lproj;
+			sourceTree = "<group>";
+		};
+		B3B5612510290C8E0034F584 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3B5612610290C8E0034F584 /* English */,
+			);
+			name = InfoPlist.strings;
+			path = English.lproj;
+			sourceTree = "<group>";
+		};
+		B3B5612710290C8E0034F584 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3B5612810290C8E0034F584 /* English */,
+			);
+			name = MainMenu.xib;
+			path = English.lproj;
+			sourceTree = "<group>";
+		};
+		B3B5612910290C8E0034F584 /* ShareUrMealDocument.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B3B5612A10290C8E0034F584 /* English */,
+			);
+			name = ShareUrMealDocument.xib;
+			path = English.lproj;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
@@ -249,6 +371,55 @@
 				GCC_PREFIX_HEADER = ShareUrMeal_Prefix.pch;
 				INFOPLIST_FILE = "ShareUrMeal-Info.plist";
 				PRODUCT_NAME = ShareUrMeal;
+			};
+			name = Release;
+		};
+		B3B5610810290B1D0034F584 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = DBTool/DBTool_Prefix.pch;
+				INFOPLIST_FILE = "DBTool/ShareUrMeal DBTool-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "ShareUrMeal DBTool";
+				SDKROOT = macosx10.5;
+			};
+			name = Debug;
+		};
+		B3B5610910290B1D0034F584 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = DBTool/DBTool_Prefix.pch;
+				INFOPLIST_FILE = "DBTool/ShareUrMeal DBTool-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = "ShareUrMeal DBTool";
+				ZERO_LINK = NO;
 			};
 			name = Release;
 		};
@@ -286,6 +457,15 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B3B5610A10290B1E0034F584 /* Build configuration list for PBXNativeTarget "ShareUrMeal DBTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B3B5610810290B1D0034F584 /* Debug */,
+				B3B5610910290B1D0034F584 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

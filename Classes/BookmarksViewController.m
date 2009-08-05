@@ -47,13 +47,13 @@
 */
 
 
-- (IBAction)push:(id)sender {
-    RestaurantViewController *restaurantViewController = [[RestaurantViewController alloc] initWithNibName:@"RestaurantView" bundle:nil];
-    [self.navigationController pushViewController:restaurantViewController animated:YES];
-    [restaurantViewController release];
-    
-    
-}
+//- (IBAction)push:(id)sender {
+//    RestaurantViewController *restaurantViewController = [[RestaurantViewController alloc] initWithNibName:@"RestaurantView" bundle:nil];
+//    [self.navigationController pushViewController:restaurantViewController animated:YES];
+//    [restaurantViewController release];
+//    
+//    
+//}
 
 
 
