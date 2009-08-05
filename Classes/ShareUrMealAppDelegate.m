@@ -15,56 +15,34 @@
 @synthesize window;
 @synthesize tabBarController;
 
+
+static NSString* const kDBFileName = @"ShareUrMeal.sqlite";  // TODO: Info.plist?
+
+
 #pragma mark -
 #pragma mark Application lifecycle
 
+
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
     
-    // Override point for customization after app launch    
 
-    
-//    tabBarController = [[UITabBarController alloc] init];
-//    
-//    
-//    // Create a few view controllers
-//    UIViewController *redViewController = [[UIViewController alloc] init];
-//    redViewController.title = @"Calculator";
-//    
-//    UITabBarItem *calculator = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemMostRecent tag:1];
-//    calculator.title = @"hello";
-//    redViewController.tabBarItem = calculator;
-//    [calculator release];
-//    
-//    
-//    redViewController.tabBarItem.image = [UIImage imageNamed:@"faves.png"];
-//    redViewController.view.backgroundColor = [UIColor redColor];
-//    
-//    UIViewController *blueViewController = [[UIViewController alloc] init];
-//    blueViewController.title = @"About";
-//    blueViewController.tabBarItem.image = [UIImage imageNamed:@"search.png"];
-//    blueViewController.view.backgroundColor = [UIColor blueColor];
-//    
-//    
-//    UINavigationController *navigationController = [[UINavigationController alloc] init];
-//    
-//    BookmarksViewController *bookmarksViewController = [[BookmarksViewController alloc] initWithNibName:@"BookmarksView" bundle:nil];
-//    
-//    [navigationController pushViewController:bookmarksViewController animated:NO];
-//    [bookmarksViewController release];
-//    
-//    // Add them as children of the tab bar controller
-//    tabBarController.viewControllers = [NSArray arrayWithObjects:redViewController, navigationController, blueViewController, nil];
-//    
-//    
-//    // Don't forget memory management
-//    [redViewController release];
-//    [blueViewController release];
-//    [navigationController release];
-//    
+	NSString* dbPath = [[self applicationDocumentsDirectory] stringByAppendingPathComponent:kDBFileName];
+	NSFileManager* fm = [NSFileManager defaultManager];
+	if( ![fm fileExistsAtPath:dbPath] )
+	{
+		// -- copy from resources to documents directory
+		
+		NSString* demoDBPath = [[NSBundle mainBundle] pathForResource:kDBFileName ofType:nil];
+		
+		NSError* error = nil;
+		[fm copyItemAtPath:demoDBPath toPath:dbPath error:&error];
+		if( error )
+		{
+			// TODO: handle error
+		}
+	}
+	
     [window addSubview:tabBarController.view];
-    
-    
-    
 	[window makeKeyAndVisible];
 }
 
@@ -150,7 +128,7 @@
 	
     NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"ShareUrMeal.sqlite"]];
 	
-	NSError *error;
+	NSError *error = nil;
     persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel: [self managedObjectModel]];
     if (![persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:nil error:&error]) {
         // Handle error

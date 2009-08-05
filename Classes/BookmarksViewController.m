@@ -7,36 +7,77 @@
 //
 
 #import "BookmarksViewController.h"
+
+#import "Restaurant.h"
 #import "RestaurantViewController.h"
+
+static const NSInteger kTabSegmentedControlWidth = 200;
+
 
 @implementation BookmarksViewController
 
+@synthesize restaurants;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         // Custom initialization
         
-        self.title = @"Bookmarks!";
+        self.title = @"Bookmarks";
         //self.tabBarItem.image = [UIImage imageNamed:@"all.png"];
         
         UITabBarItem *bookmarks = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemBookmarks tag:2];
         self.tabBarItem = bookmarks;
         [bookmarks release];
-        
 
-        
+		
+		
     }
     return self;
 }
 
 
-/*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
+	UISegmentedControl* segmentedControl = [[UISegmentedControl alloc] initWithItems:
+											[NSArray arrayWithObjects:
+											 NSLocalizedString(@"Name", @"Bookmarks Name Tab Title"),
+											 NSLocalizedString(@"Location", @"Bookmarks Location Tab Title"), 
+											 nil]];
+	segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+	self.navigationItem.titleView = segmentedControl;
+	segmentedControl.selectedSegmentIndex = 0;
+	CGRect segmentedControlFrame = segmentedControl.frame;
+	segmentedControlFrame.size.width = kTabSegmentedControlWidth;
+	segmentedControl.frame = segmentedControlFrame;
+	[segmentedControl release];
+	
+
+	{
+		NSManagedObjectContext* moc = [_APP_ managedObjectContext];
+		
+		NSFetchRequest* request = [[NSFetchRequest alloc] init];
+		NSEntityDescription* entity = [NSEntityDescription entityForName:@"Restaurant" inManagedObjectContext:moc];
+		[request setEntity:entity];
+		
+		NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+		NSArray* sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+		[request setSortDescriptors:sortDescriptors];
+		[sortDescriptors release];
+		[sortDescriptor release];
+		
+		NSError* error = nil;
+		self.restaurants = [moc executeFetchRequest:request error:&error];
+		if( error )
+		{
+			// TODO: handle error
+		}
+	}
+	
     [super viewDidLoad];
 }
-*/
+
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -45,15 +86,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 */
-
-
-//- (IBAction)push:(id)sender {
-//    RestaurantViewController *restaurantViewController = [[RestaurantViewController alloc] initWithNibName:@"RestaurantView" bundle:nil];
-//    [self.navigationController pushViewController:restaurantViewController animated:YES];
-//    [restaurantViewController release];
-//    
-//    
-//}
 
 
 
@@ -72,6 +104,48 @@
 
 - (void)dealloc {
     [super dealloc];
+}
+
+
+#pragma mark TableView Data Source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+	return 1;
+}
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	return [self.restaurants count];
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+	static NSString *CellIdentifier = @"Cell";
+	
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil)
+	{
+		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+	}
+		
+	cell.textLabel.text = [[self.restaurants objectAtIndex:[indexPath row]] name];
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	
+	return cell;
+}
+
+
+#pragma mark TableView Delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	Restaurant* restaurant = [self.restaurants objectAtIndex:[indexPath row]];
+	RestaurantViewController* vc = [[RestaurantViewController alloc] initWithRestaurant:restaurant];
+	[self.navigationController pushViewController:vc animated:YES];
+	[vc release];
 }
 
 

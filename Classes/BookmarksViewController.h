@@ -11,10 +11,9 @@
 
 @interface BookmarksViewController : UITableViewController
 {
-
+	NSArray* restaurants;
 }
 
-
-//- (IBAction)push:(id)sender;
+@property (nonatomic, retain) NSArray* restaurants;
 
 @end
