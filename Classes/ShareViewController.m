@@ -11,6 +11,26 @@
 
 @implementation ShareViewController
 
+@synthesize imageView, choosePhotoButton, takePhotoButton;
+
+-(IBAction) getPhoto:(id) sender {
+    UIImagePickerController * picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    
+    if((UIButton *) sender == choosePhotoButton) {
+        picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+    } else {
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    
+    [self presentModalViewController:picker animated:YES];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissModalViewControllerAnimated:YES];
+    self.imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+}
+
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 //- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
