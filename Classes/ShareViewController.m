@@ -90,6 +90,7 @@
             break;
         case MFMailComposeResultSaved:
             NSLog(@"Result: saved to drafts folder");
+            [self dismissModalViewControllerAnimated:YES];
             break;
         case MFMailComposeResultSent:
             NSLog(@"Result: sent to outbox; will be delivered next time you check mail");
@@ -98,9 +99,11 @@
             break;
         case MFMailComposeResultFailed:
             NSLog(@"Result: message sending or delivery failed...");
+            [self dismissModalViewControllerAnimated:YES];
             break;
         default:
             NSLog(@"Result: email was not sent; don't know why.");
+            [self dismissModalViewControllerAnimated:YES];
             break;
     }
     
