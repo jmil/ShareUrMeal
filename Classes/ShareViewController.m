@@ -38,7 +38,7 @@
         
         
         // Set up recipients
-        NSArray *toRecipients = [NSArray arrayWithObject:@"devon.segel@gmail.com"]; 
+        NSArray *toRecipients = [NSArray arrayWithObjects:@"devon.segel@gmail.com", @"post-staging@shareurmeal.com", nil]; 
         //NSArray *ccRecipients = [NSArray arrayWithObjects:@"second@example.com", @"third@example.com", nil]; 
         //NSArray *bccRecipients = [NSArray arrayWithObject:@"fourth@example.com"]; 
         
