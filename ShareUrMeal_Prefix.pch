@@ -22,19 +22,21 @@
 #pragma mark -
 #pragma mark Debug Logging
 
-
-// !!!: TODO: OMG HACKS
-#define DEBUG
-
 #ifdef DEBUG
 
-#define debugLog(fmt, ...) NSLog(@"%s " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__)
-#define debugTrace() debugLog(@"%s:%d", __FILE__, __LINE__)
+	#define debugLog(fmt, ...) NSLog(@"%s " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__)
+	#define debugTrace() debugLog(@"%s:%d", __FILE__, __LINE__)
+
+	#define kShareUrMealSubmitEmail @"post-staging@shareurmeal.com"
+	#define kShareUrMealRootURL @"http://staging.shareurmeal.com"
 
 #else
 
-#define debugLog(...)
-#define debugTrace()
+	#define debugLog(...)
+	#define debugTrace()
+
+	#define kShareUrMealSubmitEmail @"post@shareurmeal.com"
+	#define kShareUrMealRootURL @"http://shareurmeal.com"
 
 #endif
 
