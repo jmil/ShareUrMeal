@@ -15,6 +15,8 @@
 	UIImageView *imageView;
 	UIButton *choosePhotoButton;
 	UIButton *takePhotoButton;
+        UIButton *resendPhotoButton;
+        UILabel *photoSendStatus;
     }
     
     @property (nonatomic, retain) IBOutlet UIImageView *imageView;

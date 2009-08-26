@@ -27,6 +27,7 @@
 		2D9AC117101FD63D00BD388D /* RestaurantView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D9AC116101FD63D00BD388D /* RestaurantView.xib */; };
 		2D9AC11C101FD6B400BD388D /* BookmarksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D9AC11B101FD6B400BD388D /* BookmarksViewController.xib */; };
 		2DB5E4B81044B6B000A31E0C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DB5E4B71044B6B000A31E0C /* Default.png */; };
+		2DB5E4E11044BA8F00A31E0C /* 02-redo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DB5E4E01044BA8F00A31E0C /* 02-redo.png */; };
 		2DC5D777101FDD1A00F3E3B1 /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC5D775101FDD1A00F3E3B1 /* ShareViewController.m */; };
 		2DC5D778101FDD1A00F3E3B1 /* ShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5D776101FDD1A00F3E3B1 /* ShareViewController.xib */; };
 		2DC5D789101FE10C00F3E3B1 /* 44-shoebox.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5D787101FE10C00F3E3B1 /* 44-shoebox.png */; };
@@ -73,6 +74,7 @@
 		2D9AC116101FD63D00BD388D /* RestaurantView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = RestaurantView.xib; path = ../RestaurantView.xib; sourceTree = "<group>"; };
 		2D9AC11B101FD6B400BD388D /* BookmarksViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookmarksViewController.xib; sourceTree = "<group>"; };
 		2DB5E4B71044B6B000A31E0C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		2DB5E4E01044BA8F00A31E0C /* 02-redo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "02-redo.png"; sourceTree = "<group>"; };
 		2DC5D774101FDD1A00F3E3B1 /* ShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareViewController.h; sourceTree = "<group>"; };
 		2DC5D775101FDD1A00F3E3B1 /* ShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareViewController.m; sourceTree = "<group>"; };
 		2DC5D776101FDD1A00F3E3B1 /* ShareViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareViewController.xib; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				B3B561F410291FE10034F584 /* ShareUrMeal.sqlite */,
+				2DB5E4E01044BA8F00A31E0C /* 02-redo.png */,
 				2DC5D787101FE10C00F3E3B1 /* 44-shoebox.png */,
 				2D6EF9C61044B3B6008BDA65 /* SUMlogofinal.png */,
 				2DC5D788101FE10C00F3E3B1 /* 48-fork-and-knife.png */,
@@ -319,6 +322,7 @@
 				2D6EF97C1044AEC3008BDA65 /* AboutViewController.xib in Resources */,
 				2D6EF9C71044B3B6008BDA65 /* SUMlogofinal.png in Resources */,
 				2DB5E4B81044B6B000A31E0C /* Default.png in Resources */,
+				2DB5E4E11044BA8F00A31E0C /* 02-redo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
