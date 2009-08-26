@@ -1,8 +1,5 @@
 #import "AboutViewController.h"
 
-//@interface AboutViewController ()
-//@end
-
 
 @implementation AboutViewController
 
@@ -12,7 +9,7 @@
 {
 	[super viewDidLoad];
 
-	NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://staging.shareurmeal.com/about"]];
+	NSURLRequest* request = [NSURLRequest requestWithURL:[NSURL URLWithString:kShareUrMealRootURL @"/about"]];
 	[self.webView loadRequest:request];
 	[self.webView setScalesPageToFit:YES];
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
