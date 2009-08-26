@@ -11,7 +11,7 @@
 
 @implementation ShareViewController
 
-@synthesize imageView, choosePhotoButton, takePhotoButton;
+@synthesize imageView, choosePhotoButton, takePhotoButton, resendPhotoButton, photoSendFail, photoSendSuccess;
 
 -(IBAction) getPhoto:(id) sender {
     UIImagePickerController * picker = [[UIImagePickerController alloc] init];
@@ -81,6 +81,9 @@
     // Since self is the rootViewController of the original modal view controller, then we can simply tell self to dismissModalViewControllerAnimated:YES!! This will cause both Mail and ImageViewController to both pop off and go away.
     
     // Notifies users about errors associated with the interface
+    
+    result = MFMailComposeResultFailed;
+    
     switch (result)
     {
         case MFMailComposeResultCancelled:
@@ -95,10 +98,19 @@
         case MFMailComposeResultSent:
             NSLog(@"Result: sent to outbox; will be delivered next time you check mail");
             // If the user pressed the Send button then shut all modal view controllers and revert back to ShareViewController properly; we do this by calling self rather than controller!
+            self.photoSendFail.hidden = YES;
+            self.resendPhotoButton.hidden = YES;
+            self.photoSendSuccess.hidden = NO;
+            self.photoSendSuccess.text = @"YAYAYAYAYAY!!!";
+            
             [self dismissModalViewControllerAnimated:YES];
             break;
         case MFMailComposeResultFailed:
             NSLog(@"Result: message sending or delivery failed...");
+            self.photoSendSuccess.hidden = YES;
+            self.photoSendFail.hidden = NO;
+            self.resendPhotoButton.hidden = NO;
+            self.photoSendFail.text = @"Email Fail. Resend?";
             [self dismissModalViewControllerAnimated:YES];
             break;
         default:
@@ -133,6 +145,13 @@
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         self.takePhotoButton.hidden = YES;
     }
+    
+    // Initially set all to HIDE until we get last sent image saved in user Defaults or Core Data!
+    self.photoSendFail.hidden = YES;
+    self.photoSendSuccess.hidden = YES;
+    self.resendPhotoButton.hidden = YES;
+    
+    
 }
 
 
