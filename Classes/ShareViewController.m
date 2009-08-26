@@ -13,6 +13,23 @@
 
 @synthesize imageView, choosePhotoButton, takePhotoButton, resendPhotoButton, photoSendFail, photoSendSuccess;
 
+-(void)fadeSplashImage
+{
+    splashImage = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, 320, 480)];
+    splashImage.image = [UIImage imageNamed:@"Default3.png"];
+    [self.view addSubview:splashImage];
+    [self.view bringSubviewToFront:splashImage];
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.5];
+    [UIView setAnimationTransition:UIViewAnimationTransitionNone forView:self.view cache:YES];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(startupAnimationDone:finished:context:)];
+    splashImage.alpha = 0.0;
+    [UIView commitAnimations];
+}
+
+
+
 -(IBAction) getPhoto:(id) sender {
     UIImagePickerController * picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
@@ -101,7 +118,11 @@
             self.photoSendFail.hidden = YES;
             self.resendPhotoButton.hidden = YES;
             self.photoSendSuccess.hidden = NO;
-            self.photoSendSuccess.text = @"YAYAYAYAYAY!!!";
+            
+//            NSMutableString *dateFormatting = [NSMutableString ];
+//            
+//            
+//            self.photoSendSuccess.text = @"Sent Aug 24 09, 8:32 pm";
             
             [self dismissModalViewControllerAnimated:YES];
             break;
@@ -142,6 +163,10 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self fadeSplashImage];
+
+    
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         self.takePhotoButton.hidden = YES;
     }
@@ -151,8 +176,14 @@
     self.photoSendSuccess.hidden = YES;
     self.resendPhotoButton.hidden = YES;
     
-    
+
 }
+
+- (void)startupAnimationDone:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+    [splashImage removeFromSuperview];
+    [splashImage release];
+}
+
 
 
 /*

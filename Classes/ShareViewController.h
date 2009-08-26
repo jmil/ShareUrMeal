@@ -18,6 +18,7 @@
         IBOutlet UIButton *resendPhotoButton;
         IBOutlet UILabel *photoSendSuccess;
         IBOutlet UILabel *photoSendFail;
+        UIImageView *splashImage;
     }
     
     @property (nonatomic, retain) IBOutlet UIImageView *imageView;
@@ -28,5 +29,7 @@
     @property (nonatomic, retain) IBOutlet UILabel *photoSendFail;
     
     -(IBAction) getPhoto:(id) sender;
+    -(void) fadeSplashImage;
+
     
 @end
