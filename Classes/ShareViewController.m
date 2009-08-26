@@ -99,8 +99,8 @@
     
     // Notifies users about errors associated with the interface
     
-    result = MFMailComposeResultFailed;
-    
+//    result = MFMailComposeResultFailed;
+
     switch (result)
     {
         case MFMailComposeResultCancelled:
