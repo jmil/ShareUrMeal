@@ -131,7 +131,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        takePhotoButton.hidden = NO;
+        self.takePhotoButton.hidden = YES;
     }
 }
 
