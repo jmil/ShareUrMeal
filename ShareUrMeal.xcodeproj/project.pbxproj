@@ -46,6 +46,7 @@
 		B3B562651029248E0034F584 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B562611029248E0034F584 /* Restaurant.m */; };
 		B3B56268102924E00034F584 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B56267102924E00034F584 /* CoreLocation.framework */; };
 		B3B56275102925610034F584 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B56274102925610034F584 /* MessageUI.framework */; };
+		B3C21DF01044BDA900362094 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = B3C21DEF1044BDA900362094 /* about.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +105,7 @@
 		B3B562611029248E0034F584 /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Restaurant.m; path = Model/Restaurant.m; sourceTree = "<group>"; };
 		B3B56267102924E00034F584 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B3B56274102925610034F584 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		B3C21DEF1044BDA900362094 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B3C21DEF1044BDA900362094 /* about.html */,
 				B3B561F410291FE10034F584 /* ShareUrMeal.sqlite */,
 				2DB5E4E01044BA8F00A31E0C /* 02-redo.png */,
 				2DC5D787101FE10C00F3E3B1 /* 44-shoebox.png */,
@@ -320,6 +323,7 @@
 				B3B561F510291FE10034F584 /* ShareUrMeal.sqlite in Resources */,
 				2D6EF9701044AD93008BDA65 /* 06-magnifying-glass.png in Resources */,
 				2D6EF97C1044AEC3008BDA65 /* AboutViewController.xib in Resources */,
+				B3C21DF01044BDA900362094 /* about.html in Resources */,
 				2D6EF9C71044B3B6008BDA65 /* SUMlogofinal.png in Resources */,
 				2DB5E4E11044BA8F00A31E0C /* 02-redo.png in Resources */,
 				2D0790A81044C95B0078096C /* Default3.png in Resources */,
@@ -499,6 +503,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
