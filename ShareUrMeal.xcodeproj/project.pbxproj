@@ -43,6 +43,27 @@
 		B3B562651029248E0034F584 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B562611029248E0034F584 /* Restaurant.m */; };
 		B3B56268102924E00034F584 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B56267102924E00034F584 /* CoreLocation.framework */; };
 		B3B56275102925610034F584 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B56274102925610034F584 /* MessageUI.framework */; };
+		C4CCE4021044B5E70071D26A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE4011044B5E70071D26A /* JSONKit.m */; };
+		C4CCE6861044D0640071D26A /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6821044D0640071D26A /* ASIFormDataRequest.m */; };
+		C4CCE6871044D0640071D26A /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6831044D0640071D26A /* ASIHTTPRequest.m */; };
+		C4CCE6881044D0640071D26A /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6841044D0640071D26A /* ASINetworkQueue.m */; };
+		C4CCE6891044D0640071D26A /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6851044D0640071D26A /* ASINSStringAdditions.m */; };
+		C4CCE6A91044D0740071D26A /* IFLinkCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE68E1044D0740071D26A /* IFLinkCellController.m */; };
+		C4CCE6AA1044D0740071D26A /* IFTextCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6901044D0740071D26A /* IFTextCellController.m */; };
+		C4CCE6AB1044D0740071D26A /* IFSwitchCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6921044D0740071D26A /* IFSwitchCellController.m */; };
+		C4CCE6AC1044D0740071D26A /* IFButtonCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6941044D0740071D26A /* IFButtonCellController.m */; };
+		C4CCE6AD1044D0740071D26A /* IFChoiceCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6961044D0740071D26A /* IFChoiceCellController.m */; };
+		C4CCE6AE1044D0740071D26A /* IFChoiceTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6981044D0740071D26A /* IFChoiceTableViewController.m */; };
+		C4CCE6AF1044D0740071D26A /* IFValueCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE69A1044D0740071D26A /* IFValueCellController.m */; };
+		C4CCE6B01044D0740071D26A /* IFNamedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE69C1044D0740071D26A /* IFNamedImage.m */; };
+		C4CCE6B11044D0740071D26A /* IFControlTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE69E1044D0740071D26A /* IFControlTableViewCell.m */; };
+		C4CCE6B21044D0740071D26A /* IFTemporaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6A21044D0740071D26A /* IFTemporaryModel.m */; };
+		C4CCE6B31044D0740071D26A /* IFPreferencesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6A41044D0740071D26A /* IFPreferencesModel.m */; };
+		C4CCE6B41044D0740071D26A /* IFGenericTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6A61044D0740071D26A /* IFGenericTableViewController.m */; };
+		C4CCE6B51044D0740071D26A /* IFTextViewTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6A81044D0740071D26A /* IFTextViewTableView.m */; };
+		C4CCE6B91044D09F0071D26A /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6B81044D09F0071D26A /* SignUpViewController.m */; };
+		C4CCE6BF1044D0D40071D26A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4CCE6BE1044D0D40071D26A /* CFNetwork.framework */; };
+		C4CCE6C11044D0DA0071D26A /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C4CCE6C01044D0DA0071D26A /* libz.1.2.3.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +119,48 @@
 		B3B562611029248E0034F584 /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Restaurant.m; path = Model/Restaurant.m; sourceTree = "<group>"; };
 		B3B56267102924E00034F584 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B3B56274102925610034F584 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		C4CCE4001044B5E70071D26A /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		C4CCE4011044B5E70071D26A /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		C4CCE67E1044D0640071D26A /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
+		C4CCE67F1044D0640071D26A /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
+		C4CCE6801044D0640071D26A /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
+		C4CCE6811044D0640071D26A /* ASINSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINSStringAdditions.h; sourceTree = "<group>"; };
+		C4CCE6821044D0640071D26A /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
+		C4CCE6831044D0640071D26A /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
+		C4CCE6841044D0640071D26A /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
+		C4CCE6851044D0640071D26A /* ASINSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINSStringAdditions.m; sourceTree = "<group>"; };
+		C4CCE68C1044D0740071D26A /* IFCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFCellController.h; sourceTree = "<group>"; };
+		C4CCE68D1044D0740071D26A /* IFLinkCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFLinkCellController.h; sourceTree = "<group>"; };
+		C4CCE68E1044D0740071D26A /* IFLinkCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFLinkCellController.m; sourceTree = "<group>"; };
+		C4CCE68F1044D0740071D26A /* IFTextCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFTextCellController.h; sourceTree = "<group>"; };
+		C4CCE6901044D0740071D26A /* IFTextCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFTextCellController.m; sourceTree = "<group>"; };
+		C4CCE6911044D0740071D26A /* IFSwitchCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFSwitchCellController.h; sourceTree = "<group>"; };
+		C4CCE6921044D0740071D26A /* IFSwitchCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFSwitchCellController.m; sourceTree = "<group>"; };
+		C4CCE6931044D0740071D26A /* IFButtonCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFButtonCellController.h; sourceTree = "<group>"; };
+		C4CCE6941044D0740071D26A /* IFButtonCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFButtonCellController.m; sourceTree = "<group>"; };
+		C4CCE6951044D0740071D26A /* IFChoiceCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFChoiceCellController.h; sourceTree = "<group>"; };
+		C4CCE6961044D0740071D26A /* IFChoiceCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFChoiceCellController.m; sourceTree = "<group>"; };
+		C4CCE6971044D0740071D26A /* IFChoiceTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFChoiceTableViewController.h; sourceTree = "<group>"; };
+		C4CCE6981044D0740071D26A /* IFChoiceTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFChoiceTableViewController.m; sourceTree = "<group>"; };
+		C4CCE6991044D0740071D26A /* IFValueCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFValueCellController.h; sourceTree = "<group>"; };
+		C4CCE69A1044D0740071D26A /* IFValueCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFValueCellController.m; sourceTree = "<group>"; };
+		C4CCE69B1044D0740071D26A /* IFNamedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFNamedImage.h; sourceTree = "<group>"; };
+		C4CCE69C1044D0740071D26A /* IFNamedImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFNamedImage.m; sourceTree = "<group>"; };
+		C4CCE69D1044D0740071D26A /* IFControlTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFControlTableViewCell.h; sourceTree = "<group>"; };
+		C4CCE69E1044D0740071D26A /* IFControlTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFControlTableViewCell.m; sourceTree = "<group>"; };
+		C4CCE6A01044D0740071D26A /* IFCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFCellModel.h; sourceTree = "<group>"; };
+		C4CCE6A11044D0740071D26A /* IFTemporaryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFTemporaryModel.h; sourceTree = "<group>"; };
+		C4CCE6A21044D0740071D26A /* IFTemporaryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFTemporaryModel.m; sourceTree = "<group>"; };
+		C4CCE6A31044D0740071D26A /* IFPreferencesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFPreferencesModel.h; sourceTree = "<group>"; };
+		C4CCE6A41044D0740071D26A /* IFPreferencesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFPreferencesModel.m; sourceTree = "<group>"; };
+		C4CCE6A51044D0740071D26A /* IFGenericTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFGenericTableViewController.h; sourceTree = "<group>"; };
+		C4CCE6A61044D0740071D26A /* IFGenericTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFGenericTableViewController.m; sourceTree = "<group>"; };
+		C4CCE6A71044D0740071D26A /* IFTextViewTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFTextViewTableView.h; sourceTree = "<group>"; };
+		C4CCE6A81044D0740071D26A /* IFTextViewTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFTextViewTableView.m; sourceTree = "<group>"; };
+		C4CCE6B71044D09F0071D26A /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
+		C4CCE6B81044D09F0071D26A /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		C4CCE6BE1044D0D40071D26A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		C4CCE6C01044D0DA0071D26A /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +174,8 @@
 				28D801B40F44B63D00FB423F /* CoreData.framework in Frameworks */,
 				B3B56268102924E00034F584 /* CoreLocation.framework in Frameworks */,
 				B3B56275102925610034F584 /* MessageUI.framework in Frameworks */,
+				C4CCE6BF1044D0D40071D26A /* CFNetwork.framework in Frameworks */,
+				C4CCE6C11044D0DA0071D26A /* libz.1.2.3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +193,9 @@
 			isa = PBXGroup;
 			children = (
 				B3B56249102923810034F584 /* Model */,
+				C4CCE3FF1044B5D00071D26A /* JSON */,
+				C4CCE67D1044D0460071D26A /* ASI HTTP */,
+				C4CCE68A1044D0740071D26A /* Generic Table Views */,
 				2D6EF9761044AEA9008BDA65 /* AboutViewController.h */,
 				2D6EF9771044AEA9008BDA65 /* AboutViewController.m */,
 				2D6EF97B1044AEC3008BDA65 /* AboutViewController.xib */,
@@ -142,6 +210,8 @@
 				2D9AC113101FD63200BD388D /* RestaurantViewController.h */,
 				2D9AC114101FD63200BD388D /* RestaurantViewController.m */,
 				2D9AC116101FD63D00BD388D /* RestaurantView.xib */,
+				C4CCE6B71044D09F0071D26A /* SignUpViewController.h */,
+				C4CCE6B81044D09F0071D26A /* SignUpViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -164,6 +234,8 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				C4CCE6BE1044D0D40071D26A /* CFNetwork.framework */,
+				C4CCE6C01044D0DA0071D26A /* libz.1.2.3.dylib */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -237,6 +309,81 @@
 				B3B562611029248E0034F584 /* Restaurant.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		C4CCE3FF1044B5D00071D26A /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				C4CCE4001044B5E70071D26A /* JSONKit.h */,
+				C4CCE4011044B5E70071D26A /* JSONKit.m */,
+			);
+			name = JSON;
+			sourceTree = "<group>";
+		};
+		C4CCE67D1044D0460071D26A /* ASI HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				C4CCE67E1044D0640071D26A /* ASIFormDataRequest.h */,
+				C4CCE67F1044D0640071D26A /* ASIHTTPRequest.h */,
+				C4CCE6801044D0640071D26A /* ASINetworkQueue.h */,
+				C4CCE6811044D0640071D26A /* ASINSStringAdditions.h */,
+				C4CCE6821044D0640071D26A /* ASIFormDataRequest.m */,
+				C4CCE6831044D0640071D26A /* ASIHTTPRequest.m */,
+				C4CCE6841044D0640071D26A /* ASINetworkQueue.m */,
+				C4CCE6851044D0640071D26A /* ASINSStringAdditions.m */,
+			);
+			name = "ASI HTTP";
+			sourceTree = "<group>";
+		};
+		C4CCE68A1044D0740071D26A /* Generic Table Views */ = {
+			isa = PBXGroup;
+			children = (
+				C4CCE6A51044D0740071D26A /* IFGenericTableViewController.h */,
+				C4CCE6A61044D0740071D26A /* IFGenericTableViewController.m */,
+				C4CCE6A71044D0740071D26A /* IFTextViewTableView.h */,
+				C4CCE6A81044D0740071D26A /* IFTextViewTableView.m */,
+				C4CCE69F1044D0740071D26A /* Models */,
+				C4CCE68B1044D0740071D26A /* Cell Controllers */,
+			);
+			name = "Generic Table Views";
+			sourceTree = "<group>";
+		};
+		C4CCE68B1044D0740071D26A /* Cell Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C4CCE68C1044D0740071D26A /* IFCellController.h */,
+				C4CCE68D1044D0740071D26A /* IFLinkCellController.h */,
+				C4CCE68E1044D0740071D26A /* IFLinkCellController.m */,
+				C4CCE68F1044D0740071D26A /* IFTextCellController.h */,
+				C4CCE6901044D0740071D26A /* IFTextCellController.m */,
+				C4CCE6911044D0740071D26A /* IFSwitchCellController.h */,
+				C4CCE6921044D0740071D26A /* IFSwitchCellController.m */,
+				C4CCE6931044D0740071D26A /* IFButtonCellController.h */,
+				C4CCE6941044D0740071D26A /* IFButtonCellController.m */,
+				C4CCE6951044D0740071D26A /* IFChoiceCellController.h */,
+				C4CCE6961044D0740071D26A /* IFChoiceCellController.m */,
+				C4CCE6971044D0740071D26A /* IFChoiceTableViewController.h */,
+				C4CCE6981044D0740071D26A /* IFChoiceTableViewController.m */,
+				C4CCE6991044D0740071D26A /* IFValueCellController.h */,
+				C4CCE69A1044D0740071D26A /* IFValueCellController.m */,
+				C4CCE69B1044D0740071D26A /* IFNamedImage.h */,
+				C4CCE69C1044D0740071D26A /* IFNamedImage.m */,
+				C4CCE69D1044D0740071D26A /* IFControlTableViewCell.h */,
+				C4CCE69E1044D0740071D26A /* IFControlTableViewCell.m */,
+			);
+			name = "Cell Controllers";
+			sourceTree = "<group>";
+		};
+		C4CCE69F1044D0740071D26A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C4CCE6A01044D0740071D26A /* IFCellModel.h */,
+				C4CCE6A11044D0740071D26A /* IFTemporaryModel.h */,
+				C4CCE6A21044D0740071D26A /* IFTemporaryModel.m */,
+				C4CCE6A31044D0740071D26A /* IFPreferencesModel.h */,
+				C4CCE6A41044D0740071D26A /* IFPreferencesModel.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +490,25 @@
 				B3B562641029248E0034F584 /* User.m in Sources */,
 				B3B562651029248E0034F584 /* Restaurant.m in Sources */,
 				2D6EF9781044AEA9008BDA65 /* AboutViewController.m in Sources */,
+				C4CCE4021044B5E70071D26A /* JSONKit.m in Sources */,
+				C4CCE6861044D0640071D26A /* ASIFormDataRequest.m in Sources */,
+				C4CCE6871044D0640071D26A /* ASIHTTPRequest.m in Sources */,
+				C4CCE6881044D0640071D26A /* ASINetworkQueue.m in Sources */,
+				C4CCE6891044D0640071D26A /* ASINSStringAdditions.m in Sources */,
+				C4CCE6A91044D0740071D26A /* IFLinkCellController.m in Sources */,
+				C4CCE6AA1044D0740071D26A /* IFTextCellController.m in Sources */,
+				C4CCE6AB1044D0740071D26A /* IFSwitchCellController.m in Sources */,
+				C4CCE6AC1044D0740071D26A /* IFButtonCellController.m in Sources */,
+				C4CCE6AD1044D0740071D26A /* IFChoiceCellController.m in Sources */,
+				C4CCE6AE1044D0740071D26A /* IFChoiceTableViewController.m in Sources */,
+				C4CCE6AF1044D0740071D26A /* IFValueCellController.m in Sources */,
+				C4CCE6B01044D0740071D26A /* IFNamedImage.m in Sources */,
+				C4CCE6B11044D0740071D26A /* IFControlTableViewCell.m in Sources */,
+				C4CCE6B21044D0740071D26A /* IFTemporaryModel.m in Sources */,
+				C4CCE6B31044D0740071D26A /* IFPreferencesModel.m in Sources */,
+				C4CCE6B41044D0740071D26A /* IFGenericTableViewController.m in Sources */,
+				C4CCE6B51044D0740071D26A /* IFTextViewTableView.m in Sources */,
+				C4CCE6B91044D09F0071D26A /* SignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
