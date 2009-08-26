@@ -118,11 +118,12 @@
             self.photoSendFail.hidden = YES;
             self.resendPhotoButton.hidden = YES;
             self.photoSendSuccess.hidden = NO;
+
+            NSDate *now = [NSDate date];
             
-//            NSMutableString *dateFormatting = [NSMutableString ];
-//            
-//            
-//            self.photoSendSuccess.text = @"Sent Aug 24 09, 8:32 pm";
+            
+            //NSString *theSentDateAndTime = [];
+            self.photoSendSuccess.text = @"Sent Aug 24 09, 8:32 pm";
             
             [self dismissModalViewControllerAnimated:YES];
             break;
