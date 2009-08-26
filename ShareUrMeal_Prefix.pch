@@ -18,3 +18,28 @@
 
 #define _APP_ ((ShareUrMealAppDelegate *)[[UIApplication sharedApplication] delegate])
 
+
+#pragma mark -
+#pragma mark Debug Logging
+
+#ifdef DEBUG
+
+	#define debugLog(fmt, ...) NSLog(@"%s " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__)
+	#define debugTrace() debugLog(@"%s:%d", __FILE__, __LINE__)
+
+	#define kShareUrMealSubmitEmail @"post-staging@shareurmeal.com"
+	#define kShareUrMealRootURL @"http://staging.shareurmeal.com"
+
+#else
+
+	#define debugLog(...)
+	#define debugTrace()
+
+	#define kShareUrMealSubmitEmail @"post@shareurmeal.com"
+	#define kShareUrMealRootURL @"http://shareurmeal.com"
+
+#endif
+
+#define warnLog(fmt, ...) NSLog(@"WARN: %s " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__)
+#define errLog(fmt, ...) NSLog(@"ERR: %s " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__)
+
