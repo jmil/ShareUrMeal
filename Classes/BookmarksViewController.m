@@ -73,6 +73,7 @@ static const NSInteger kTabSegmentedControlWidth = 200;
 		{
 			// TODO: handle error
 		}
+		[request release];
 	}
 	
     [super viewDidLoad];
@@ -128,7 +129,7 @@ static const NSInteger kTabSegmentedControlWidth = 200;
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 	if (cell == nil)
 	{
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 	}
 		
 	cell.textLabel.text = [[self.restaurants objectAtIndex:[indexPath row]] name];
