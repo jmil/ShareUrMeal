@@ -7,6 +7,7 @@
 //
 
 #import "ShareViewController.h"
+#import "LoginViewController.h"
 
 
 @implementation ShareViewController
@@ -160,6 +161,24 @@
 //}
 
 
+- (void)launchLoginView{
+    
+    LoginViewController *viewController = [[[LoginViewController alloc] init] autorelease];
+    [self presentModalViewController:viewController animated:YES];
+    
+}
+
+- (void)addLoginButton{
+    
+    UIBarButtonItem *loginButton = [[[UIBarButtonItem alloc] initWithTitle:@"Login" 
+                                                                     style:UIBarButtonItemStyleBordered 
+                                                                    target:self 
+                                                                    action:@selector(launchLoginView)] autorelease];
+    
+    self.navigationItem.rightBarButtonItem = loginButton;
+    
+}
+
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -167,6 +186,7 @@
     
     [self fadeSplashImage];
 
+    [self addLoginButton];
     
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         self.takePhotoButton.hidden = YES;

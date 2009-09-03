@@ -67,6 +67,7 @@
 		C4CCE6B91044D09F0071D26A /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6B81044D09F0071D26A /* SignUpViewController.m */; };
 		C4CCE6BF1044D0D40071D26A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4CCE6BE1044D0D40071D26A /* CFNetwork.framework */; };
 		C4CCE6C11044D0DA0071D26A /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C4CCE6C01044D0DA0071D26A /* libz.1.2.3.dylib */; };
+		C4D71F57104F09C4002F4E70 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D71F56104F09C4002F4E70 /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -167,6 +168,8 @@
 		C4CCE6B81044D09F0071D26A /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		C4CCE6BE1044D0D40071D26A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		C4CCE6C01044D0DA0071D26A /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		C4D71F55104F09C4002F4E70 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		C4D71F56104F09C4002F4E70 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +219,8 @@
 				2D9AC113101FD63200BD388D /* RestaurantViewController.h */,
 				2D9AC114101FD63200BD388D /* RestaurantViewController.m */,
 				2D9AC116101FD63D00BD388D /* RestaurantView.xib */,
+				C4D71F55104F09C4002F4E70 /* LoginViewController.h */,
+				C4D71F56104F09C4002F4E70 /* LoginViewController.m */,
 				C4CCE6B71044D09F0071D26A /* SignUpViewController.h */,
 				C4CCE6B81044D09F0071D26A /* SignUpViewController.m */,
 			);
@@ -240,8 +245,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				C4CCE6BE1044D0D40071D26A /* CFNetwork.framework */,
-				C4CCE6C01044D0DA0071D26A /* libz.1.2.3.dylib */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -278,6 +281,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C4CCE6C01044D0DA0071D26A /* libz.1.2.3.dylib */,
+				C4CCE6BE1044D0D40071D26A /* CFNetwork.framework */,
 				B3B56274102925610034F584 /* MessageUI.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -521,6 +526,7 @@
 				C4CCE6B41044D0740071D26A /* IFGenericTableViewController.m in Sources */,
 				C4CCE6B51044D0740071D26A /* IFTextViewTableView.m in Sources */,
 				C4CCE6B91044D09F0071D26A /* SignUpViewController.m in Sources */,
+				C4D71F57104F09C4002F4E70 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

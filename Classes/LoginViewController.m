@@ -1,44 +1,50 @@
 //
-//  RootViewController.m
-//  SUMSignUp
+//  LoginViewController.m
+//  ShareUrMeal
 //
-//  Created by Corey Floyd on 8/25/09.
-//  Copyright Flying Jalapeno Software 2009. All rights reserved.
+//  Created by Corey Floyd on 9/2/09.
+//  Copyright 2009 Flying Jalapeno Software. All rights reserved.
 //
 
-#import "SignUpViewController.h"
+#import "LoginViewController.h"
 
 #import "IFTemporaryModel.h"
 
 #import "IFButtonCellController.h"
 #import "IFTextCellController.h"
 
-#import "ASIFormDataRequest.h"
 #import "ASIHTTPRequest.h"
 #import "ASINetworkQueue.h"
 
 #import "JSONKit.h"
 
-//URL to test post
-//http://hurl.r09.railsrumble.com/hurls/dbe482a36bca7d2df57221d02f144c651ecf6de3/ce959e5dd7830e84b3e4fdc1165e1b8e977a97d0
+#import "SignUpViewController.h"
 
 
+@implementation LoginViewController
 
-@implementation SignUpViewController
-
-static NSString *nameKey = @"Name";
 static NSString *userNameKey = @"UserName";
-static NSString *emailKey = @"Email";
 static NSString *passwordKey = @"Password";
-static NSString *passwordConfirmationKey = @"PasswordConfirmation";
 
 
-static NSString *stagingUrl = @"http://staging.shareurmeal.com/api/users";
+static NSString *stagingUrl = @"http://%@:%@@staging.shareurmeal.com/api/users/current.json";
 
 
 - (void)dealloc {
-    
     [super dealloc];
+}
+
+
+- (void)didReceiveMemoryWarning {
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	
+	// Release any cached data, images, etc that aren't in use.
+}
+
+- (void)viewDidUnload {
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
 }
 
 
@@ -72,61 +78,40 @@ static NSString *stagingUrl = @"http://staging.shareurmeal.com/api/users";
 	IFButtonCellController *buttonCell = nil;
 	IFTextCellController *textCell = nil;
     
-    /*
-     Start by defining a collection where each cell in the group will be stored:
-     */
-	NSMutableArray *nameCells = [NSMutableArray array];
-    
-    /*
-     Similarly, a cell can be created for text data. In this case, we'll be storing NSStrings in
-     the model with the key "sampleText":
-     */
-	textCell = [[[IFTextCellController alloc] initWithLabel:@"Name:" andPlaceholder:@"Your Name" atKey:nameKey inModel:model] autorelease];
-    textCell.autocorrectionType = UITextAutocapitalizationTypeWords;
-	[nameCells addObject:textCell];
-    
-    
     NSMutableArray *personalCells = [NSMutableArray array];
+
     
-    
-    textCell = [[[IFTextCellController alloc] initWithLabel:@"Email:" andPlaceholder:@"you@you.com" atKey:emailKey inModel:model] autorelease];
-    textCell.autocorrectionType = UITextAutocapitalizationTypeNone;
-    [personalCells addObject:textCell];
-    
-    textCell = [[[IFTextCellController alloc] initWithLabel:@"User name:" andPlaceholder:@"MyFunkyName" atKey:userNameKey inModel:model] autorelease];
+    textCell = [[[IFTextCellController alloc] initWithLabel:@"Username:" andPlaceholder:@"" atKey:userNameKey inModel:model] autorelease];
     textCell.autocorrectionType = UITextAutocapitalizationTypeNone;
 	[personalCells addObject:textCell];
     
-    
-    NSMutableArray *passwordCells = [NSMutableArray array];
-    
-    
-    textCell = [[[IFTextCellController alloc] initWithLabel:@"Once:" andPlaceholder:@"" atKey:passwordKey inModel:model] autorelease];
+    textCell = [[[IFTextCellController alloc] initWithLabel:@"Password:" andPlaceholder:@"" atKey:passwordKey inModel:model] autorelease];
 	textCell.secureTextEntry = YES;
     textCell.autocorrectionType = UITextAutocapitalizationTypeNone;
-    [passwordCells addObject:textCell];
-    
-    textCell = [[[IFTextCellController alloc] initWithLabel:@"Twice:" andPlaceholder:@"" atKey:passwordConfirmationKey inModel:model] autorelease];
-	textCell.secureTextEntry = YES;
-    textCell.autocorrectionType = UITextAutocapitalizationTypeNone;
-    [passwordCells addObject:textCell];
-    
+    [personalCells addObject:textCell];
+
     
     NSMutableArray *buttonCells = [NSMutableArray array];
     
-	buttonCell = [[[IFButtonCellController alloc] initWithLabel:@"Sign Up!" withAction:@selector(signUp) onTarget:self] autorelease];
+	buttonCell = [[[IFButtonCellController alloc] initWithLabel:@"Log In!" withAction:@selector(login) onTarget:self] autorelease];
 	[buttonCells addObject:buttonCell];
+    
+    
+    NSMutableArray *buttonCells2 = [NSMutableArray array];
+    
+	buttonCell = [[[IFButtonCellController alloc] initWithLabel:@"Sign Up!" withAction:@selector(signUp) onTarget:self] autorelease];
+	[buttonCells2 addObject:buttonCell];
     
     /*
      Once all the groups have been defined, a collection is created that allows the generic table view
      controller to construct the views, manage user input, and update the model(s):
      */
-	tableGroups = [[NSArray arrayWithObjects:nameCells, personalCells, passwordCells, buttonCells, nil] retain];
+	tableGroups = [[NSArray arrayWithObjects: personalCells, buttonCells, buttonCells2, nil] retain];
     /*
      In this example, the first group of cells gets a header ("Sample Cells") while the last two do not
      because an empty string is defined in the collection.
      */
-	tableHeaders = [[NSArray arrayWithObjects:@"Who Are You?", @"Some Personal Stuff", @"Password", [NSNull null], nil] retain];	
+	tableHeaders = [[NSArray arrayWithObjects:@"Enter Your Info", @"", @"or create an account", [NSNull null], nil] retain];	
     /*
      Similarly, the first and second groups get a footer with additional information for the user. The
      last group does not: this time because a NSNull value is used:
@@ -139,30 +124,39 @@ static NSString *stagingUrl = @"http://staging.shareurmeal.com/api/users";
 }
 
 
-- (void)signUp{
+- (void)login{
     
+    NSString *username = [model objectForKey:userNameKey];
+    NSString *password = [model objectForKey:passwordKey];
     
-    NSURL *url = [NSURL URLWithString:stagingUrl];
+    NSString *urlString = [NSString stringWithFormat:stagingUrl, username, password];
     
-    ASIFormDataRequest *request = [[[ASIFormDataRequest alloc] initWithURL:url] autorelease];
+    NSURL *url = [NSURL URLWithString:urlString];
     
-    [request setPostValue:[model objectForKey:nameKey] forKey:@"user[name]"];
-    [request setPostValue:[model objectForKey:emailKey] forKey:@"user[email]"];
-    [request setPostValue:[model objectForKey:userNameKey] forKey:@"user[username]"];
-    [request setPostValue:[model objectForKey:passwordKey] forKey:@"user[password]"];
-    [request setPostValue:[model objectForKey:passwordConfirmationKey] forKey:@"user[password_confirmation]"];
-
+    ASIHTTPRequest *request = [[[ASIHTTPRequest alloc] initWithURL:url] autorelease];
+    
     [request setDelegate:self];
     [request setDidFinishSelector:@selector(requestDone:)];
     [request setDidFailSelector:@selector(requestWentWrong:)];
     
     networkQueue = [[ASINetworkQueue alloc] init];
-
+    
     [networkQueue addOperation:request]; //queue is an NSOperationQueue
     
     [networkQueue go];
-
+    
 }
+
+- (void)signUp{
+    
+    SignUpViewController *viewController = [[[SignUpViewController alloc] init] autorelease];
+    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:viewController] autorelease];
+        
+    [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    [self presentModalViewController:navController animated:YES];
+    
+}
+
 
 - (void)requestDone:(ASIHTTPRequest *)request
 {
@@ -174,10 +168,10 @@ static NSString *stagingUrl = @"http://staging.shareurmeal.com/api/users";
     if(errors!=nil){
         
         //TODO: handle errors
-
+        
     }else {
         
-        //TODO: dismiss and store login credentials
+        //TODO: dismiss and login
     }
 
     
@@ -189,8 +183,9 @@ static NSString *stagingUrl = @"http://staging.shareurmeal.com/api/users";
     NSError *error = [request error];
     
     //TODO: handle error
-
 }
+
+
 
 
 @end
