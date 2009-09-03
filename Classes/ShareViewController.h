@@ -11,25 +11,31 @@
 #import <MessageUI/MFMailComposeViewController.h>
 
 
-@interface ShareViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate> {
+@interface ShareViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate, UIActionSheetDelegate> {
 	UIImageView *imageView;
-	IBOutlet UIButton *choosePhotoButton;
-	IBOutlet UIButton *takePhotoButton;
-        IBOutlet UIButton *resendPhotoButton;
-        IBOutlet UILabel *photoSendSuccess;
-        IBOutlet UILabel *photoSendFail;
-        UIImageView *splashImage;
-    }
-    
-    @property (nonatomic, retain) IBOutlet UIImageView *imageView;
-    @property (nonatomic, retain) IBOutlet UIButton *choosePhotoButton;
-    @property (nonatomic, retain) IBOutlet UIButton *takePhotoButton;
-    @property (nonatomic, retain) IBOutlet UIButton *resendPhotoButton;
-    @property (nonatomic, retain) IBOutlet UILabel *photoSendSuccess;
-    @property (nonatomic, retain) IBOutlet UILabel *photoSendFail;
-    
-    -(IBAction) getPhoto:(id) sender;
-    -(void) fadeSplashImage;
+	UIButton *choosePhotoButton;
+	UIButton *takePhotoButton;
+	UIButton *resendPhotoButton;
+	UILabel *photoSendSuccess;
+	UILabel *photoSendFail;
+	UIImageView *splashImage;
+	
+	// -- stuff for the action sheet.  seems ugly but I couldn't find a better way;
+	NSInteger choosePhotoFromLibraryButtonIndex;
+	NSInteger takePhotoWithCameraButtonIndex;
+	NSInteger cancelButtonIndex;
+}
 
-    
+@property (nonatomic, retain) IBOutlet UIImageView *imageView;
+@property (nonatomic, retain) IBOutlet UIButton *choosePhotoButton;
+@property (nonatomic, retain) IBOutlet UIButton *takePhotoButton;
+@property (nonatomic, retain) IBOutlet UIButton *resendPhotoButton;
+@property (nonatomic, retain) IBOutlet UILabel *photoSendSuccess;
+@property (nonatomic, retain) IBOutlet UILabel *photoSendFail;
+
+-(IBAction) getPhoto:(id) sender;
+-(void) fadeSplashImage;
+
+-(IBAction) getPhoto2:(id) sender;
+
 @end

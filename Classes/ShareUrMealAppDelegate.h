@@ -15,10 +15,11 @@
     UIWindow *window;
     
     IBOutlet UITabBarController *tabBarController;
-
 }
 
 - (IBAction)saveAction:sender;
+
+- (IBAction) showAccountView:(id)sender;
 
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 

@@ -7,8 +7,8 @@
 //
 
 #import "ShareUrMealAppDelegate.h"
-#import "BookmarksViewController.h"
 
+#import "AccountViewController.h"
 
 @implementation ShareUrMealAppDelegate
 
@@ -55,7 +55,7 @@ static NSString* const kDBFileName = @"ShareUrMeal.sqlite";  // TODO: Info.plist
     if (managedObjectContext != nil) {
         if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
 			// Handle error
-			NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+			debugLog(@"Unresolved error %@, %@", error, [error userInfo]);
 			exit(-1);  // Fail
         } 
     }
@@ -74,7 +74,7 @@ static NSString* const kDBFileName = @"ShareUrMeal.sqlite";  // TODO: Info.plist
     NSError *error;
     if (![[self managedObjectContext] save:&error]) {
 		// Handle error
-		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+		debugLog(@"Unresolved error %@, %@", error, [error userInfo]);
 		exit(-1);  // Fail
     }
 }
@@ -163,6 +163,15 @@ static NSString* const kDBFileName = @"ShareUrMeal.sqlite";  // TODO: Info.plist
     [tabBarController release];
 	[window release];
 	[super dealloc];
+}
+
+
+#pragma mark -
+- (IBAction) showAccountView:(id)sender
+{
+	AccountViewController* vc = [[AccountViewController alloc] init];
+	[self.tabBarController presentModalViewController:vc animated:YES];
+	[vc release];
 }
 
 

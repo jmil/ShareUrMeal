@@ -14,32 +14,36 @@
     #import <CoreData/CoreData.h>
 #endif
 
-#import "ShareUrMealAppDelegate.h"
-
-#define _APP_ ((ShareUrMealAppDelegate *)[[UIApplication sharedApplication] delegate])
-
-
 #pragma mark -
-#pragma mark Debug Logging
+#pragma mark Debug Macros
 
 #ifdef DEBUG
-
 	#define debugLog(fmt, ...) NSLog(@"%s " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__)
-	#define debugTrace() debugLog(@"%s:%d", __FILE__, __LINE__)
-
-	#define kShareUrMealSubmitEmail @"post-staging@shareurmeal.com"
-	#define kShareUrMealRootURL @"http://staging.shareurmeal.com"
-
+	#define debugTrace() NSLog(@"%s:%d", __FILE__, __LINE__)
 #else
-
 	#define debugLog(...)
 	#define debugTrace()
-
-	#define kShareUrMealSubmitEmail @"post@shareurmeal.com"
-	#define kShareUrMealRootURL @"http://shareurmeal.com"
-
 #endif
 
 #define warnLog(fmt, ...) NSLog(@"WARN: %s " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__)
 #define errLog(fmt, ...) NSLog(@"ERR: %s " fmt, __PRETTY_FUNCTION__, ##__VA_ARGS__)
+
+
+#pragma mark -
+#pragma mark Other Macros
+
+#define NSLocalizedString1(S) NSLocalizedString(S,S)
+
+
+#pragma mark -
+#pragma mark Constants
+
+#ifdef DEBUG
+	#define kShareUrMealSubmitEmail @"post@shareurmeal.com"
+	#define kShareUrMealRootURL @"http://shareurmeal.com"
+#else
+	#define kShareUrMealSubmitEmail @"post-staging@shareurmeal.com"
+	#define kShareUrMealRootURL @"http://staging.shareurmeal.com"
+#endif
+
 

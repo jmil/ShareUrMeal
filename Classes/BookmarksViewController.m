@@ -10,6 +10,7 @@
 
 #import "Restaurant.h"
 #import "RestaurantViewController.h"
+#import "ShareUrMealAppDelegate.h"
 
 static const NSInteger kTabSegmentedControlWidth = 200;
 
@@ -55,7 +56,7 @@ static const NSInteger kTabSegmentedControlWidth = 200;
 	
 
 	{
-		NSManagedObjectContext* moc = [_APP_ managedObjectContext];
+		NSManagedObjectContext* moc = [(ShareUrMealAppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext];
 		
 		NSFetchRequest* request = [[NSFetchRequest alloc] init];
 		NSEntityDescription* entity = [NSEntityDescription entityForName:@"Restaurant" inManagedObjectContext:moc];

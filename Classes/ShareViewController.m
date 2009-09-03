@@ -8,6 +8,7 @@
 
 #import "ShareViewController.h"
 
+#define kChoosePhotoSheetTag 12345
 
 @implementation ShareViewController
 
@@ -43,6 +44,51 @@
     [self presentModalViewController:picker animated:YES];
     [picker release];
 }
+
+
+-(IBAction) getPhoto2:(id) sender
+{
+	// reset indices
+	choosePhotoFromLibraryButtonIndex = -1; 
+	takePhotoWithCameraButtonIndex = -1;
+
+	UIActionSheet* sheet = [[UIActionSheet alloc] init];
+	sheet.delegate = self;
+	sheet.tag = kChoosePhotoSheetTag;
+	sheet.title = NSLocalizedString1( @"New Photo" );
+	choosePhotoFromLibraryButtonIndex = [sheet addButtonWithTitle:NSLocalizedString1( @"Choose From Library" )];
+	if ( [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] ) 
+	{
+		takePhotoWithCameraButtonIndex = [sheet addButtonWithTitle:NSLocalizedString1( @"Take With Camera" )];
+	}
+	cancelButtonIndex = [sheet addButtonWithTitle:NSLocalizedString1( @"Cancel" )];
+	sheet.cancelButtonIndex = cancelButtonIndex;	
+	[sheet showInView:self.tabBarController.view];
+	[sheet release];
+}
+
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	if( actionSheet.tag == kChoosePhotoSheetTag )
+	{
+		if( buttonIndex == cancelButtonIndex )
+			return;
+
+		UIImagePickerController * picker = [[UIImagePickerController alloc] init];
+		picker.delegate = self;
+		
+		if( buttonIndex == takePhotoWithCameraButtonIndex ) {
+			picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+		} else {
+			picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+		}
+		
+		[self presentModalViewController:picker animated:YES];
+		[picker release];
+	}
+}
+
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
         
@@ -104,21 +150,23 @@
     switch (result)
     {
         case MFMailComposeResultCancelled:
-            NSLog(@"Result: canceled");
+            debugLog(@"Result: canceled");
             // If the user cancelled the email then revert back one level to allow her to pick another image
             [controller dismissModalViewControllerAnimated:YES];
             break;
         case MFMailComposeResultSaved:
-            NSLog(@"Result: saved to drafts folder");
+            debugLog(@"Result: saved to drafts folder");
             [self dismissModalViewControllerAnimated:YES];
             break;
         case MFMailComposeResultSent:
-            NSLog(@"Result: sent to outbox; will be delivered next time you check mail");
+            debugLog(@"Result: sent to outbox; will be delivered next time you check mail");
             // If the user pressed the Send button then shut all modal view controllers and revert back to ShareViewController properly; we do this by calling self rather than controller!
             self.photoSendFail.hidden = YES;
             self.resendPhotoButton.hidden = YES;
             self.photoSendSuccess.hidden = NO;
 
+			
+			// TODO: finish
             NSDate *now = [NSDate date];
             
             
@@ -128,7 +176,7 @@
             [self dismissModalViewControllerAnimated:YES];
             break;
         case MFMailComposeResultFailed:
-            NSLog(@"Result: message sending or delivery failed...");
+            debugLog(@"Result: message sending or delivery failed...");
             self.photoSendSuccess.hidden = YES;
             self.photoSendFail.hidden = NO;
             self.resendPhotoButton.hidden = NO;
@@ -136,7 +184,7 @@
             [self dismissModalViewControllerAnimated:YES];
             break;
         default:
-            NSLog(@"Result: email was not sent; don't know why.");
+            debugLog(@"Result: email was not sent; don't know why.");
             [self dismissModalViewControllerAnimated:YES];
             break;
     }

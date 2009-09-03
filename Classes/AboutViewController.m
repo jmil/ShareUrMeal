@@ -19,6 +19,7 @@
 
 - (void) webViewDidFinishLoad:(UIWebView*)webView
 {
+	debugTrace();
 	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
