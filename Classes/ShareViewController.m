@@ -7,6 +7,7 @@
 //
 
 #import "ShareViewController.h"
+#import "LoginViewController.h"
 
 #define kChoosePhotoSheetTag 12345
 
@@ -208,6 +209,26 @@
 //}
 
 
+- (void)launchLoginView{
+    
+    LoginViewController *viewController = [[[LoginViewController alloc] init] autorelease];
+    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:viewController] autorelease];
+    navController.navigationBar.tintColor = [UIColor blackColor];
+    [self presentModalViewController:navController animated:YES];
+    
+}
+
+- (void)addLoginButton{
+    
+    UIBarButtonItem *loginButton = [[[UIBarButtonItem alloc] initWithTitle:@"Login" 
+                                                                     style:UIBarButtonItemStyleBordered 
+                                                                    target:self 
+                                                                    action:@selector(launchLoginView)] autorelease];
+    
+    self.navigationItem.rightBarButtonItem = loginButton;
+    
+}
+
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -215,6 +236,7 @@
     
     [self fadeSplashImage];
 
+    [self addLoginButton];
     
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         self.takePhotoButton.hidden = YES;

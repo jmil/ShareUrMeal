@@ -32,9 +32,6 @@
 		2DF9C8971044F0BA00A65424 /* Default3.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF9C8961044F0BA00A65424 /* Default3.png */; };
 		2DF9C8A11044F0D300A65424 /* SUMlogofinal.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF9C8A01044F0D300A65424 /* SUMlogofinal.png */; };
 		2DF9C8A31044F0DF00A65424 /* 02-redo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF9C8A21044F0DF00A65424 /* 02-redo.png */; };
-		B3A971591049E71E0074CDD6 /* 54-lock.png in Resources */ = {isa = PBXBuildFile; fileRef = B3A971581049E71E0074CDD6 /* 54-lock.png */; };
-		B3A971601049E86E0074CDD6 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A9715E1049E86E0074CDD6 /* AccountViewController.m */; };
-		B3A971611049E86E0074CDD6 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3A9715F1049E86E0074CDD6 /* AccountViewController.xib */; };
 		B3B5613010290C8E0034F584 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B3B5612310290C8E0034F584 /* Credits.rtf */; };
 		B3B5613110290C8E0034F584 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3B5612510290C8E0034F584 /* InfoPlist.strings */; };
 		B3B5613210290C8E0034F584 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3B5612710290C8E0034F584 /* MainMenu.xib */; };
@@ -49,7 +46,6 @@
 		B3B562651029248E0034F584 /* Restaurant.m in Sources */ = {isa = PBXBuildFile; fileRef = B3B562611029248E0034F584 /* Restaurant.m */; };
 		B3B56268102924E00034F584 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B56267102924E00034F584 /* CoreLocation.framework */; };
 		B3B56275102925610034F584 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B56274102925610034F584 /* MessageUI.framework */; };
-		B3E8FF091049F5AF0054E5E9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3E8FF081049F5AF0054E5E9 /* Localizable.strings */; };
 		C4CCE4021044B5E70071D26A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE4011044B5E70071D26A /* JSONKit.m */; };
 		C4CCE6861044D0640071D26A /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6821044D0640071D26A /* ASIFormDataRequest.m */; };
 		C4CCE6871044D0640071D26A /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6831044D0640071D26A /* ASIHTTPRequest.m */; };
@@ -107,10 +103,6 @@
 		2DF9C8A21044F0DF00A65424 /* 02-redo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "02-redo.png"; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* ShareUrMeal_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareUrMeal_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ShareUrMeal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ShareUrMeal-Info.plist"; sourceTree = "<group>"; };
-		B3A971581049E71E0074CDD6 /* 54-lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "54-lock.png"; path = "iphone-toolbar-icons/icons/54-lock.png"; sourceTree = "<group>"; };
-		B3A9715D1049E86E0074CDD6 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
-		B3A9715E1049E86E0074CDD6 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
-		B3A9715F1049E86E0074CDD6 /* AccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
 		B3B5610510290B1C0034F584 /* ShareUrMeal DBTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ShareUrMeal DBTool.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3B5612110290C8E0034F584 /* DBTool_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBTool_Prefix.pch; sourceTree = "<group>"; };
 		B3B5612410290C8E0034F584 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = Credits.rtf; sourceTree = "<group>"; };
@@ -133,7 +125,6 @@
 		B3B562611029248E0034F584 /* Restaurant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Restaurant.m; path = Model/Restaurant.m; sourceTree = "<group>"; };
 		B3B56267102924E00034F584 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B3B56274102925610034F584 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		B3E8FF051049F5A90054E5E9 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C4CCE4001044B5E70071D26A /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		C4CCE4011044B5E70071D26A /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		C4CCE67E1044D0640071D26A /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
@@ -227,9 +218,6 @@
 				2D9AC116101FD63D00BD388D /* RestaurantView.xib */,
 				C4CCE6B71044D09F0071D26A /* SignUpViewController.h */,
 				C4CCE6B81044D09F0071D26A /* SignUpViewController.m */,
-				B3A9715D1049E86E0074CDD6 /* AccountViewController.h */,
-				B3A9715E1049E86E0074CDD6 /* AccountViewController.m */,
-				B3A9715F1049E86E0074CDD6 /* AccountViewController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -273,7 +261,6 @@
 				B3B561F410291FE10034F584 /* ShareUrMeal.sqlite */,
 				2DC5D787101FE10C00F3E3B1 /* 44-shoebox.png */,
 				2DC5D788101FE10C00F3E3B1 /* 48-fork-and-knife.png */,
-				B3A971581049E71E0074CDD6 /* 54-lock.png */,
 				2D6EF96F1044AD93008BDA65 /* 06-magnifying-glass.png */,
 				2DF9C8961044F0BA00A65424 /* Default3.png */,
 				2DF9C8A21044F0DF00A65424 /* 02-redo.png */,
@@ -284,7 +271,6 @@
 				2D9AC10A101FD53800BD388D /* all.png */,
 				2D9AC10B101FD53800BD388D /* faves.png */,
 				2D9AC10C101FD53800BD388D /* search.png */,
-				B3E8FF081049F5AF0054E5E9 /* Localizable.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -484,9 +470,6 @@
 				2DF9C8971044F0BA00A65424 /* Default3.png in Resources */,
 				2DF9C8A11044F0D300A65424 /* SUMlogofinal.png in Resources */,
 				2DF9C8A31044F0DF00A65424 /* 02-redo.png in Resources */,
-				B3A971591049E71E0074CDD6 /* 54-lock.png in Resources */,
-				B3A971611049E86E0074CDD6 /* AccountViewController.xib in Resources */,
-				B3E8FF091049F5AF0054E5E9 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,7 +521,6 @@
 				C4CCE6B41044D0740071D26A /* IFGenericTableViewController.m in Sources */,
 				C4CCE6B51044D0740071D26A /* IFTextViewTableView.m in Sources */,
 				C4CCE6B91044D09F0071D26A /* SignUpViewController.m in Sources */,
-				B3A971601049E86E0074CDD6 /* AccountViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,14 +573,6 @@
 			path = English.lproj;
 			sourceTree = "<group>";
 		};
-		B3E8FF081049F5AF0054E5E9 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B3E8FF051049F5A90054E5E9 /* English */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -616,7 +590,6 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ShareUrMeal_Prefix.pch;
-				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				INFOPLIST_FILE = "ShareUrMeal-Info.plist";
 				PRODUCT_NAME = ShareUrMeal;
 			};
