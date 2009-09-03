@@ -21,6 +21,9 @@
 #import "SignUpViewController.h"
 
 
+NSString *const didLoginNotification = @"DidLogIn";
+
+
 @implementation LoginViewController
 
 static NSString *userNameKey = @"UserName";
@@ -199,8 +202,21 @@ static NSString *stagingUrl = @"http://%@:%@@staging.shareurmeal.com/api/users/c
         
     }else {
         
-        //TODO: dismiss and login
-    }
+        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+        
+        NSString *address = [responseDictionary objectForKey:@"posting_address"];
+        
+        if(address!=nil)
+            [defaults setObject:address forKey:@"PostingAddress"];
+        
+        
+        
+        
+        
+        [defaults synchronize];
+        
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:didLoginNotification object:self];    }
 
     
     

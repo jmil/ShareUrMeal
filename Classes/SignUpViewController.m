@@ -19,10 +19,8 @@
 
 #import "JSONKit.h"
 
-//URL to test post
-//http://hurl.r09.railsrumble.com/hurls/dbe482a36bca7d2df57221d02f144c651ecf6de3/ce959e5dd7830e84b3e4fdc1165e1b8e977a97d0
 
-
+NSString *const didSignUpNotification = @"DidSignIn";
 
 @implementation SignUpViewController
 
@@ -205,7 +203,21 @@ static NSString *stagingUrl = @"http://staging.shareurmeal.com/api/users";
 
     }else {
         
-        //TODO: dismiss and store login credentials
+        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+
+        NSString *address = [responseDictionary objectForKey:@"posting_address"];
+        
+        if(address!=nil)
+            [defaults setObject:address forKey:@"PostingAddress"];
+        
+        
+        
+        
+        
+        [defaults synchronize];
+        
+            
+        [[NSNotificationCenter defaultCenter] postNotificationName:didSignUpNotification object:self];
     }
 
     
