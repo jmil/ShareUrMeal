@@ -47,7 +47,40 @@ static NSString *stagingUrl = @"http://staging.shareurmeal.com/api/users";
     [super viewDidLoad];
     self.model = [[[IFTemporaryModel alloc] init] autorelease];
     
+    //[self addSignUpButton];
+    [self addCancelButton];
+    
 }
+
+- (void)addSignUpButton{
+    
+    UIBarButtonItem *loginButton = [[[UIBarButtonItem alloc] initWithTitle:@"Sign Up" 
+                                                                     style:UIBarButtonItemStyleBordered 
+                                                                    target:self 
+                                                                    action:@selector(signUp)] autorelease];
+    
+    self.navigationItem.rightBarButtonItem = loginButton;
+    
+}
+
+- (void)addCancelButton{
+    
+    UIBarButtonItem *cancel = [[[UIBarButtonItem alloc] initWithTitle:@"Cancel" 
+                                                                style:UIBarButtonItemStyleBordered 
+                                                               target:self 
+                                                               action:@selector(cancel)] autorelease];
+    
+    self.navigationItem.leftBarButtonItem = cancel;
+    
+    
+}
+
+- (void)cancel{
+    
+    [self dismissModalViewControllerAnimated:YES];
+    
+}
+
 
 - (void)constructTableGroups
 {
@@ -85,13 +118,12 @@ static NSString *stagingUrl = @"http://staging.shareurmeal.com/api/users";
     textCell.autocorrectionType = UITextAutocapitalizationTypeWords;
 	[nameCells addObject:textCell];
     
-    
-    NSMutableArray *personalCells = [NSMutableArray array];
-    
-    
     textCell = [[[IFTextCellController alloc] initWithLabel:@"Email:" andPlaceholder:@"you@you.com" atKey:emailKey inModel:model] autorelease];
     textCell.autocorrectionType = UITextAutocapitalizationTypeNone;
-    [personalCells addObject:textCell];
+    [nameCells addObject:textCell];
+    
+    
+    NSMutableArray *personalCells = [NSMutableArray array];
     
     textCell = [[[IFTextCellController alloc] initWithLabel:@"User name:" andPlaceholder:@"MyFunkyName" atKey:userNameKey inModel:model] autorelease];
     textCell.autocorrectionType = UITextAutocapitalizationTypeNone;
@@ -126,12 +158,8 @@ static NSString *stagingUrl = @"http://staging.shareurmeal.com/api/users";
      In this example, the first group of cells gets a header ("Sample Cells") while the last two do not
      because an empty string is defined in the collection.
      */
-	tableHeaders = [[NSArray arrayWithObjects:@"Who Are You?", @"Some Personal Stuff", @"Password", [NSNull null], nil] retain];	
-    /*
-     Similarly, the first and second groups get a footer with additional information for the user. The
-     last group does not: this time because a NSNull value is used:
-     */
-	tableFooters = [[NSArray arrayWithObjects:[NSNull null], [NSNull null], [NSNull null], [NSNull null], nil] retain];	
+    
+	tableHeaders = [[NSArray arrayWithObjects:@"Who Are You?", [NSNull null], @"Password", [NSNull null], nil] retain];	
     /*
      RANT: I'm getting really sick and tired of putting newlines in table footers so that the margins
      look nice. If anyone at Apple is reading this, please fix rdar://problem/5863115 Thank you!

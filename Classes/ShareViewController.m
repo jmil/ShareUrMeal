@@ -164,7 +164,9 @@
 - (void)launchLoginView{
     
     LoginViewController *viewController = [[[LoginViewController alloc] init] autorelease];
-    [self presentModalViewController:viewController animated:YES];
+    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:viewController] autorelease];
+    navController.navigationBar.tintColor = [UIColor blackColor];
+    [self presentModalViewController:navController animated:YES];
     
 }
 

@@ -53,6 +53,39 @@ static NSString *stagingUrl = @"http://%@:%@@staging.shareurmeal.com/api/users/c
     [super viewDidLoad];
     self.model = [[[IFTemporaryModel alloc] init] autorelease];
     
+    //[self addLoginButton];
+    [self addCancelButton];
+    
+}
+
+
+- (void)addLoginButton{
+    
+    UIBarButtonItem *loginButton = [[[UIBarButtonItem alloc] initWithTitle:@"Login" 
+                                                                     style:UIBarButtonItemStyleBordered 
+                                                                    target:self 
+                                                                    action:@selector(login)] autorelease];
+    
+    self.navigationItem.rightBarButtonItem = loginButton;
+    
+}
+
+- (void)addCancelButton{
+    
+    UIBarButtonItem *cancel = [[[UIBarButtonItem alloc] initWithTitle:@"Cancel" 
+                                                                     style:UIBarButtonItemStyleBordered 
+                                                                    target:self 
+                                                                    action:@selector(cancel)] autorelease];
+    
+    self.navigationItem.leftBarButtonItem = cancel;
+    
+    
+}
+
+- (void)cancel{
+    
+    [self dismissModalViewControllerAnimated:YES];
+    
 }
 
 - (void)constructTableGroups
@@ -111,18 +144,24 @@ static NSString *stagingUrl = @"http://%@:%@@staging.shareurmeal.com/api/users/c
      In this example, the first group of cells gets a header ("Sample Cells") while the last two do not
      because an empty string is defined in the collection.
      */
-	tableHeaders = [[NSArray arrayWithObjects:@"Enter Your Info", @"", @"or create an account", [NSNull null], nil] retain];	
-    /*
-     Similarly, the first and second groups get a footer with additional information for the user. The
-     last group does not: this time because a NSNull value is used:
-     */
-	tableFooters = [[NSArray arrayWithObjects:[NSNull null], [NSNull null], [NSNull null], [NSNull null], nil] retain];	
+	tableHeaders = [[NSArray arrayWithObjects: @"Gimme Some Info", @"Let's Do This", @"No Account?", nil] retain];	
+   
     /*
      RANT: I'm getting really sick and tired of putting newlines in table footers so that the margins
      look nice. If anyone at Apple is reading this, please fix rdar://problem/5863115 Thank you!
      */
 }
 
+
+- (void)signUp{
+    
+    SignUpViewController *viewController = [[[SignUpViewController alloc] init] autorelease];
+    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:viewController] autorelease];
+    navController.navigationBar.tintColor = [UIColor blackColor];    
+    [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    [self presentModalViewController:navController animated:YES];
+    
+}
 
 - (void)login{
     
@@ -146,17 +185,6 @@ static NSString *stagingUrl = @"http://%@:%@@staging.shareurmeal.com/api/users/c
     [networkQueue go];
     
 }
-
-- (void)signUp{
-    
-    SignUpViewController *viewController = [[[SignUpViewController alloc] init] autorelease];
-    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:viewController] autorelease];
-        
-    [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-    [self presentModalViewController:navController animated:YES];
-    
-}
-
 
 - (void)requestDone:(ASIHTTPRequest *)request
 {
