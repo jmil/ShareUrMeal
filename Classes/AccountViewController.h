@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class SignUpViewController;
+@class LoginViewController;
 
 @interface AccountViewController : UIViewController
 {
@@ -16,6 +18,10 @@
 	UINavigationBar* loginSignupToggleBar;
 	
 	BOOL isLoggedIn;  // TODO: improve
+    
+    SignUpViewController *signUpController;
+    LoginViewController *loginController;
+    
 }
 
 @property (nonatomic, retain) IBOutlet UIView* loggedInView;
@@ -24,7 +30,13 @@
 
 @property (nonatomic, assign) BOOL isLoggedIn;
 
+@property(nonatomic,retain)SignUpViewController *signUpController;
+@property(nonatomic,retain)LoginViewController *loginController;
+
+
 - (IBAction) cancel:(id)sender;
 - (IBAction) logout:(id)sender;
+
+- (IBAction) toggle:(id)sender;
 
 @end

@@ -9,6 +9,7 @@
 #import "AccountViewController.h"
 
 #import "SignUpViewController.h"
+#import "LoginViewController.h"
 
 @implementation AccountViewController
 
@@ -16,6 +17,9 @@
 @synthesize isLoggedIn;
 @synthesize loggedInView;
 @synthesize contentView;
+@synthesize signUpController;
+@synthesize loginController;
+
 
 - (id) init
 {
@@ -46,10 +50,49 @@
 		contentViewRect.size.height -= self.loginSignupToggleBar.bounds.size.height;
 		self.contentView.frame = contentViewRect;
 		
-		SignUpViewController* signUpController = [[SignUpViewController alloc] init];
-		signUpController.view.frame = self.contentView.bounds;
-		[self.contentView addSubview:signUpController.view];
+		[self loadLoginView];
 	}
+}
+
+- (IBAction) toggle:(id)sender{
+    
+    if([(UISegmentedControl*)sender selectedSegmentIndex]==0){
+        
+        [self loadLoginView];
+        
+    }else {
+        
+        [self loadSignupView];
+    }
+
+}
+
+
+- (void)loadLoginView{
+    
+    if(signUpController!=nil)
+        [loginController.view removeFromSuperview];
+    
+    if(loginController==nil)
+        self.loginController = [[[LoginViewController alloc] init] autorelease];
+    
+    loginController.view.frame = self.contentView.bounds;
+    [self.contentView addSubview:loginController.view];
+    
+}
+
+- (void)loadSignupView{
+    
+    if(loginController!=nil)
+        [loginController.view removeFromSuperview];
+    
+    if(signUpController==nil)
+        self.signUpController = [[[SignUpViewController alloc] init] autorelease];
+    
+    signUpController.view.frame = self.contentView.bounds;
+    [self.contentView addSubview:signUpController.view];
+    
+    
 }
 
 /*
@@ -74,6 +117,8 @@
 
 
 - (void)dealloc {
+    self.signUpController = nil;
+    self.loginController = nil;
 	[loginSignupToggleBar release];
 	[loggedInView release];
 	[contentView release];

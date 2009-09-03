@@ -218,16 +218,6 @@
     
 }
 
-- (void)addLoginButton{
-    
-    UIBarButtonItem *loginButton = [[[UIBarButtonItem alloc] initWithTitle:@"Login" 
-                                                                     style:UIBarButtonItemStyleBordered 
-                                                                    target:self 
-                                                                    action:@selector(launchLoginView)] autorelease];
-    
-    self.navigationItem.rightBarButtonItem = loginButton;
-    
-}
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -235,8 +225,6 @@
     [super viewDidLoad];
     
     [self fadeSplashImage];
-
-    [self addLoginButton];
     
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         self.takePhotoButton.hidden = YES;
