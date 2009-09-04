@@ -54,6 +54,16 @@
 	}
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissWithNote:) name:didSignUpNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissWithNote:) name:didLoginNotification object:nil];
+
+    
+}
+
 - (IBAction) toggle:(id)sender{
     
     if([(UISegmentedControl*)sender selectedSegmentIndex]==0){
@@ -95,13 +105,21 @@
     
 }
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+- (void)dismissWithNote:(NSNotification*)note{
+    
+    [self dismissModalViewControllerAnimated:YES];
+
 }
-*/
+
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:didLoginNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:didSignUpNotification object:nil];
+    
+    [super viewWillDisappear:animated];
+
+}
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.

@@ -9,12 +9,13 @@
 #import "IFGenericTableViewController.h"
 
 @class ASINetworkQueue;
-
+@class LoadingView;
 
 @interface SignUpViewController : IFGenericTableViewController {
     
     ASINetworkQueue *networkQueue;
-
+    LoadingView *loadingView;
+    
 }
 
 @end
