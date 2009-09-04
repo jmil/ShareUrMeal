@@ -19,6 +19,8 @@
 
 #import "JSONKit.h"
 
+#import "LoadingView.h"
+
 
 NSString *const didSignUpNotification = @"DidSignIn";
 
@@ -33,9 +35,11 @@ static NSString *passwordConfirmationKey = @"PasswordConfirmation";
 static NSString *serverUserNameKey = @"username";
 static NSString *serverPostingAddressKey = @"posting_address";
 
-
+static NSString *loadingViewText = @"Hard Core Signing Up Action...";
 
 static NSString *stagingUrl = @"http://staging.shareurmeal.com/api/users";
+
+
 
 
 - (void)dealloc {
@@ -172,6 +176,8 @@ static NSString *stagingUrl = @"http://staging.shareurmeal.com/api/users";
 - (void)signUp{
     
     
+    loadingView = [LoadingView loadingViewInView:self.view withText:@"Hard Core Signing Up Action..."];
+    
     NSURL *url = [NSURL URLWithString:stagingUrl];
     
     ASIFormDataRequest *request = [[[ASIFormDataRequest alloc] initWithURL:url] autorelease];
@@ -196,6 +202,9 @@ static NSString *stagingUrl = @"http://staging.shareurmeal.com/api/users";
 
 - (void)requestDone:(ASIHTTPRequest *)request
 {
+    
+    [loadingView removeView];
+    
     NSString *response = [request responseString];
     NSDictionary *responseDictionary = [NSDictionary dictionaryWithJSON:response];
     
@@ -244,7 +253,6 @@ static NSString *stagingUrl = @"http://staging.shareurmeal.com/api/users";
         [[NSNotificationCenter defaultCenter] postNotificationName:didSignUpNotification object:self];
     }
 
-    
     
 }
 

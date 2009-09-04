@@ -34,6 +34,8 @@ static NSString *stagingUrl = @"http://%@:%@@staging.shareurmeal.com/api/users/c
 static NSString *serverUserNameKey = @"username";
 static NSString *serverPostingAddressKey = @"posting_address";
 
+static NSString *loadingViewText = @"Hard Core Logging In Action...";
+
 
 - (void)dealloc {
     [super dealloc];
@@ -165,6 +167,9 @@ static NSString *serverPostingAddressKey = @"posting_address";
 
 - (void)login{
     
+    loadingView = [LoadingView loadingViewInView:self.view withText:loadingViewText];
+
+    
     NSString *username = [model objectForKey:userNameKey];
     NSString *password = [model objectForKey:passwordKey];
     
@@ -188,6 +193,8 @@ static NSString *serverPostingAddressKey = @"posting_address";
 
 - (void)requestDone:(ASIHTTPRequest *)request
 {
+    [loadingView removeView];
+    
     NSString *response = [request responseString];
     NSDictionary *responseDictionary = [NSDictionary dictionaryWithJSON:response];
     

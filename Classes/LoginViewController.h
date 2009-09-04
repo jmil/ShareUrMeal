@@ -10,10 +10,13 @@
 #import "IFGenericTableViewController.h"
 
 @class ASINetworkQueue;
+@class LoadingView;
+
 
 @interface LoginViewController : IFGenericTableViewController {
     
     ASINetworkQueue *networkQueue;
+    LoadingView *loadingView;
 
 }
 
