@@ -33,6 +33,8 @@
 		2DF9C8A11044F0D300A65424 /* SUMlogofinal.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF9C8A01044F0D300A65424 /* SUMlogofinal.png */; };
 		2DF9C8A31044F0DF00A65424 /* 02-redo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2DF9C8A21044F0DF00A65424 /* 02-redo.png */; };
 		B31F0CC710508FB5004A0892 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = B31F0CC610508FB5004A0892 /* about.html */; };
+		B31F0CCF1050916E004A0892 /* iphone_icon1.png in Resources */ = {isa = PBXBuildFile; fileRef = B31F0CCD1050916E004A0892 /* iphone_icon1.png */; };
+		B31F0CD01050916E004A0892 /* iphone_icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = B31F0CCE1050916E004A0892 /* iphone_icon2.png */; };
 		B3A971591049E71E0074CDD6 /* 54-lock.png in Resources */ = {isa = PBXBuildFile; fileRef = B3A971581049E71E0074CDD6 /* 54-lock.png */; };
 		B3A971601049E86E0074CDD6 /* AccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A9715E1049E86E0074CDD6 /* AccountViewController.m */; };
 		B3A971611049E86E0074CDD6 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3A9715F1049E86E0074CDD6 /* AccountViewController.xib */; };
@@ -110,6 +112,8 @@
 		32CA4F630368D1EE00C91783 /* ShareUrMeal_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareUrMeal_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* ShareUrMeal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ShareUrMeal-Info.plist"; sourceTree = "<group>"; };
 		B31F0CC610508FB5004A0892 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		B31F0CCD1050916E004A0892 /* iphone_icon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone_icon1.png; sourceTree = "<group>"; };
+		B31F0CCE1050916E004A0892 /* iphone_icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iphone_icon2.png; sourceTree = "<group>"; };
 		B3A971581049E71E0074CDD6 /* 54-lock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "54-lock.png"; path = "iphone-toolbar-icons/icons/54-lock.png"; sourceTree = "<group>"; };
 		B3A9715D1049E86E0074CDD6 /* AccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountViewController.h; sourceTree = "<group>"; };
 		B3A9715E1049E86E0074CDD6 /* AccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountViewController.m; sourceTree = "<group>"; };
@@ -277,6 +281,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B31F0CCD1050916E004A0892 /* iphone_icon1.png */,
+				B31F0CCE1050916E004A0892 /* iphone_icon2.png */,
 				B31F0CC610508FB5004A0892 /* about.html */,
 				B3B561F410291FE10034F584 /* ShareUrMeal.sqlite */,
 				2DC5D787101FE10C00F3E3B1 /* 44-shoebox.png */,
@@ -496,6 +502,8 @@
 				B3A971611049E86E0074CDD6 /* AccountViewController.xib in Resources */,
 				B3E8FF091049F5AF0054E5E9 /* Localizable.strings in Resources */,
 				B31F0CC710508FB5004A0892 /* about.html in Resources */,
+				B31F0CCF1050916E004A0892 /* iphone_icon1.png in Resources */,
+				B31F0CD01050916E004A0892 /* iphone_icon2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,8 +8,6 @@
 
 #import "IFGenericTableViewController.h"
 
-//Must be loaded in a navigation controller
-
 @class ASINetworkQueue;
 
 
@@ -20,3 +18,5 @@
 }
 
 @end
+
+extern NSString *const didSignUpNotification; 

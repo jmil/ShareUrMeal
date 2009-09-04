@@ -21,13 +21,18 @@
 #import "SignUpViewController.h"
 
 
+NSString *const didLoginNotification = @"DidLogIn";
+
+
 @implementation LoginViewController
 
 static NSString *userNameKey = @"UserName";
 static NSString *passwordKey = @"Password";
 
-
 static NSString *stagingUrl = @"http://%@:%@@staging.shareurmeal.com/api/users/current.json";
+
+static NSString *serverUserNameKey = @"username";
+static NSString *serverPostingAddressKey = @"posting_address";
 
 
 - (void)dealloc {
@@ -130,16 +135,11 @@ static NSString *stagingUrl = @"http://%@:%@@staging.shareurmeal.com/api/users/c
 	[buttonCells addObject:buttonCell];
     
     
-    NSMutableArray *buttonCells2 = [NSMutableArray array];
-    
-	buttonCell = [[[IFButtonCellController alloc] initWithLabel:@"Sign Up!" withAction:@selector(signUp) onTarget:self] autorelease];
-	[buttonCells2 addObject:buttonCell];
-    
     /*
      Once all the groups have been defined, a collection is created that allows the generic table view
      controller to construct the views, manage user input, and update the model(s):
      */
-	tableGroups = [[NSArray arrayWithObjects: personalCells, buttonCells, buttonCells2, nil] retain];
+	tableGroups = [[NSArray arrayWithObjects: personalCells, buttonCells, nil] retain];
     /*
      In this example, the first group of cells gets a header ("Sample Cells") while the last two do not
      because an empty string is defined in the collection.
@@ -191,16 +191,40 @@ static NSString *stagingUrl = @"http://%@:%@@staging.shareurmeal.com/api/users/c
     NSString *response = [request responseString];
     NSDictionary *responseDictionary = [NSDictionary dictionaryWithJSON:response];
     
-    id errors = [responseDictionary objectForKey:@"errors"];
+    id error = nil;
     
-    if(errors!=nil){
+    error = [responseDictionary objectForKey:@"error"];
         
-        //TODO: handle errors
+    if(error!=nil){
+        
+        if([error class] == [NSString class])
+            NSLog(error);
+        
+        UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Could Not Log In" 
+                                                         message:error 
+                                                        delegate:nil 
+                                               cancelButtonTitle:@"OK" 
+                                               otherButtonTitles:nil] autorelease];
+        
+        [alert show];
         
     }else {
         
-        //TODO: dismiss and login
-    }
+        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+        
+        NSString *address = [responseDictionary objectForKey:serverPostingAddressKey];
+        NSString *username = [responseDictionary objectForKey:serverUserNameKey]; 
+        
+        if(address!=nil)
+            [defaults setObject:address forKey:@"PostingAddress"];
+        
+        if(username!=nil)
+            [defaults setObject:username forKey:@"Username"];
+        
+        
+        [defaults synchronize];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:didLoginNotification object:self];    }
 
     
     
