@@ -146,8 +146,9 @@
     
     // Notifies users about errors associated with the interface
     
-//    result = MFMailComposeResultFailed;
-
+    //    result = MFMailComposeResultFailed;
+    //result = MFMailComposeResultSent;
+    
     switch (result)
     {
         case MFMailComposeResultCancelled:
@@ -165,14 +166,22 @@
             self.photoSendFail.hidden = YES;
             self.resendPhotoButton.hidden = YES;
             self.photoSendSuccess.hidden = NO;
-
-			
-			// TODO: finish
+            
+            
+            // TODO: finish
             NSDate *now = [NSDate date];
             
+            NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init]  autorelease];
+            [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+            [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+            
+            NSString *formattedDateString = [dateFormatter stringFromDate:now];
+            NSString *precedingString = @"Sent: ";
+            NSString *completeFormattedString = [precedingString stringByAppendingString: formattedDateString];
             
             //NSString *theSentDateAndTime = [];
-            self.photoSendSuccess.text = @"Sent Aug 24 09, 8:32 pm";
+            //self.photoSendSuccess.text = @"Sent Aug 24 09, 8:32 pm";
+            self.photoSendSuccess.text = completeFormattedString;
             
             [self dismissModalViewControllerAnimated:YES];
             break;
@@ -193,7 +202,6 @@
     
     
 }
-
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 //- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
