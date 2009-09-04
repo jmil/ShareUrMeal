@@ -75,6 +75,8 @@
 		C4CCE6BF1044D0D40071D26A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4CCE6BE1044D0D40071D26A /* CFNetwork.framework */; };
 		C4CCE6C11044D0DA0071D26A /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C4CCE6C01044D0DA0071D26A /* libz.1.2.3.dylib */; };
 		C4D71FEE104F8BCE002F4E70 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D71FED104F8BCE002F4E70 /* LoginViewController.m */; };
+		C4D72154105099FD002F4E70 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D72153105099FD002F4E70 /* LoadingView.m */; };
+		C4D7215C10509B48002F4E70 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4D7215B10509B48002F4E70 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -185,6 +187,9 @@
 		C4CCE6C01044D0DA0071D26A /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		C4D71FEC104F8BC0002F4E70 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		C4D71FED104F8BCE002F4E70 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		C4D72152105099FD002F4E70 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		C4D72153105099FD002F4E70 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
+		C4D7215B10509B48002F4E70 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +205,7 @@
 				B3B56275102925610034F584 /* MessageUI.framework in Frameworks */,
 				C4CCE6BF1044D0D40071D26A /* CFNetwork.framework in Frameworks */,
 				C4CCE6C11044D0DA0071D26A /* libz.1.2.3.dylib in Frameworks */,
+				C4D7215C10509B48002F4E70 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +222,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C4D72151105099E8002F4E70 /* Loading View */,
 				B3B56249102923810034F584 /* Model */,
 				C4CCE3FF1044B5D00071D26A /* JSON */,
 				C4CCE67D1044D0460071D26A /* ASI HTTP */,
@@ -263,8 +270,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				C4CCE6BE1044D0D40071D26A /* CFNetwork.framework */,
-				C4CCE6C01044D0DA0071D26A /* libz.1.2.3.dylib */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -306,6 +311,9 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C4CCE6BE1044D0D40071D26A /* CFNetwork.framework */,
+				C4CCE6C01044D0DA0071D26A /* libz.1.2.3.dylib */,
+				C4D7215B10509B48002F4E70 /* QuartzCore.framework */,
 				B3B56274102925610034F584 /* MessageUI.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -421,6 +429,15 @@
 				C4CCE6A41044D0740071D26A /* IFPreferencesModel.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		C4D72151105099E8002F4E70 /* Loading View */ = {
+			isa = PBXGroup;
+			children = (
+				C4D72152105099FD002F4E70 /* LoadingView.h */,
+				C4D72153105099FD002F4E70 /* LoadingView.m */,
+			);
+			name = "Loading View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -557,6 +574,7 @@
 				C4CCE6B91044D09F0071D26A /* SignUpViewController.m in Sources */,
 				B3A971601049E86E0074CDD6 /* AccountViewController.m in Sources */,
 				C4D71FEE104F8BCE002F4E70 /* LoginViewController.m in Sources */,
+				C4D72154105099FD002F4E70 /* LoadingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
