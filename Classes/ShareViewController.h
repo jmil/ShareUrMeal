@@ -13,8 +13,6 @@
 
 @interface ShareViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate, UIActionSheetDelegate> {
 	UIImageView *imageView;
-	UIButton *choosePhotoButton;
-	UIButton *takePhotoButton;
 	UIButton *resendPhotoButton;
 	UILabel *photoSendSuccess;
 	UILabel *photoSendFail;
@@ -27,13 +25,10 @@
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
-@property (nonatomic, retain) IBOutlet UIButton *choosePhotoButton;
-@property (nonatomic, retain) IBOutlet UIButton *takePhotoButton;
 @property (nonatomic, retain) IBOutlet UIButton *resendPhotoButton;
 @property (nonatomic, retain) IBOutlet UILabel *photoSendSuccess;
 @property (nonatomic, retain) IBOutlet UILabel *photoSendFail;
 
--(IBAction) getPhoto:(id) sender;
 -(void) fadeSplashImage;
 
 -(IBAction) getPhoto2:(id) sender;

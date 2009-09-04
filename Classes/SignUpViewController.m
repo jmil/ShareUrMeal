@@ -19,10 +19,8 @@
 
 #import "JSONKit.h"
 
-//URL to test post
-//http://hurl.r09.railsrumble.com/hurls/dbe482a36bca7d2df57221d02f144c651ecf6de3/ce959e5dd7830e84b3e4fdc1165e1b8e977a97d0
 
-
+NSString *const didSignUpNotification = @"DidSignIn";
 
 @implementation SignUpViewController
 
@@ -31,6 +29,10 @@ static NSString *userNameKey = @"UserName";
 static NSString *emailKey = @"Email";
 static NSString *passwordKey = @"Password";
 static NSString *passwordConfirmationKey = @"PasswordConfirmation";
+
+static NSString *serverUserNameKey = @"username";
+static NSString *serverPostingAddressKey = @"posting_address";
+
 
 
 static NSString *stagingUrl = @"http://staging.shareurmeal.com/api/users";
@@ -197,15 +199,49 @@ static NSString *stagingUrl = @"http://staging.shareurmeal.com/api/users";
     NSString *response = [request responseString];
     NSDictionary *responseDictionary = [NSDictionary dictionaryWithJSON:response];
     
-    id errors = [responseDictionary objectForKey:@"errors"];
+    id errors = nil;
+    
+    errors = [responseDictionary objectForKey:@"errors"];
     
     if(errors!=nil){
         
-        //TODO: handle errors
-
+        if([errors respondsToSelector:@selector(objectAtIndex:)] && ([errors count] >0)){
+            
+            NSString* firstErrorCode = [errors objectAtIndex:0];
+            
+            if([firstErrorCode class] == [NSString class])
+                NSLog(firstErrorCode);
+            
+            UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Could Not Create Account" 
+                                                             message:firstErrorCode 
+                                                            delegate:nil 
+                                                   cancelButtonTitle:@"OK" 
+                                                   otherButtonTitles:nil] autorelease];
+            
+            [alert show];
+            
+                        
+        }
+        
+               
     }else {
         
-        //TODO: dismiss and store login credentials
+        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+
+        NSString *address = [responseDictionary objectForKey:serverPostingAddressKey];
+        NSString *username = [responseDictionary objectForKey:serverUserNameKey];        
+        
+        if(address!=nil)
+            [defaults setObject:address forKey:@"PostingAddress"];
+        
+        if(username!=nil)
+            [defaults setObject:username forKey:@"Username"];
+        
+        
+        [defaults synchronize];
+        
+            
+        [[NSNotificationCenter defaultCenter] postNotificationName:didSignUpNotification object:self];
     }
 
     
