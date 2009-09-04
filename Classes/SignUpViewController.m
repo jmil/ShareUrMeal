@@ -37,7 +37,8 @@ static NSString *serverPostingAddressKey = @"posting_address";
 
 static NSString *loadingViewText = @"Hard Core Signing Up Action...";
 
-static NSString *stagingUrl = @"http://staging.shareurmeal.com/api/users";
+static NSString *signupPath = @"/api/users";
+
 
 
 
@@ -178,7 +179,9 @@ static NSString *stagingUrl = @"http://staging.shareurmeal.com/api/users";
     
     loadingView = [LoadingView loadingViewInView:self.view withText:@"Hard Core Signing Up Action..."];
     
-    NSURL *url = [NSURL URLWithString:stagingUrl];
+    NSString* urlString = [kShareUrMealRootURL stringByAppendingPathComponent:signupPath];
+    
+    NSURL *url = [NSURL URLWithString:urlString];
     
     ASIFormDataRequest *request = [[[ASIFormDataRequest alloc] initWithURL:url] autorelease];
     
@@ -241,10 +244,10 @@ static NSString *stagingUrl = @"http://staging.shareurmeal.com/api/users";
         NSString *username = [responseDictionary objectForKey:serverUserNameKey];        
         
         if(address!=nil)
-            [defaults setObject:address forKey:@"PostingAddress"];
+            [defaults setObject:address forKey:kUserDefaultsPostEmailAddressKey];
         
         if(username!=nil)
-            [defaults setObject:username forKey:@"Username"];
+            [defaults setObject:username forKey:kUserDefaultsUsernameKey];
         
         
         [defaults synchronize];

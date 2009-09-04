@@ -29,8 +29,6 @@ NSString *const didLoginNotification = @"DidLogIn";
 static NSString *userNameKey = @"UserName";
 static NSString *passwordKey = @"Password";
 
-static NSString *stagingUrl = @"http://%@:%@@staging.shareurmeal.com/api/users/current.json";
-
 static NSString *serverUserNameKey = @"username";
 static NSString *serverPostingAddressKey = @"posting_address";
 
@@ -173,7 +171,7 @@ static NSString *loadingViewText = @"Hard Core Logging In Action...";
     NSString *username = [model objectForKey:userNameKey];
     NSString *password = [model objectForKey:passwordKey];
     
-    NSString *urlString = [NSString stringWithFormat:stagingUrl, username, password];
+    NSString *urlString = [NSString stringWithFormat:kShareUrMealLoginURL, username, password];
     
     NSURL *url = [NSURL URLWithString:urlString];
     
@@ -223,10 +221,10 @@ static NSString *loadingViewText = @"Hard Core Logging In Action...";
         NSString *username = [responseDictionary objectForKey:serverUserNameKey]; 
         
         if(address!=nil)
-            [defaults setObject:address forKey:@"PostingAddress"];
+            [defaults setObject:address forKey:kUserDefaultsPostEmailAddressKey];
         
         if(username!=nil)
-            [defaults setObject:username forKey:@"Username"];
+            [defaults setObject:username forKey:kUserDefaultsUsernameKey];
         
         
         [defaults synchronize];
