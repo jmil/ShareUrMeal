@@ -230,7 +230,7 @@ static NSString *signupPath = @"/api/users";
     
     loadingView = [LoadingView loadingViewInView:self.view withText:@"Hard Core Signing Up Action..."];
     
-    NSString* urlString = [kShareUrMealRootURL stringByAppendingPathComponent:signupPath];
+    NSString* urlString = [kShareUrMealRootURL stringByAppendingString:signupPath];
     
     NSURL *url = [NSURL URLWithString:urlString];
     

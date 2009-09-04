@@ -95,6 +95,7 @@
     
     loginController.view.frame = self.contentView.bounds;
     [self.contentView addSubview:loginController.view];
+    
     [loginController viewWillAppear:NO];
 }
 
@@ -115,10 +116,24 @@
         self.signUpController = [[[SignUpViewController alloc] init] autorelease];
     
     signUpController.view.frame = self.contentView.bounds;
-    
     [self.contentView addSubview:signUpController.view];
+    
     [signUpController viewWillAppear:NO];
     
+}
+
+- (IBAction) authenticate:(id)sender{
+    
+    if([loginController.view superview]!=nil){
+        
+        [loginController login];
+        
+    }else{
+        
+        [signUpController signUp];
+        
+    }
+
 }
 
 - (void)dismissWithNote:(NSNotification*)note{
@@ -138,6 +153,13 @@
 }
 
 - (void)didReceiveMemoryWarning {
+    
+    if([loginController.view superview]==nil)
+        self.loginController = nil;
+    
+    if([signUpController.view superview]==nil)
+        self.signUpController = nil;
+
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
 	
