@@ -59,7 +59,6 @@
 		C4CCE6881044D0640071D26A /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6841044D0640071D26A /* ASINetworkQueue.m */; };
 		C4CCE6891044D0640071D26A /* ASINSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6851044D0640071D26A /* ASINSStringAdditions.m */; };
 		C4CCE6A91044D0740071D26A /* IFLinkCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE68E1044D0740071D26A /* IFLinkCellController.m */; };
-		C4CCE6AA1044D0740071D26A /* IFTextCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6901044D0740071D26A /* IFTextCellController.m */; };
 		C4CCE6AB1044D0740071D26A /* IFSwitchCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6921044D0740071D26A /* IFSwitchCellController.m */; };
 		C4CCE6AC1044D0740071D26A /* IFButtonCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6941044D0740071D26A /* IFButtonCellController.m */; };
 		C4CCE6AD1044D0740071D26A /* IFChoiceCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6961044D0740071D26A /* IFChoiceCellController.m */; };
@@ -77,6 +76,7 @@
 		C4D71FEE104F8BCE002F4E70 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D71FED104F8BCE002F4E70 /* LoginViewController.m */; };
 		C4D72154105099FD002F4E70 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D72153105099FD002F4E70 /* LoadingView.m */; };
 		C4D7215C10509B48002F4E70 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4D7215B10509B48002F4E70 /* QuartzCore.framework */; };
+		C4D722601051B1B1002F4E70 /* IFTextCellController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D7225F1051B1B1002F4E70 /* IFTextCellController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -156,8 +156,6 @@
 		C4CCE68C1044D0740071D26A /* IFCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFCellController.h; sourceTree = "<group>"; };
 		C4CCE68D1044D0740071D26A /* IFLinkCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFLinkCellController.h; sourceTree = "<group>"; };
 		C4CCE68E1044D0740071D26A /* IFLinkCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFLinkCellController.m; sourceTree = "<group>"; };
-		C4CCE68F1044D0740071D26A /* IFTextCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFTextCellController.h; sourceTree = "<group>"; };
-		C4CCE6901044D0740071D26A /* IFTextCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFTextCellController.m; sourceTree = "<group>"; };
 		C4CCE6911044D0740071D26A /* IFSwitchCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFSwitchCellController.h; sourceTree = "<group>"; };
 		C4CCE6921044D0740071D26A /* IFSwitchCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFSwitchCellController.m; sourceTree = "<group>"; };
 		C4CCE6931044D0740071D26A /* IFButtonCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFButtonCellController.h; sourceTree = "<group>"; };
@@ -190,6 +188,8 @@
 		C4D72152105099FD002F4E70 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		C4D72153105099FD002F4E70 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		C4D7215B10509B48002F4E70 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C4D7225E1051B1B1002F4E70 /* IFTextCellController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFTextCellController.h; sourceTree = "<group>"; };
+		C4D7225F1051B1B1002F4E70 /* IFTextCellController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFTextCellController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -399,8 +399,8 @@
 				C4CCE68C1044D0740071D26A /* IFCellController.h */,
 				C4CCE68D1044D0740071D26A /* IFLinkCellController.h */,
 				C4CCE68E1044D0740071D26A /* IFLinkCellController.m */,
-				C4CCE68F1044D0740071D26A /* IFTextCellController.h */,
-				C4CCE6901044D0740071D26A /* IFTextCellController.m */,
+				C4D7225E1051B1B1002F4E70 /* IFTextCellController.h */,
+				C4D7225F1051B1B1002F4E70 /* IFTextCellController.m */,
 				C4CCE6911044D0740071D26A /* IFSwitchCellController.h */,
 				C4CCE6921044D0740071D26A /* IFSwitchCellController.m */,
 				C4CCE6931044D0740071D26A /* IFButtonCellController.h */,
@@ -559,7 +559,6 @@
 				C4CCE6881044D0640071D26A /* ASINetworkQueue.m in Sources */,
 				C4CCE6891044D0640071D26A /* ASINSStringAdditions.m in Sources */,
 				C4CCE6A91044D0740071D26A /* IFLinkCellController.m in Sources */,
-				C4CCE6AA1044D0740071D26A /* IFTextCellController.m in Sources */,
 				C4CCE6AB1044D0740071D26A /* IFSwitchCellController.m in Sources */,
 				C4CCE6AC1044D0740071D26A /* IFButtonCellController.m in Sources */,
 				C4CCE6AD1044D0740071D26A /* IFChoiceCellController.m in Sources */,
@@ -575,6 +574,7 @@
 				B3A971601049E86E0074CDD6 /* AccountViewController.m in Sources */,
 				C4D71FEE104F8BCE002F4E70 /* LoginViewController.m in Sources */,
 				C4D72154105099FD002F4E70 /* LoadingView.m in Sources */,
+				C4D722601051B1B1002F4E70 /* IFTextCellController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

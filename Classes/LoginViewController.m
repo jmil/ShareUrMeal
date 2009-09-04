@@ -10,7 +10,6 @@
 
 #import "IFTemporaryModel.h"
 
-#import "IFButtonCellController.h"
 #import "IFTextCellController.h"
 
 #import "ASIHTTPRequest.h"
@@ -63,6 +62,14 @@ static NSString *loadingViewText = @"Hard Core Logging In Action...";
     
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    
+    
+}
+
+
 
 - (void)addLoginButton{
     
@@ -113,7 +120,6 @@ static NSString *loadingViewText = @"Hard Core Logging In Action...";
      These are the types of cells that are supported by the view controller. Each will be demonstrated
      below. More complex uses of each type is shown in SampleAdvancedViewController.
      */
-	IFButtonCellController *buttonCell = nil;
 	IFTextCellController *textCell = nil;
     
     NSMutableArray *personalCells = [NSMutableArray array];
@@ -127,24 +133,17 @@ static NSString *loadingViewText = @"Hard Core Logging In Action...";
 	textCell.secureTextEntry = YES;
     textCell.autocorrectionType = UITextAutocapitalizationTypeNone;
     [personalCells addObject:textCell];
-
-    
-    NSMutableArray *buttonCells = [NSMutableArray array];
-    
-	buttonCell = [[[IFButtonCellController alloc] initWithLabel:@"Log In!" withAction:@selector(login) onTarget:self] autorelease];
-	[buttonCells addObject:buttonCell];
-    
     
     /*
      Once all the groups have been defined, a collection is created that allows the generic table view
      controller to construct the views, manage user input, and update the model(s):
      */
-	tableGroups = [[NSArray arrayWithObjects: personalCells, buttonCells, nil] retain];
+	tableGroups = [[NSArray arrayWithObjects: personalCells, nil] retain];
     /*
      In this example, the first group of cells gets a header ("Sample Cells") while the last two do not
      because an empty string is defined in the collection.
      */
-	tableHeaders = [[NSArray arrayWithObjects: @"Gimme Some Info", @"Let's Do This", @"No Account?", nil] retain];	
+	tableHeaders = [[NSArray arrayWithObjects: @"Gimme Some Info", nil] retain];	
    
     /*
      RANT: I'm getting really sick and tired of putting newlines in table footers so that the margins
@@ -229,7 +228,8 @@ static NSString *loadingViewText = @"Hard Core Logging In Action...";
         
         [defaults synchronize];
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:didLoginNotification object:self];    }
+        [[NSNotificationCenter defaultCenter] postNotificationName:didLoginNotification object:self];    
+    }
 
     
     

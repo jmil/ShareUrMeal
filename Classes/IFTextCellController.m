@@ -18,6 +18,17 @@
 
 @synthesize returnKey;
 
+@synthesize adjustsFontSizeToWidth;
+
+@synthesize fontSize;
+
+@synthesize beginEditingAction;
+@synthesize beginEditingTarget;
+
+
+
+
+
 
 //
 // init
@@ -39,7 +50,9 @@
 		autocapitalizationType = UITextAutocapitalizationTypeNone;
 		autocorrectionType = UITextAutocorrectionTypeNo;
 		secureTextEntry = NO;
+        adjustsFontSizeToWidth = NO;
 		indentationLevel = 0;
+        fontSize = 17.0;
 	}
 	return self;
 }
@@ -74,7 +87,7 @@
 		cell = [[[IFControlTableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:cellIdentifier] autorelease];
     }
 	
-	cell.font = [UIFont boldSystemFontOfSize:17.0f];
+	cell.font = [UIFont boldSystemFontOfSize:fontSize];
 	cell.text = label;
 	cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	cell.indentationLevel = indentationLevel;
@@ -113,6 +126,7 @@
 	[textField setAutocorrectionType:autocorrectionType];
 	[textField setBackgroundColor:[UIColor whiteColor]];
 	[textField setTextColor:[UIColor colorWithRed:0.20f green:0.31f blue:0.52f alpha:1.0f]];
+    [textField setAdjustsFontSizeToFitWidth:adjustsFontSizeToWidth];
 	[textField setSecureTextEntry:secureTextEntry];
 	cell.view = textField;
 	[textField release];
@@ -144,6 +158,18 @@
 
 	return YES;
 }
+
+- (void) textFieldDidBeginEditing:(UITextField *)textField
+{
+    
+    if (beginEditingTarget && [beginEditingTarget respondsToSelector:beginEditingAction])
+	{
+		// action is peformed after keyboard has had a chance to resign
+		[beginEditingTarget performSelector:beginEditingAction withObject:textField];
+	}
+    
+}
+
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

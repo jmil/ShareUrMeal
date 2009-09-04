@@ -65,7 +65,7 @@
 }
 
 - (IBAction) toggle:(id)sender{
-    
+        
     if([(UISegmentedControl*)sender selectedSegmentIndex]==0){
         
         [self loadLoginView];
@@ -80,28 +80,44 @@
 
 - (void)loadLoginView{
     
-    if(signUpController!=nil)
-        [loginController.view removeFromSuperview];
+    
+    if(signUpController!=nil){
+        
+        [signUpController viewWillDisappear:NO];
+        [signUpController.view removeFromSuperview];
+
+    }
+    
+    authenticateButton.title = @"Log In";
     
     if(loginController==nil)
         self.loginController = [[[LoginViewController alloc] init] autorelease];
     
     loginController.view.frame = self.contentView.bounds;
     [self.contentView addSubview:loginController.view];
-    
+    [loginController viewWillAppear:NO];
 }
 
 - (void)loadSignupView{
     
-    if(loginController!=nil)
+    
+    if(loginController!=nil){
+        
+        [loginController viewWillDisappear:NO];
         [loginController.view removeFromSuperview];
+
+    }
+    
+    authenticateButton.title = @"Sign Up";
+
     
     if(signUpController==nil)
         self.signUpController = [[[SignUpViewController alloc] init] autorelease];
     
     signUpController.view.frame = self.contentView.bounds;
-    [self.contentView addSubview:signUpController.view];
     
+    [self.contentView addSubview:signUpController.view];
+    [signUpController viewWillAppear:NO];
     
 }
 

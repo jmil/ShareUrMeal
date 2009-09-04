@@ -139,6 +139,7 @@
 		[[tableGroups objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	if ([cellData respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)])
 	{
+        [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
 		[cellData tableView:tableView didSelectRowAtIndexPath:indexPath];
 	}
 }
