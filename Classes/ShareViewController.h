@@ -10,6 +10,8 @@
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
 
+@class LoadingView;
+
 
 @interface ShareViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate, UIActionSheetDelegate> {
 	UIImageView *imageView;
@@ -17,6 +19,8 @@
 	UILabel *photoSendSuccess;
 	UILabel *photoSendFail;
 	UIImageView *splashImage;
+    
+        LoadingView *loadingView;
 	
 	// -- stuff for the action sheet.  seems ugly but I couldn't find a better way;
 	NSInteger choosePhotoFromLibraryButtonIndex;
