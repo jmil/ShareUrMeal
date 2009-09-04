@@ -13,7 +13,7 @@
 
 @implementation ShareViewController
 
-@synthesize imageView, choosePhotoButton, takePhotoButton, resendPhotoButton, photoSendFail, photoSendSuccess;
+@synthesize imageView, resendPhotoButton, photoSendFail, photoSendSuccess;
 
 -(void)fadeSplashImage
 {
@@ -30,21 +30,6 @@
     [UIView commitAnimations];
 }
 
-
-
--(IBAction) getPhoto:(id) sender {
-    UIImagePickerController * picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    
-    if((UIButton *) sender == choosePhotoButton) {
-        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    } else {
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    
-    [self presentModalViewController:picker animated:YES];
-    [picker release];
-}
 
 
 -(IBAction) getPhoto2:(id) sender
@@ -234,9 +219,6 @@
     
     [self fadeSplashImage];
     
-    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        self.takePhotoButton.hidden = YES;
-    }
     
     // Initially set all to HIDE until we get last sent image saved in user Defaults or Core Data!
     self.photoSendFail.hidden = YES;
