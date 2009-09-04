@@ -18,3 +18,5 @@
 }
 
 @end
+
+extern NSString *const didLoginNotification; 
