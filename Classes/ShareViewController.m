@@ -97,8 +97,8 @@
         
         // Attach an image to the email
         //    NSString *path = [[NSBundle mainBundle] pathForResource:@"rainy" ofType:@"png"];
-        NSData *myData = UIImagePNGRepresentation([info objectForKey:@"UIImagePickerControllerOriginalImage"]);
-        [emailer addAttachmentData:myData mimeType:@"image/png" fileName:@"ShareUrMeal"];
+        NSData *myData = UIImageJPEGRepresentation([info objectForKey:@"UIImagePickerControllerOriginalImage"], 1);
+        [emailer addAttachmentData:myData mimeType:@"image/jpeg" fileName:@"ShareUrMeal"];
         
         // Fill out the email body text
         NSString *emailBody = @"My meal!";
