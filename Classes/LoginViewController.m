@@ -10,7 +10,6 @@
 
 #import "IFTemporaryModel.h"
 
-#import "IFButtonCellController.h"
 #import "IFTextCellController.h"
 
 #import "ASIHTTPRequest.h"
@@ -28,8 +27,6 @@ NSString *const didLoginNotification = @"DidLogIn";
 
 static NSString *userNameKey = @"UserName";
 static NSString *passwordKey = @"Password";
-
-static NSString *stagingUrl = @"http://%@:%@@staging.shareurmeal.com/api/users/current.json";
 
 static NSString *serverUserNameKey = @"username";
 static NSString *serverPostingAddressKey = @"posting_address";
@@ -64,6 +61,14 @@ static NSString *loadingViewText = @"Hard Core Logging In Action...";
     [self addCancelButton];
     
 }
+
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    
+    
+}
+
 
 
 - (void)addLoginButton{
@@ -115,7 +120,6 @@ static NSString *loadingViewText = @"Hard Core Logging In Action...";
      These are the types of cells that are supported by the view controller. Each will be demonstrated
      below. More complex uses of each type is shown in SampleAdvancedViewController.
      */
-	IFButtonCellController *buttonCell = nil;
 	IFTextCellController *textCell = nil;
     
     NSMutableArray *personalCells = [NSMutableArray array];
@@ -129,24 +133,17 @@ static NSString *loadingViewText = @"Hard Core Logging In Action...";
 	textCell.secureTextEntry = YES;
     textCell.autocorrectionType = UITextAutocapitalizationTypeNone;
     [personalCells addObject:textCell];
-
-    
-    NSMutableArray *buttonCells = [NSMutableArray array];
-    
-	buttonCell = [[[IFButtonCellController alloc] initWithLabel:@"Log In!" withAction:@selector(login) onTarget:self] autorelease];
-	[buttonCells addObject:buttonCell];
-    
     
     /*
      Once all the groups have been defined, a collection is created that allows the generic table view
      controller to construct the views, manage user input, and update the model(s):
      */
-	tableGroups = [[NSArray arrayWithObjects: personalCells, buttonCells, nil] retain];
+	tableGroups = [[NSArray arrayWithObjects: personalCells, nil] retain];
     /*
      In this example, the first group of cells gets a header ("Sample Cells") while the last two do not
      because an empty string is defined in the collection.
      */
-	tableHeaders = [[NSArray arrayWithObjects: @"Gimme Some Info", @"Let's Do This", @"No Account?", nil] retain];	
+	tableHeaders = [[NSArray arrayWithObjects: @"Gimme Some Info", nil] retain];	
    
     /*
      RANT: I'm getting really sick and tired of putting newlines in table footers so that the margins
@@ -173,7 +170,7 @@ static NSString *loadingViewText = @"Hard Core Logging In Action...";
     NSString *username = [model objectForKey:userNameKey];
     NSString *password = [model objectForKey:passwordKey];
     
-    NSString *urlString = [NSString stringWithFormat:stagingUrl, username, password];
+    NSString *urlString = [NSString stringWithFormat:kShareUrMealLoginURL, username, password];
     
     NSURL *url = [NSURL URLWithString:urlString];
     
@@ -223,15 +220,16 @@ static NSString *loadingViewText = @"Hard Core Logging In Action...";
         NSString *username = [responseDictionary objectForKey:serverUserNameKey]; 
         
         if(address!=nil)
-            [defaults setObject:address forKey:@"PostingAddress"];
+            [defaults setObject:address forKey:kUserDefaultsPostEmailAddressKey];
         
         if(username!=nil)
-            [defaults setObject:username forKey:@"Username"];
+            [defaults setObject:username forKey:kUserDefaultsUsernameKey];
         
         
         [defaults synchronize];
         
-        [[NSNotificationCenter defaultCenter] postNotificationName:didLoginNotification object:self];    }
+        [[NSNotificationCenter defaultCenter] postNotificationName:didLoginNotification object:self];    
+    }
 
     
     
