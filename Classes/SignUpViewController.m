@@ -30,6 +30,10 @@ static NSString *emailKey = @"Email";
 static NSString *passwordKey = @"Password";
 static NSString *passwordConfirmationKey = @"PasswordConfirmation";
 
+static NSString *serverUserNameKey = @"username";
+static NSString *serverPostingAddressKey = @"posting_address";
+
+
 
 static NSString *stagingUrl = @"http://staging.shareurmeal.com/api/users";
 
@@ -195,23 +199,43 @@ static NSString *stagingUrl = @"http://staging.shareurmeal.com/api/users";
     NSString *response = [request responseString];
     NSDictionary *responseDictionary = [NSDictionary dictionaryWithJSON:response];
     
-    id errors = [responseDictionary objectForKey:@"errors"];
+    id errors = nil;
+    
+    errors = [responseDictionary objectForKey:@"errors"];
     
     if(errors!=nil){
         
-        //TODO: handle errors
-
+        if([errors respondsToSelector:@selector(objectAtIndex:)] && ([errors count] >0)){
+            
+            NSString* firstErrorCode = [errors objectAtIndex:0];
+            
+            if([firstErrorCode class] == [NSString class])
+                NSLog(firstErrorCode);
+            
+            UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Could Not Create Account" 
+                                                             message:firstErrorCode 
+                                                            delegate:nil 
+                                                   cancelButtonTitle:@"OK" 
+                                                   otherButtonTitles:nil] autorelease];
+            
+            [alert show];
+            
+                        
+        }
+        
+               
     }else {
         
         NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
 
-        NSString *address = [responseDictionary objectForKey:@"posting_address"];
+        NSString *address = [responseDictionary objectForKey:serverPostingAddressKey];
+        NSString *username = [responseDictionary objectForKey:serverUserNameKey];        
         
         if(address!=nil)
             [defaults setObject:address forKey:@"PostingAddress"];
         
-        
-        
+        if(username!=nil)
+            [defaults setObject:username forKey:@"Username"];
         
         
         [defaults synchronize];
