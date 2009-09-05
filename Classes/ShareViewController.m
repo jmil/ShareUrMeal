@@ -104,9 +104,16 @@
     NSString *emailBody = @"My meal!";
     [emailer setMessageBody:emailBody isHTML:NO];
     
-    [self performSelector:@selector(launchMailer) withObject:nil afterDelay:0.25];
-        
-    //[[self nextRunloopProxy] removeLoadingView];    
+    [[self nextRunloopProxy] removeLoadingView];    
+
+    //BUG: simulator is either too fast or has a bug, if we present the mailer too quickly, we get a loop
+    //so we introduce a significant delay when targeting the simulator
+    
+#if TARGET_IPHONE_SIMULATOR
+    [self performSelector:@selector(launchMailer) withObject:nil afterDelay:1];
+#else
+    [[[self nextRunloopProxy] nextRunloopProxy] launchMailer];
+#endif    
     
 }
 
@@ -119,13 +126,13 @@
 
 - (void)displayLoadingView{
     
-    //loadingView = [LoadingView loadingViewInView:self.view];
+    loadingView = [LoadingView loadingViewInView:self.view withText:@"Patience, preparing photo..."];
     
 }
 
 - (void)removeLoadingView{
     
-    //[loadingView removeView];
+    [loadingView removeView];
 
 }
 
@@ -135,9 +142,9 @@
     // Add a new modal view controller to EMAIL PHOTO to the current UIImagePickerController, here named picker
     if (YES == [MFMailComposeViewController canSendMail]) {
         
-        //[[self nextRunloopProxy] displayLoadingView];
-        //[[[self nextRunloopProxy] nextRunloopProxy] composeAndSendMail];
-        [self performSelector:@selector(composeMail) withObject:nil afterDelay:0.1];
+        [[self nextRunloopProxy] displayLoadingView];
+        [[[self nextRunloopProxy] nextRunloopProxy] composeMail];
+        //[self performSelector:@selector(composeMail) withObject:nil afterDelay:0.1];
         
     }        
     
