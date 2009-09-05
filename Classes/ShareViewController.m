@@ -7,7 +7,7 @@
 //
 
 #import "ShareViewController.h"
-#import "LoginViewController.h"
+
 #import "LoadingView.h"
 #import "SDNextRunloopProxy.h"
 
@@ -17,6 +17,88 @@
 
 @synthesize imageView, resendPhotoButton, photoSendFail, photoSendSuccess;
 @synthesize emailer;
+
+
+#pragma mark -
+#pragma mark NSObject
+
+- (void)dealloc {
+    
+    self.emailer = nil;
+    [super dealloc];
+}
+
+
+#pragma mark -
+#pragma mark UIViewController
+
+- (void)viewDidUnload {
+    
+    self.imageView = nil;
+    self.resendPhotoButton = nil;
+    self.photoSendSuccess = nil;
+    self.photoSendFail = nil;
+    
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
+}
+
+
+- (void)didReceiveMemoryWarning {
+	// Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+	
+	// Release any cached data, images, etc that aren't in use.
+}
+
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self fadeSplashImage];
+    
+    // Initially set all to HIDE until we get last sent image saved in user Defaults or Core Data!
+    self.photoSendFail.hidden = YES;
+    self.photoSendSuccess.hidden = YES;
+    self.resendPhotoButton.hidden = YES;
+    
+    
+}
+
+#pragma mark -
+#pragma mark IBOutlet
+
+-(IBAction) getPhoto2:(id) sender
+{
+	// reset indices
+	choosePhotoFromLibraryButtonIndex = -1; 
+	takePhotoWithCameraButtonIndex = -1;
+    
+	UIActionSheet* sheet = [[UIActionSheet alloc] init];
+	sheet.delegate = self;
+	sheet.tag = kChoosePhotoSheetTag;
+	sheet.title = NSLocalizedString1( @"New Photo" );
+	choosePhotoFromLibraryButtonIndex = [sheet addButtonWithTitle:NSLocalizedString1( @"Choose From Library" )];
+	if ( [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] ) 
+	{
+		takePhotoWithCameraButtonIndex = [sheet addButtonWithTitle:NSLocalizedString1( @"Take With Camera" )];
+	}
+	cancelButtonIndex = [sheet addButtonWithTitle:NSLocalizedString1( @"Cancel" )];
+	sheet.cancelButtonIndex = cancelButtonIndex;	
+	[sheet showInView:self.tabBarController.view];
+	[sheet release];
+}
+
+
+#pragma mark -
+#pragma mark Launch Image and Animation
+
+- (void)startupAnimationDone:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+    [splashImage removeFromSuperview];
+    [splashImage release];
+}
+
 
 
 -(void)fadeSplashImage
@@ -35,28 +117,8 @@
 }
 
 
-
--(IBAction) getPhoto2:(id) sender
-{
-	// reset indices
-	choosePhotoFromLibraryButtonIndex = -1; 
-	takePhotoWithCameraButtonIndex = -1;
-
-	UIActionSheet* sheet = [[UIActionSheet alloc] init];
-	sheet.delegate = self;
-	sheet.tag = kChoosePhotoSheetTag;
-	sheet.title = NSLocalizedString1( @"New Photo" );
-	choosePhotoFromLibraryButtonIndex = [sheet addButtonWithTitle:NSLocalizedString1( @"Choose From Library" )];
-	if ( [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera] ) 
-	{
-		takePhotoWithCameraButtonIndex = [sheet addButtonWithTitle:NSLocalizedString1( @"Take With Camera" )];
-	}
-	cancelButtonIndex = [sheet addButtonWithTitle:NSLocalizedString1( @"Cancel" )];
-	sheet.cancelButtonIndex = cancelButtonIndex;	
-	[sheet showInView:self.tabBarController.view];
-	[sheet release];
-}
-
+#pragma mark -
+#pragma mark UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -79,6 +141,9 @@
 	}
 }
 
+#pragma mark -
+#pragma mark MFMailComposeViewController
+
 
 - (void) composeMail{
         
@@ -89,13 +154,9 @@
     
     // Set up recipients
     NSArray *toRecipients = [NSArray arrayWithObject:kShareUrMealSubmitEmail]; 
-    //NSArray *ccRecipients = [NSArray arrayWithObjects:@"second@example.com", @"third@example.com", nil]; 
-    //NSArray *bccRecipients = [NSArray arrayWithObject:@"fourth@example.com"]; 
     
     [emailer setToRecipients:toRecipients];
-    //[emailer setCcRecipients:ccRecipients];	
-    //[emailer setBccRecipients:bccRecipients];
-    
+
     // Attach an image to the email
     NSData *myData = UIImageJPEGRepresentation(self.imageView.image, 1);
     [emailer addAttachmentData:myData mimeType:@"image/jpeg" fileName:@"ShareUrMeal"];
@@ -124,42 +185,8 @@
 }
 
 
-- (void)displayLoadingView{
-    
-    loadingView = [LoadingView loadingViewInView:self.view withText:@"Patience, preparing photo..."];
-    
-}
-
-- (void)removeLoadingView{
-    
-    [loadingView removeView];
-
-}
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-        
-
-    // Add a new modal view controller to EMAIL PHOTO to the current UIImagePickerController, here named picker
-    if (YES == [MFMailComposeViewController canSendMail]) {
-        
-        [[self nextRunloopProxy] displayLoadingView];
-        [[[self nextRunloopProxy] nextRunloopProxy] composeMail];
-        //[self performSelector:@selector(composeMail) withObject:nil afterDelay:0.1];
-        
-    }        
-    
-    // Save to our Library ONLY IF FROM CAMERA!!
-    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
-        UIImageWriteToSavedPhotosAlbum([info objectForKey:@"UIImagePickerControllerOriginalImage"], nil, nil, nil);
-    }
-    
-    // Set the ImageView in ShareViewController to be the image we picked!
-    self.imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-
-    [self dismissModalViewControllerAnimated:YES];        
-
-}
-
+#pragma mark -
+#pragma mark MFMailComposeViewControllerDelegate
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {    
     // Now we have dismissed the mail; if we clicked either send or cancel then we also want to dismiss the entire image picker!
@@ -226,85 +253,52 @@
     
 }
 
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-//    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-//        // Custom initialization
-//        
-//        self.title = @"Share View";
-//        self.tabBarItem.image = [UIImage imageNamed:@"all.png"];
-//
-//        
-//    }
-//    return self;
-//}
 
+#pragma mark -
+#pragma mark UIImagePickerControllerDelegate
 
-- (void)launchLoginView{
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
-    LoginViewController *viewController = [[[LoginViewController alloc] init] autorelease];
-    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:viewController] autorelease];
-    navController.navigationBar.tintColor = [UIColor blackColor];
-    [self presentModalViewController:navController animated:YES];
+    
+    // Add a new modal view controller to EMAIL PHOTO to the current UIImagePickerController, here named picker
+    if (YES == [MFMailComposeViewController canSendMail]) {
+        
+        [[self nextRunloopProxy] displayLoadingView];
+        [[[self nextRunloopProxy] nextRunloopProxy] composeMail];
+        
+    }        
+    
+    // Save to our Library ONLY IF FROM CAMERA!!
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
+        UIImageWriteToSavedPhotosAlbum([info objectForKey:@"UIImagePickerControllerOriginalImage"], nil, nil, nil);
+    }
+    
+    // Set the ImageView in ShareViewController to be the image we picked!
+    self.imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+    
+    [self dismissModalViewControllerAnimated:YES];        
     
 }
 
 
+#pragma mark -
+#pragma mark LoadingView
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    [self fadeSplashImage];
-    
-    
-    // Initially set all to HIDE until we get last sent image saved in user Defaults or Core Data!
-    self.photoSendFail.hidden = YES;
-    self.photoSendSuccess.hidden = YES;
-    self.resendPhotoButton.hidden = YES;
-    
 
+- (void)displayLoadingView{
+    
+    loadingView = [LoadingView loadingViewInView:self.view withText:@"Patience, preparing photo..."];
+    
 }
 
-- (void)startupAnimationDone:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
-    [splashImage removeFromSuperview];
-    [splashImage release];
+- (void)removeLoadingView{
+    
+    [loadingView removeView];
+
 }
 
 
 
-/*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
-
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-    
-    self.imageView = nil;
-    self.resendPhotoButton = nil;
-    self.photoSendSuccess = nil;
-    self.photoSendFail = nil;
-    
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-}
-
-
-- (void)dealloc {
-    
-    self.emailer = nil;
-    [super dealloc];
-}
 
 
 @end
