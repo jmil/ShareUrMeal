@@ -9,12 +9,15 @@
 #import "ShareViewController.h"
 #import "LoginViewController.h"
 #import "LoadingView.h"
+#import "SDNextRunloopProxy.h"
 
 #define kChoosePhotoSheetTag 12345
 
 @implementation ShareViewController
 
 @synthesize imageView, resendPhotoButton, photoSendFail, photoSendSuccess;
+@synthesize emailer;
+
 
 -(void)fadeSplashImage
 {
@@ -77,12 +80,12 @@
 }
 
 
-- (void) composeAndSendMail:(NSDictionary *)info {
-    MFMailComposeViewController *emailer = [[MFMailComposeViewController alloc] init];
+- (void) composeMail{
+        
+    self.emailer = [[[MFMailComposeViewController alloc] init] autorelease];
     emailer.mailComposeDelegate = self;
     
     [emailer setSubject:@"Loved it!"];
-    
     
     // Set up recipients
     NSArray *toRecipients = [NSArray arrayWithObject:kShareUrMealSubmitEmail]; 
@@ -94,36 +97,49 @@
     //[emailer setBccRecipients:bccRecipients];
     
     // Attach an image to the email
-    //    NSString *path = [[NSBundle mainBundle] pathForResource:@"rainy" ofType:@"png"];
-    NSData *myData = UIImageJPEGRepresentation([info objectForKey:@"UIImagePickerControllerOriginalImage"], 1);
+    NSData *myData = UIImageJPEGRepresentation(self.imageView.image, 1);
     [emailer addAttachmentData:myData mimeType:@"image/jpeg" fileName:@"ShareUrMeal"];
     
     // Fill out the email body text
     NSString *emailBody = @"My meal!";
     [emailer setMessageBody:emailBody isHTML:NO];
     
-    [loadingView removeView];
+    [self performSelector:@selector(launchMailer) withObject:nil afterDelay:0.25];
+        
+    //[[self nextRunloopProxy] removeLoadingView];    
+    
+}
+
+- (void)launchMailer{
     
     [self presentModalViewController:emailer animated:YES];
-    [info release];
-    [emailer release];
     
 }
 
 
+- (void)displayLoadingView{
+    
+    //loadingView = [LoadingView loadingViewInView:self.view];
+    
+}
+
+- (void)removeLoadingView{
+    
+    //[loadingView removeView];
+
+}
+
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
         
+
     // Add a new modal view controller to EMAIL PHOTO to the current UIImagePickerController, here named picker
     if (YES == [MFMailComposeViewController canSendMail]) {
-        loadingView = [LoadingView loadingViewInView:self.view withText:@"Loading now, patience..."];
-        [self dismissModalViewControllerAnimated:YES];
-        [info retain];
-        [self performSelector:@selector(composeAndSendMail) withObject:info afterDelay:0];        
+        
+        //[[self nextRunloopProxy] displayLoadingView];
+        //[[[self nextRunloopProxy] nextRunloopProxy] composeAndSendMail];
+        [self performSelector:@selector(composeMail) withObject:nil afterDelay:0.1];
+        
     }        
-    
-    // If we have cancelled an image Pick or image capture with camera, then also dismiss the modal view controller!
-    // For some reason this doesn't affect anything; whether we have this or not...
-    //[picker dismissModalViewControllerAnimated:YES];
     
     // Save to our Library ONLY IF FROM CAMERA!!
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
@@ -132,7 +148,9 @@
     
     // Set the ImageView in ShareViewController to be the image we picked!
     self.imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-        
+
+    [self dismissModalViewControllerAnimated:YES];        
+
 }
 
 
@@ -264,12 +282,20 @@
 }
 
 - (void)viewDidUnload {
+    
+    self.imageView = nil;
+    self.resendPhotoButton = nil;
+    self.photoSendSuccess = nil;
+    self.photoSendFail = nil;
+    
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
 
 
 - (void)dealloc {
+    
+    self.emailer = nil;
     [super dealloc];
 }
 

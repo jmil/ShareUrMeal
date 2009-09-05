@@ -20,7 +20,8 @@
 	UILabel *photoSendFail;
 	UIImageView *splashImage;
     
-        LoadingView *loadingView;
+    LoadingView *loadingView;
+    MFMailComposeViewController *emailer;
 	
 	// -- stuff for the action sheet.  seems ugly but I couldn't find a better way;
 	NSInteger choosePhotoFromLibraryButtonIndex;
@@ -32,6 +33,8 @@
 @property (nonatomic, retain) IBOutlet UIButton *resendPhotoButton;
 @property (nonatomic, retain) IBOutlet UILabel *photoSendSuccess;
 @property (nonatomic, retain) IBOutlet UILabel *photoSendFail;
+@property (nonatomic,retain)MFMailComposeViewController *emailer;
+
 
 -(void) fadeSplashImage;
 
