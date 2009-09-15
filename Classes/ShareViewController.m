@@ -150,7 +150,7 @@
     self.emailer = [[[MFMailComposeViewController alloc] init] autorelease];
     emailer.mailComposeDelegate = self;
     
-    [emailer setSubject:@"Loved it!"];
+    [emailer setSubject:@"sharing a great meal"];
     
     // Set up recipients
     NSArray *toRecipients = [NSArray arrayWithObject:kShareUrMealSubmitEmail]; 
@@ -287,7 +287,7 @@
 
 - (void)displayLoadingView{
     
-    loadingView = [LoadingView loadingViewInView:self.view withText:@"Patience, preparing photo..."];
+    loadingView = [LoadingView loadingViewInView:self.view withText:@"Preparing photo..."];
     
 }
 

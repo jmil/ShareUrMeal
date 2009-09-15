@@ -151,7 +151,7 @@ static NSString *signupPath = @"/api/users";
     
     NSMutableArray *personalCells = [NSMutableArray array];
     
-    textCell = [[[IFTextCellController alloc] initWithLabel:@"User name:" andPlaceholder:@"MyFunkyName" atKey:userNameKey inModel:model] autorelease];
+    textCell = [[[IFTextCellController alloc] initWithLabel:@"User name:" andPlaceholder:@"MyName" atKey:userNameKey inModel:model] autorelease];
     textCell.autocorrectionType = UITextAutocapitalizationTypeNone;
     textCell.beginEditingAction = @selector(didSelectTextField:);
     textCell.beginEditingTarget = self;

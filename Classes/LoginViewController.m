@@ -143,7 +143,7 @@ static NSString *loadingViewText = @"Hard Core Logging In Action...";
      In this example, the first group of cells gets a header ("Sample Cells") while the last two do not
      because an empty string is defined in the collection.
      */
-	tableHeaders = [[NSArray arrayWithObjects: @"Gimme Some Info", nil] retain];	
+	tableHeaders = [[NSArray arrayWithObjects: @"Enter your username/password", nil] retain];	
    
     /*
      RANT: I'm getting really sick and tired of putting newlines in table footers so that the margins
