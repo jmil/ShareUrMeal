@@ -9,11 +9,13 @@
 #import "ShareUrMealAppDelegate.h"
 
 #import "AccountViewController.h"
+#import "ShareViewController.h"
 
 @implementation ShareUrMealAppDelegate
 
 @synthesize window;
-@synthesize tabBarController;
+@synthesize shareViewController;
+@synthesize navigationController;
 
 
 static NSString* const kDBFileName = @"ShareUrMeal.sqlite";  // TODO: Info.plist?
@@ -42,7 +44,8 @@ static NSString* const kDBFileName = @"ShareUrMeal.sqlite";  // TODO: Info.plist
 		}
 	}
 	
-    [window addSubview:tabBarController.view];
+    self.navigationController = [[[UINavigationController alloc] initWithRootViewController:shareViewController] autorelease];
+    [window addSubview:navigationController.view];
 	[window makeKeyAndVisible];
 }
 
@@ -160,7 +163,8 @@ static NSString* const kDBFileName = @"ShareUrMeal.sqlite";  // TODO: Info.plist
     [managedObjectContext release];
     [managedObjectModel release];
     [persistentStoreCoordinator release];
-    [tabBarController release];
+    [shareViewController release];
+    [navigationController release];
 	[window release];
 	[super dealloc];
 }
@@ -170,7 +174,7 @@ static NSString* const kDBFileName = @"ShareUrMeal.sqlite";  // TODO: Info.plist
 - (IBAction) showAccountView:(id)sender
 {
 	AccountViewController* vc = [[AccountViewController alloc] init];
-	[self.tabBarController presentModalViewController:vc animated:YES];
+	[self.shareViewController presentModalViewController:vc animated:YES];
 	[vc release];
 }
 

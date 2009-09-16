@@ -6,6 +6,8 @@
 //  Copyright __MyCompanyName__ 2009. All rights reserved.
 //
 
+@class ShareViewController;
+
 @interface ShareUrMealAppDelegate : NSObject <UIApplicationDelegate> {
 
     NSManagedObjectModel *managedObjectModel;
@@ -13,15 +15,17 @@
     NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
     UIWindow *window;
+    UINavigationController *navigationController;
     
-    IBOutlet UITabBarController *tabBarController;
+    ShareViewController *shareViewController;
 }
 
 - (IBAction)saveAction:sender;
 
 - (IBAction) showAccountView:(id)sender;
 
-@property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
+@property (nonatomic, retain) IBOutlet ShareViewController *shareViewController;
+@property (nonatomic, retain) UINavigationController *navigationController;
 
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;

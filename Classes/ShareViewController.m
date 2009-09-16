@@ -86,7 +86,7 @@
 	}
 	cancelButtonIndex = [sheet addButtonWithTitle:NSLocalizedString1( @"Cancel" )];
 	sheet.cancelButtonIndex = cancelButtonIndex;	
-	[sheet showInView:self.tabBarController.view];
+	[sheet showInView:self.view];
 	[sheet release];
 }
 
