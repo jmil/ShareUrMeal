@@ -20,6 +20,8 @@
 
 #import "LoadingView.h"
 
+#import "NSString+SUMExtensions.h"
+
 
 NSString *const didSignUpNotification = @"DidSignIn";
 
@@ -260,53 +262,75 @@ static NSString *signupPath = @"/api/users";
     [loadingView removeView];
     
     NSString *response = [request responseString];
-    NSDictionary *responseDictionary = [NSDictionary dictionaryWithJSON:response];
     
-    id errors = nil;
+    UIAlertView *alert = nil;
     
-    errors = [responseDictionary objectForKey:@"errors"];
-    
-    if(errors!=nil){
+    if(![response containsString:@"(500)"]){
         
-        if([errors respondsToSelector:@selector(objectAtIndex:)] && ([errors count] >0)){
+        NSDictionary *responseDictionary = [NSDictionary dictionaryWithJSON:response];
+        
+        id errors = nil;
+        
+        errors = [responseDictionary objectForKey:@"errors"];
+        
+        if(errors!=nil){
             
-            NSString* firstErrorCode = [errors objectAtIndex:0];
+            if([errors respondsToSelector:@selector(objectAtIndex:)] && ([errors count] >0)){
+                
+                NSString* firstErrorCode = [errors objectAtIndex:0];
+                
+                if([firstErrorCode class] == [NSString class])
+                    NSLog(firstErrorCode);
+                
+                alert = [[[UIAlertView alloc] initWithTitle:@"Could Not Create Account" 
+                                                    message:firstErrorCode 
+                                                   delegate:nil 
+                                          cancelButtonTitle:@"OK" 
+                                          otherButtonTitles:nil] autorelease];
+                
+                
+                
+            }
             
-            if([firstErrorCode class] == [NSString class])
-                NSLog(firstErrorCode);
             
-            UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Could Not Create Account" 
-                                                             message:firstErrorCode 
-                                                            delegate:nil 
-                                                   cancelButtonTitle:@"OK" 
-                                                   otherButtonTitles:nil] autorelease];
+        }else {
             
-            [alert show];
+            NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
             
-                        
+            NSString *address = [responseDictionary objectForKey:serverPostingAddressKey];
+            NSString *username = [responseDictionary objectForKey:serverUserNameKey];        
+            
+            if(address!=nil)
+                [defaults setObject:address forKey:kUserDefaultsPostEmailAddressKey];
+            
+            if(username!=nil)
+                [defaults setObject:username forKey:kUserDefaultsUsernameKey];
+            
+            
+            [defaults synchronize];
+            
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:didSignUpNotification object:self];
         }
         
-               
-    }else {
         
-        NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-
-        NSString *address = [responseDictionary objectForKey:serverPostingAddressKey];
-        NSString *username = [responseDictionary objectForKey:serverUserNameKey];        
-        
-        if(address!=nil)
-            [defaults setObject:address forKey:kUserDefaultsPostEmailAddressKey];
-        
-        if(username!=nil)
-            [defaults setObject:username forKey:kUserDefaultsUsernameKey];
+    }else{
         
         
-        [defaults synchronize];
+        alert = [[[UIAlertView alloc] initWithTitle:@"Could Not Create Account" 
+                                            message:@"Please enter your information" 
+                                           delegate:nil 
+                                  cancelButtonTitle:@"OK" 
+                                  otherButtonTitles:nil] autorelease];
         
-            
-        [[NSNotificationCenter defaultCenter] postNotificationName:didSignUpNotification object:self];
+        
     }
+      
+    if(alert!=nil)
+        [alert show];
 
+    
+   
     
 }
 

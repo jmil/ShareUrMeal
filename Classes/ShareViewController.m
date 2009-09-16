@@ -153,7 +153,16 @@
     [emailer setSubject:@"sharing a great meal"];
     
     // Set up recipients
-    NSArray *toRecipients = [NSArray arrayWithObject:kShareUrMealSubmitEmail]; 
+    
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSString* email = nil;
+    email = [defaults objectForKey:kUserDefaultsPostEmailAddressKey];
+    
+    if (email==nil)
+        email = kShareUrMealSubmitEmail;
+    
+    NSArray *toRecipients = [NSArray arrayWithObject:email]; 
     
     [emailer setToRecipients:toRecipients];
 

@@ -53,6 +53,7 @@
 		B3B56268102924E00034F584 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B56267102924E00034F584 /* CoreLocation.framework */; };
 		B3B56275102925610034F584 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B56274102925610034F584 /* MessageUI.framework */; };
 		B3E8FF091049F5AF0054E5E9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3E8FF081049F5AF0054E5E9 /* Localizable.strings */; };
+		C40D71021060609E00343268 /* NSString+SUMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D71011060609E00343268 /* NSString+SUMExtensions.m */; };
 		C4CCE4021044B5E70071D26A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE4011044B5E70071D26A /* JSONKit.m */; };
 		C4CCE6861044D0640071D26A /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6821044D0640071D26A /* ASIFormDataRequest.m */; };
 		C4CCE6871044D0640071D26A /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE6831044D0640071D26A /* ASIHTTPRequest.m */; };
@@ -144,6 +145,8 @@
 		B3B56267102924E00034F584 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B3B56274102925610034F584 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B3E8FF051049F5A90054E5E9 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C40D71001060609E00343268 /* NSString+SUMExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SUMExtensions.h"; sourceTree = "<group>"; };
+		C40D71011060609E00343268 /* NSString+SUMExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SUMExtensions.m"; sourceTree = "<group>"; };
 		C4CCE4001044B5E70071D26A /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
 		C4CCE4011044B5E70071D26A /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		C4CCE67E1044D0640071D26A /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
@@ -231,6 +234,8 @@
 				C4CCE67D1044D0460071D26A /* ASI HTTP */,
 				C4CCE68A1044D0740071D26A /* Generic Table Views */,
 				C4E67F5C1051DD9400556E28 /* SDRunLoopProxy */,
+				C40D71001060609E00343268 /* NSString+SUMExtensions.h */,
+				C40D71011060609E00343268 /* NSString+SUMExtensions.m */,
 				2D6EF9761044AEA9008BDA65 /* AboutViewController.h */,
 				2D6EF9771044AEA9008BDA65 /* AboutViewController.m */,
 				2D6EF97B1044AEC3008BDA65 /* AboutViewController.xib */,
@@ -589,6 +594,7 @@
 				C4D72154105099FD002F4E70 /* LoadingView.m in Sources */,
 				C4D722601051B1B1002F4E70 /* IFTextCellController.m in Sources */,
 				C4E67F5A1051DD8E00556E28 /* SDNextRunloopProxy.m in Sources */,
+				C40D71021060609E00343268 /* NSString+SUMExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
