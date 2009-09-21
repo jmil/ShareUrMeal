@@ -42,6 +42,9 @@
 		B3B56268102924E00034F584 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B56267102924E00034F584 /* CoreLocation.framework */; };
 		B3B56275102925610034F584 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3B56274102925610034F584 /* MessageUI.framework */; };
 		B3C364DA1066658D00BBB4C8 /* Default3.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C364D91066658D00BBB4C8 /* Default3.png */; };
+		B3C364F0106666D500BBB4C8 /* ShareUrMeal-back-blank1.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C364EF106666D500BBB4C8 /* ShareUrMeal-back-blank1.png */; };
+		B3C365071066682800BBB4C8 /* ShareUrMeal-logo-trans1.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C365061066682800BBB4C8 /* ShareUrMeal-logo-trans1.png */; };
+		B3C3650F10670E6200BBB4C8 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C3650E10670E6200BBB4C8 /* Default.png */; };
 		B3E8FF091049F5AF0054E5E9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3E8FF081049F5AF0054E5E9 /* Localizable.strings */; };
 		C40D71021060609E00343268 /* NSString+SUMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D71011060609E00343268 /* NSString+SUMExtensions.m */; };
 		C4CCE4021044B5E70071D26A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE4011044B5E70071D26A /* JSONKit.m */; };
@@ -124,6 +127,10 @@
 		B3B56267102924E00034F584 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		B3B56274102925610034F584 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B3C364D91066658D00BBB4C8 /* Default3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default3.png; path = Artwork/Default3.png; sourceTree = "<group>"; };
+		B3C364EF106666D500BBB4C8 /* ShareUrMeal-back-blank1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ShareUrMeal-back-blank1.png"; path = "Artwork/ShareUrMeal-back-blank1.png"; sourceTree = "<group>"; };
+		B3C365041066674200BBB4C8 /* Scratch.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Scratch.xib; sourceTree = "<group>"; };
+		B3C365061066682800BBB4C8 /* ShareUrMeal-logo-trans1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ShareUrMeal-logo-trans1.png"; path = "Artwork/ShareUrMeal-logo-trans1.png"; sourceTree = "<group>"; };
+		B3C3650E10670E6200BBB4C8 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Artwork/Default.png; sourceTree = "<group>"; };
 		B3E8FF051049F5A90054E5E9 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C40D71001060609E00343268 /* NSString+SUMExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SUMExtensions.h"; sourceTree = "<group>"; };
 		C40D71011060609E00343268 /* NSString+SUMExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SUMExtensions.m"; sourceTree = "<group>"; };
@@ -275,8 +282,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B3C364D91066658D00BBB4C8 /* Default3.png */,
-				B31F0CCD1050916E004A0892 /* iphone_icon1.png */,
+				B3C365041066674200BBB4C8 /* Scratch.xib */,
+				B3C364E91066668100BBB4C8 /* Artwork */,
 				B31F0CC610508FB5004A0892 /* about.html */,
 				B3B561F410291FE10034F584 /* ShareUrMeal.sqlite */,
 				28C3AD890F43EF2300507BA6 /* ShareUrMeal.xcdatamodel */,
@@ -333,6 +340,18 @@
 				B3B562611029248E0034F584 /* Restaurant.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		B3C364E91066668100BBB4C8 /* Artwork */ = {
+			isa = PBXGroup;
+			children = (
+				B3C3650E10670E6200BBB4C8 /* Default.png */,
+				B3C365061066682800BBB4C8 /* ShareUrMeal-logo-trans1.png */,
+				B3C364EF106666D500BBB4C8 /* ShareUrMeal-back-blank1.png */,
+				B31F0CCD1050916E004A0892 /* iphone_icon1.png */,
+				B3C364D91066658D00BBB4C8 /* Default3.png */,
+			);
+			name = Artwork;
 			sourceTree = "<group>";
 		};
 		C4CCE3FF1044B5D00071D26A /* JSON */ = {
@@ -499,6 +518,9 @@
 				B31F0CC710508FB5004A0892 /* about.html in Resources */,
 				B31F0CCF1050916E004A0892 /* iphone_icon1.png in Resources */,
 				B3C364DA1066658D00BBB4C8 /* Default3.png in Resources */,
+				B3C364F0106666D500BBB4C8 /* ShareUrMeal-back-blank1.png in Resources */,
+				B3C365071066682800BBB4C8 /* ShareUrMeal-logo-trans1.png in Resources */,
+				B3C3650F10670E6200BBB4C8 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

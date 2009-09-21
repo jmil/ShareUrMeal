@@ -14,12 +14,7 @@
 
 
 @interface ShareViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, MFMailComposeViewControllerDelegate, UIActionSheetDelegate> {
-	UIImageView *imageView;
-	UIButton *resendPhotoButton;
-	UILabel *photoSendSuccess;
-	UILabel *photoSendFail;
-	UIImageView *splashImage;
-    
+
     LoadingView *loadingView;
     MFMailComposeViewController *emailer;
 	
@@ -29,15 +24,8 @@
 	NSInteger cancelButtonIndex;
 }
 
-@property (nonatomic, retain) IBOutlet UIImageView *imageView;
-@property (nonatomic, retain) IBOutlet UIButton *resendPhotoButton;
-@property (nonatomic, retain) IBOutlet UILabel *photoSendSuccess;
-@property (nonatomic, retain) IBOutlet UILabel *photoSendFail;
-@property (nonatomic,retain)MFMailComposeViewController *emailer;
+@property (nonatomic,retain) MFMailComposeViewController *emailer;
 
-
--(void) fadeSplashImage;
-
--(IBAction) getPhoto2:(id) sender;
+-(IBAction) compose:(id) sender;
 
 @end

@@ -19,11 +19,10 @@
 
 #import "SignUpViewController.h"
 
+#import "LoadingView.h"
+
 
 NSString *const didLoginNotification = @"DidLogIn";
-
-
-@implementation LoginViewController
 
 static NSString *userNameKey = @"UserName";
 static NSString *passwordKey = @"Password";
@@ -32,6 +31,15 @@ static NSString *serverUserNameKey = @"username";
 static NSString *serverPostingAddressKey = @"posting_address";
 
 static NSString *loadingViewText = @"Hard Core Logging In Action...";
+
+
+@interface LoginViewController ()
+- (void)addCancelButton;
+@end
+	
+
+
+@implementation LoginViewController
 
 
 - (void)dealloc {
@@ -201,8 +209,7 @@ static NSString *loadingViewText = @"Hard Core Logging In Action...";
         
     if(error!=nil){
         
-        if([error class] == [NSString class])
-            NSLog(error);
+		errLog( @"%@", error);
         
         UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"Could Not Log In" 
                                                          message:error 
@@ -238,7 +245,7 @@ static NSString *loadingViewText = @"Hard Core Logging In Action...";
 - (void)requestWentWrong:(ASIHTTPRequest *)request
 {
     NSError *error = [request error];
-    
+	errLog( @"%@", error );
     //TODO: handle error
 }
 

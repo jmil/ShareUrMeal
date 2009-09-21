@@ -12,6 +12,7 @@
 @class ASINetworkQueue;
 @class LoadingView;
 
+extern NSString *const didLoginNotification; 
 
 @interface LoginViewController : IFGenericTableViewController {
     
@@ -20,6 +21,7 @@
 
 }
 
+- (void)login;
+
 @end
 
-extern NSString *const didLoginNotification; 

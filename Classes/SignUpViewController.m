@@ -211,10 +211,6 @@ static NSString *signupPath = @"/api/users";
         
         CGRect cellFrame = eachCell.frame;
         
-        BOOL containAnswer = CGRectContainsRect(cellFrame, frame);
-        BOOL intersectAnswer = CGRectIntersectsRect(cellFrame, frame);
-
-        
         if(CGRectContainsRect(cellFrame, frame) || CGRectIntersectsRect(cellFrame, frame)){
             [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:eachCell] 
                                   atScrollPosition:UITableViewScrollPositionTop
@@ -222,15 +218,14 @@ static NSString *signupPath = @"/api/users";
             break;
             
         } 
-    }
-    
+    }    
 }
 
 
 - (void)signUp{
     
     
-    loadingView = [LoadingView loadingViewInView:self.view withText:@"Hard Core Signing Up Action..."];
+    loadingView = [LoadingView loadingViewInView:self.view withText:loadingViewText];
     
     NSString* urlString = [kShareUrMealRootURL stringByAppendingString:signupPath];
     
@@ -278,9 +273,8 @@ static NSString *signupPath = @"/api/users";
             if([errors respondsToSelector:@selector(objectAtIndex:)] && ([errors count] >0)){
                 
                 NSString* firstErrorCode = [errors objectAtIndex:0];
-                
-                if([firstErrorCode class] == [NSString class])
-                    NSLog(firstErrorCode);
+
+				errLog( @"%@", firstErrorCode );
                 
                 alert = [[[UIAlertView alloc] initWithTitle:@"Could Not Create Account" 
                                                     message:firstErrorCode 
@@ -337,9 +331,8 @@ static NSString *signupPath = @"/api/users";
 - (void)requestWentWrong:(ASIHTTPRequest *)request
 {
     NSError *error = [request error];
-    
+	errLog( @"%@", error );
     //TODO: handle error
-
 }
 
 

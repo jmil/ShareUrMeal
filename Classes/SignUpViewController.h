@@ -8,6 +8,9 @@
 
 #import "IFGenericTableViewController.h"
 
+
+extern NSString *const didSignUpNotification; 
+
 @class ASINetworkQueue;
 @class LoadingView;
 
@@ -18,6 +21,7 @@
     
 }
 
-@end
+- (void)signUp;
+- (void)addCancelButton;
 
-extern NSString *const didSignUpNotification; 
+@end

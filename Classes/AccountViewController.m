@@ -11,6 +11,13 @@
 #import "SignUpViewController.h"
 #import "LoginViewController.h"
 
+
+@interface AccountViewController ()
+- (void)loadLoginView;
+- (void)loadSignupView;
+@end
+
+
 @implementation AccountViewController
 
 @synthesize loginSignupToggleBar;
@@ -19,6 +26,7 @@
 @synthesize contentView;
 @synthesize signUpController;
 @synthesize loginController;
+@synthesize authenticateButton;
 
 
 - (id) init

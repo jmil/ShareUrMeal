@@ -13,9 +13,13 @@
 
 #define kChoosePhotoSheetTag 12345
 
+@interface ShareViewController ()
+- (void)displayLoadingView;
+- (void)removeLoadingView;
+@end
+
 @implementation ShareViewController
 
-@synthesize imageView, resendPhotoButton, photoSendFail, photoSendSuccess;
 @synthesize emailer;
 
 
@@ -23,7 +27,6 @@
 #pragma mark NSObject
 
 - (void)dealloc {
-    
     self.emailer = nil;
     [super dealloc];
 }
@@ -33,12 +36,6 @@
 #pragma mark UIViewController
 
 - (void)viewDidUnload {
-    
-    self.imageView = nil;
-    self.resendPhotoButton = nil;
-    self.photoSendSuccess = nil;
-    self.photoSendFail = nil;
-    
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
@@ -54,22 +51,24 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
+	
+	self.title = @"ShareUrMeal";
+	
+	UIBarButtonItem* composeBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(compose:)];
+	self.navigationItem.rightBarButtonItem = composeBarButtonItem;
+	[composeBarButtonItem release];
+	
+	UIBarButtonItem* accountBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Login" style:   UIBarButtonItemStylePlain target:self action:@selector(compose:)];
+	self.navigationItem.leftBarButtonItem = accountBarButtonItem;
+	[accountBarButtonItem release];
+	
     [super viewDidLoad];
-    
-    [self fadeSplashImage];
-    
-    // Initially set all to HIDE until we get last sent image saved in user Defaults or Core Data!
-    self.photoSendFail.hidden = YES;
-    self.photoSendSuccess.hidden = YES;
-    self.resendPhotoButton.hidden = YES;
-    
-    
 }
 
 #pragma mark -
 #pragma mark IBOutlet
 
--(IBAction) getPhoto2:(id) sender
+-(IBAction) compose:(id) sender
 {
 	// reset indices
 	choosePhotoFromLibraryButtonIndex = -1; 
@@ -90,31 +89,6 @@
 	[sheet release];
 }
 
-
-#pragma mark -
-#pragma mark Launch Image and Animation
-
-- (void)startupAnimationDone:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
-    [splashImage removeFromSuperview];
-    [splashImage release];
-}
-
-
-
--(void)fadeSplashImage
-{
-    splashImage = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, 320, 480)];
-    splashImage.image = [UIImage imageNamed:@"Default3.png"];
-    [self.view addSubview:splashImage];
-    [self.view bringSubviewToFront:splashImage];
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:1.5];
-    [UIView setAnimationTransition:UIViewAnimationTransitionNone forView:self.view cache:YES];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(startupAnimationDone:finished:context:)];
-    splashImage.alpha = 0.0;
-    [UIView commitAnimations];
-}
 
 
 #pragma mark -
@@ -145,8 +119,8 @@
 #pragma mark MFMailComposeViewController
 
 
-- (void) composeMail{
-        
+- (void) composeMail
+{        
     self.emailer = [[[MFMailComposeViewController alloc] init] autorelease];
     emailer.mailComposeDelegate = self;
     
@@ -167,8 +141,9 @@
     [emailer setToRecipients:toRecipients];
 
     // Attach an image to the email
-    NSData *myData = UIImageJPEGRepresentation(self.imageView.image, 1);
-    [emailer addAttachmentData:myData mimeType:@"image/jpeg" fileName:@"ShareUrMeal"];
+	// TODO: fix
+//    NSData *myData = UIImageJPEGRepresentation(self.imageView.image, 1);
+//    [emailer addAttachmentData:myData mimeType:@"image/jpeg" fileName:@"ShareUrMeal"];
     
     // Fill out the email body text
     NSString *emailBody = @"My meal!";
@@ -222,34 +197,10 @@
         case MFMailComposeResultSent:
             debugLog(@"Result: sent to outbox; will be delivered next time you check mail");
             // If the user pressed the Send button then shut all modal view controllers and revert back to ShareViewController properly; we do this by calling self rather than controller!
-            self.photoSendFail.hidden = YES;
-            self.resendPhotoButton.hidden = YES;
-            self.photoSendSuccess.hidden = NO;
-            
-            
-            // TODO: finish
-            NSDate *now = [NSDate date];
-            
-            NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init]  autorelease];
-            [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-            [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-            
-            NSString *formattedDateString = [dateFormatter stringFromDate:now];
-            NSString *precedingString = @"Sent: ";
-            NSString *completeFormattedString = [precedingString stringByAppendingString: formattedDateString];
-            
-            //NSString *theSentDateAndTime = [];
-            //self.photoSendSuccess.text = @"Sent Aug 24 09, 8:32 pm";
-            self.photoSendSuccess.text = completeFormattedString;
-            
-            [self dismissModalViewControllerAnimated:YES];
+			[self dismissModalViewControllerAnimated:YES];
             break;
         case MFMailComposeResultFailed:
             debugLog(@"Result: message sending or delivery failed...");
-            self.photoSendSuccess.hidden = YES;
-            self.photoSendFail.hidden = NO;
-            self.resendPhotoButton.hidden = NO;
-            self.photoSendFail.text = @"Email Fail. Resend?";
             [self dismissModalViewControllerAnimated:YES];
             break;
         default:
@@ -257,9 +208,6 @@
             [self dismissModalViewControllerAnimated:YES];
             break;
     }
-    
-    
-    
 }
 
 
@@ -283,7 +231,8 @@
     }
     
     // Set the ImageView in ShareViewController to be the image we picked!
-    self.imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+	// TODO: fix
+//    self.imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
     
     [self dismissModalViewControllerAnimated:YES];        
     
