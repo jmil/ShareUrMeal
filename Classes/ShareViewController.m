@@ -10,6 +10,8 @@
 
 #import "LoadingView.h"
 #import "SDNextRunloopProxy.h"
+#import "AboutViewController.h"
+#import "AccountViewController.h"
 
 #define kChoosePhotoSheetTag 12345
 
@@ -21,6 +23,7 @@
 @implementation ShareViewController
 
 @synthesize emailer;
+@synthesize postImage;
 
 
 #pragma mark -
@@ -28,6 +31,7 @@
 
 - (void)dealloc {
     self.emailer = nil;
+	self.postImage = nil;
     [super dealloc];
 }
 
@@ -58,7 +62,7 @@
 	self.navigationItem.rightBarButtonItem = composeBarButtonItem;
 	[composeBarButtonItem release];
 	
-	UIBarButtonItem* accountBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Login" style:   UIBarButtonItemStylePlain target:self action:@selector(compose:)];
+	UIBarButtonItem* accountBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStylePlain target:self action:@selector(showAccountView:)];
 	self.navigationItem.leftBarButtonItem = accountBarButtonItem;
 	[accountBarButtonItem release];
 	
@@ -66,7 +70,7 @@
 }
 
 #pragma mark -
-#pragma mark IBOutlet
+#pragma mark Actions
 
 -(IBAction) compose:(id) sender
 {
@@ -89,6 +93,21 @@
 	[sheet release];
 }
 
+
+-(IBAction) showAboutView:(id) sender
+{
+	AboutViewController *vc = [[AboutViewController alloc] init];
+	[self presentModalViewController:vc animated:YES];
+	[vc release];
+}
+
+
+- (IBAction) showAccountView:(id)sender
+{
+	AccountViewController* vc = [[AccountViewController alloc] init];
+	[self presentModalViewController:vc animated:YES];
+	[vc release];
+}
 
 
 #pragma mark -
@@ -141,9 +160,8 @@
     [emailer setToRecipients:toRecipients];
 
     // Attach an image to the email
-	// TODO: fix
-//    NSData *myData = UIImageJPEGRepresentation(self.imageView.image, 1);
-//    [emailer addAttachmentData:myData mimeType:@"image/jpeg" fileName:@"ShareUrMeal"];
+    NSData *myData = UIImageJPEGRepresentation(self.postImage, 1);
+    [emailer addAttachmentData:myData mimeType:@"image/jpeg" fileName:@"ShareUrMeal"];
     
     // Fill out the email body text
     NSString *emailBody = @"My meal!";
@@ -231,11 +249,9 @@
     }
     
     // Set the ImageView in ShareViewController to be the image we picked!
-	// TODO: fix
-//    self.imageView.image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-    
-    [self dismissModalViewControllerAnimated:YES];        
-    
+	self.postImage = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
+	
+    [self dismissModalViewControllerAnimated:YES];            
 }
 
 

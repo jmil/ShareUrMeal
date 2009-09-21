@@ -9,4 +9,6 @@
 
 @property (nonatomic, assign) IBOutlet UIWebView* webView;
 
+- (IBAction) done:(id)sender;
+
 @end

@@ -5,6 +5,17 @@
 
 @synthesize webView = _webView;
 
+
+- (id)init
+{
+	self = [super initWithNibName:@"AboutViewController" bundle:nil];
+	if (self != nil) {
+		// initializations
+	}
+	return self;
+}
+
+
 - (void) viewDidLoad
 {
 	[super viewDidLoad];
@@ -37,5 +48,10 @@
 	[webView loadRequest:request];
 }
 
+
+- (IBAction) done:(id)sender
+{
+	[self dismissModalViewControllerAnimated:YES];
+}
 
 @end

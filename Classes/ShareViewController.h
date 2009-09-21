@@ -18,6 +18,8 @@
     LoadingView *loadingView;
     MFMailComposeViewController *emailer;
 	
+	UIImage *postImage;
+	
 	// -- stuff for the action sheet.  seems ugly but I couldn't find a better way;
 	NSInteger choosePhotoFromLibraryButtonIndex;
 	NSInteger takePhotoWithCameraButtonIndex;
@@ -25,7 +27,10 @@
 }
 
 @property (nonatomic,retain) MFMailComposeViewController *emailer;
+@property (nonatomic, retain) UIImage *postImage;
 
--(IBAction) compose:(id) sender;
+- (IBAction) compose:(id) sender;
+- (IBAction) showAboutView:(id) sender;
+- (IBAction) showAccountView:(id)sender;
 
 @end

@@ -215,35 +215,26 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C4D72151105099E8002F4E70 /* Loading View */,
+				B3C365F01067B5D800BBB4C8 /* 3rd Party */,
 				B3B56249102923810034F584 /* Model */,
-				C4CCE3FF1044B5D00071D26A /* JSON */,
-				C4CCE67D1044D0460071D26A /* ASI HTTP */,
-				C4CCE68A1044D0740071D26A /* Generic Table Views */,
-				C4E67F5C1051DD9400556E28 /* SDRunLoopProxy */,
+				B3C365F11067B5F900BBB4C8 /* Unused */,
+				1D3623240D0F684500981E51 /* ShareUrMealAppDelegate.h */,
+				1D3623250D0F684500981E51 /* ShareUrMealAppDelegate.m */,
 				C40D71001060609E00343268 /* NSString+SUMExtensions.h */,
 				C40D71011060609E00343268 /* NSString+SUMExtensions.m */,
-				2D6EF9761044AEA9008BDA65 /* AboutViewController.h */,
-				2D6EF9771044AEA9008BDA65 /* AboutViewController.m */,
-				2D6EF97B1044AEC3008BDA65 /* AboutViewController.xib */,
 				2DC5D774101FDD1A00F3E3B1 /* ShareViewController.h */,
 				2DC5D775101FDD1A00F3E3B1 /* ShareViewController.m */,
 				2DC5D776101FDD1A00F3E3B1 /* ShareViewController.xib */,
-				1D3623240D0F684500981E51 /* ShareUrMealAppDelegate.h */,
-				1D3623250D0F684500981E51 /* ShareUrMealAppDelegate.m */,
-				2D9AC11B101FD6B400BD388D /* BookmarksViewController.xib */,
-				2D9AC110101FD61E00BD388D /* BookmarksViewController.h */,
-				2D9AC111101FD61E00BD388D /* BookmarksViewController.m */,
-				2D9AC113101FD63200BD388D /* RestaurantViewController.h */,
-				2D9AC114101FD63200BD388D /* RestaurantViewController.m */,
-				2D9AC116101FD63D00BD388D /* RestaurantView.xib */,
-				C4CCE6B71044D09F0071D26A /* SignUpViewController.h */,
-				C4CCE6B81044D09F0071D26A /* SignUpViewController.m */,
+				2D6EF9761044AEA9008BDA65 /* AboutViewController.h */,
+				2D6EF9771044AEA9008BDA65 /* AboutViewController.m */,
+				2D6EF97B1044AEC3008BDA65 /* AboutViewController.xib */,
 				B3A9715D1049E86E0074CDD6 /* AccountViewController.h */,
 				B3A9715E1049E86E0074CDD6 /* AccountViewController.m */,
 				B3A9715F1049E86E0074CDD6 /* AccountViewController.xib */,
 				C4D71FEC104F8BC0002F4E70 /* LoginViewController.h */,
 				C4D71FED104F8BCE002F4E70 /* LoginViewController.m */,
+				C4CCE6B71044D09F0071D26A /* SignUpViewController.h */,
+				C4CCE6B81044D09F0071D26A /* SignUpViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -354,6 +345,32 @@
 			name = Artwork;
 			sourceTree = "<group>";
 		};
+		B3C365F01067B5D800BBB4C8 /* 3rd Party */ = {
+			isa = PBXGroup;
+			children = (
+				C4D72151105099E8002F4E70 /* Loading View */,
+				C4CCE3FF1044B5D00071D26A /* JSON */,
+				C4CCE67D1044D0460071D26A /* ASI HTTP */,
+				C4CCE68A1044D0740071D26A /* Generic Table Views */,
+				C4E67F5C1051DD9400556E28 /* SDRunLoopProxy */,
+			);
+			name = "3rd Party";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		B3C365F11067B5F900BBB4C8 /* Unused */ = {
+			isa = PBXGroup;
+			children = (
+				2D9AC11B101FD6B400BD388D /* BookmarksViewController.xib */,
+				2D9AC110101FD61E00BD388D /* BookmarksViewController.h */,
+				2D9AC111101FD61E00BD388D /* BookmarksViewController.m */,
+				2D9AC113101FD63200BD388D /* RestaurantViewController.h */,
+				2D9AC114101FD63200BD388D /* RestaurantViewController.m */,
+				2D9AC116101FD63D00BD388D /* RestaurantView.xib */,
+			);
+			name = Unused;
+			sourceTree = "<group>";
+		};
 		C4CCE3FF1044B5D00071D26A /* JSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,6 +378,7 @@
 				C4CCE4011044B5E70071D26A /* JSONKit.m */,
 			);
 			name = JSON;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		C4CCE67D1044D0460071D26A /* ASI HTTP */ = {
@@ -376,6 +394,7 @@
 				C4CCE6851044D0640071D26A /* ASINSStringAdditions.m */,
 			);
 			name = "ASI HTTP";
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		C4CCE68A1044D0740071D26A /* Generic Table Views */ = {
@@ -389,6 +408,7 @@
 				C4CCE68B1044D0740071D26A /* Cell Controllers */,
 			);
 			name = "Generic Table Views";
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		C4CCE68B1044D0740071D26A /* Cell Controllers */ = {
@@ -436,6 +456,7 @@
 				C4D72153105099FD002F4E70 /* LoadingView.m */,
 			);
 			name = "Loading View";
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		C4E67F5C1051DD9400556E28 /* SDRunLoopProxy */ = {
@@ -445,6 +466,7 @@
 				C4E67F591051DD8E00556E28 /* SDNextRunloopProxy.m */,
 			);
 			name = SDRunLoopProxy;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

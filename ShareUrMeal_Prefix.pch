@@ -39,11 +39,11 @@
 #pragma mark Constants
 
 #ifdef DEBUG
-	#define kShareUrMealSubmitEmail @"post@shareurmeal.com"
+	#define kShareUrMealSubmitEmail @"post-staging@shareurmeal.com"
 	#define kShareUrMealRootURL @"http://staging.shareurmeal.com"
     #define kShareUrMealLoginURL @"http://%@:%@@staging.shareurmeal.com/api/users/current.json"
 #else
-	#define kShareUrMealSubmitEmail @"post-staging@shareurmeal.com"
+	#define kShareUrMealSubmitEmail @"post@shareurmeal.com"
 	#define kShareUrMealRootURL @"http://shareurmeal.com"
     #define kShareUrMealLoginURL @"http://%@:%@@shareurmeal.com/api/users/current.json"
 

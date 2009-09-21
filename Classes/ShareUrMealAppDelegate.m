@@ -170,14 +170,6 @@ static NSString* const kDBFileName = @"ShareUrMeal.sqlite";  // TODO: Info.plist
 }
 
 
-#pragma mark -
-- (IBAction) showAccountView:(id)sender
-{
-	AccountViewController* vc = [[AccountViewController alloc] init];
-	[self.shareViewController presentModalViewController:vc animated:YES];
-	[vc release];
-}
-
 
 @end
 

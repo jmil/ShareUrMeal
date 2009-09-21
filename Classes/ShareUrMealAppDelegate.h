@@ -23,8 +23,6 @@
 
 - (IBAction)saveAction:sender;
 
-- (IBAction) showAccountView:(id)sender;
-
 @property (nonatomic, retain) IBOutlet ShareViewController *shareViewController;
 @property (nonatomic, retain) UINavigationController *navigationController;
 
