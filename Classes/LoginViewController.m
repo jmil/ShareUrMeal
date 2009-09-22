@@ -21,6 +21,8 @@
 
 #import "LoadingView.h"
 
+#import "SDNextRunloopProxy.h"
+
 
 NSString *const didLoginNotification = @"DidLogIn";
 
@@ -31,6 +33,9 @@ static NSString *serverUserNameKey = @"username";
 static NSString *serverPostingAddressKey = @"posting_address";
 
 static NSString *loadingViewText = @"Hard Core Logging In Action...";
+
+static NSString *userNameTextFieldLabel = @"Username:";
+static NSString *passwordTextFieldLabel = @"Password:";
 
 
 @interface LoginViewController ()
@@ -133,13 +138,17 @@ static NSString *loadingViewText = @"Hard Core Logging In Action...";
     NSMutableArray *personalCells = [NSMutableArray array];
 
     
-    textCell = [[[IFTextCellController alloc] initWithLabel:@"Username:" andPlaceholder:@"" atKey:userNameKey inModel:model] autorelease];
+    textCell = [[[IFTextCellController alloc] initWithLabel:userNameTextFieldLabel andPlaceholder:@"" atKey:userNameKey inModel:model] autorelease];
     textCell.autocorrectionType = UITextAutocapitalizationTypeNone;
+    textCell.returnKey = UIReturnKeyNext;
+    textCell.updateAction = @selector(textFieldUpdated:);
+    textCell.updateTarget = self;
 	[personalCells addObject:textCell];
     
-    textCell = [[[IFTextCellController alloc] initWithLabel:@"Password:" andPlaceholder:@"" atKey:passwordKey inModel:model] autorelease];
+    textCell = [[[IFTextCellController alloc] initWithLabel:passwordTextFieldLabel andPlaceholder:@"" atKey:passwordKey inModel:model] autorelease];
 	textCell.secureTextEntry = YES;
     textCell.autocorrectionType = UITextAutocapitalizationTypeNone;
+    textCell.returnKey = UIReturnKeyDone;
     [personalCells addObject:textCell];
     
     /*
@@ -158,6 +167,79 @@ static NSString *loadingViewText = @"Hard Core Logging In Action...";
      look nice. If anyone at Apple is reading this, please fix rdar://problem/5863115 Thank you!
      */
 }
+
+
+- (void)textFieldUpdated:(UITextField*)aTextField{
+    
+    if(tableGroups==nil)
+        return;
+    
+    if(aTextField.returnKeyType = UIReturnKeyNext)
+        [self nextTextFieldBecomeFirstResponder:aTextField];
+        
+}
+
+- (void)nextTextFieldBecomeFirstResponder:(UITextField*)aTextField{
+    
+    
+    NSIndexPath* currentIndexPath = [self indexPathForTextField:aTextField];
+    NSIndexPath* newIndexPath = nil;
+    
+    if([tableGroups count] > currentIndexPath.section){
+        
+        NSArray *section = [tableGroups objectAtIndex:currentIndexPath.section];
+        
+        if([section count] > (currentIndexPath.row+1))
+            newIndexPath = [NSIndexPath indexPathForRow:(currentIndexPath.row+1) inSection:currentIndexPath.section];
+        
+        else if ([tableGroups count] > (currentIndexPath.section+1))
+            newIndexPath = [NSIndexPath indexPathForRow:0 inSection:(currentIndexPath.section+1)];
+        
+    }
+    
+    if(newIndexPath!=nil){
+        
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:newIndexPath];
+        [[[self textFieldForCell:cell] nextRunloopProxy] becomeFirstResponder]; 
+    }
+    
+}
+
+
+- (UITextField*)textFieldForCell:(UITableViewCell*)aCell{
+    
+    UITextField* textField = nil;
+    
+    for(UIView* eachSubview in aCell.contentView.subviews){
+        
+        if([eachSubview isKindOfClass:[UITextField class]]){
+            textField = eachSubview;
+            break;
+        }
+    }
+    
+    
+    return textField;    
+}
+
+- (NSIndexPath*)indexPathForTextField:(UITextField*)textField{
+    
+    
+    CGRect frame = textField.frame;
+    frame = [self.tableView convertRect:frame fromView:(UIView*)textField];
+    
+    NSArray* indexPaths = nil;
+    indexPaths = [self.tableView indexPathsForRowsInRect:frame];
+    
+    NSIndexPath* indexPath = nil;
+
+    if((indexPaths!=nil) && ([indexPaths count]>0)){
+        
+        indexPath = [indexPaths objectAtIndex:0];
+    }
+    
+}
+
 
 
 - (void)signUp{

@@ -22,6 +22,8 @@
 
 #import "NSString+SUMExtensions.h"
 
+#import "SDNextRunloopProxy.h"
+
 
 NSString *const didSignUpNotification = @"DidSignIn";
 
@@ -153,15 +155,20 @@ static NSString *signupPath = @"/api/users";
      */
 	textCell = [[[IFTextCellController alloc] initWithLabel:@"Name:" andPlaceholder:@"Your Name" atKey:nameKey inModel:model] autorelease];
     textCell.autocorrectionType = UITextAutocapitalizationTypeWords;
+    textCell.returnKey = UIReturnKeyNext;
     textCell.beginEditingAction = @selector(didSelectTextField:);
     textCell.beginEditingTarget = self;
+    textCell.updateAction = @selector(textFieldUpdated:);
+    textCell.updateTarget = self;
 	[nameCells addObject:textCell];
     
     textCell = [[[IFTextCellController alloc] initWithLabel:@"Email:" andPlaceholder:@"you@you.com" atKey:emailKey inModel:model] autorelease];
     textCell.autocorrectionType = UITextAutocapitalizationTypeNone;
+    textCell.returnKey = UIReturnKeyNext;
     textCell.beginEditingAction = @selector(didSelectTextField:);
     textCell.beginEditingTarget = self;
-
+    textCell.updateAction = @selector(textFieldUpdated:);
+    textCell.updateTarget = self;
     [nameCells addObject:textCell];
     
     
@@ -169,8 +176,11 @@ static NSString *signupPath = @"/api/users";
     
     textCell = [[[IFTextCellController alloc] initWithLabel:@"User name:" andPlaceholder:@"MyName" atKey:userNameKey inModel:model] autorelease];
     textCell.autocorrectionType = UITextAutocapitalizationTypeNone;
+    textCell.returnKey = UIReturnKeyNext;
     textCell.beginEditingAction = @selector(didSelectTextField:);
     textCell.beginEditingTarget = self;
+    textCell.updateAction = @selector(textFieldUpdated:);
+    textCell.updateTarget = self;
 	[personalCells addObject:textCell];
     
     
@@ -180,13 +190,17 @@ static NSString *signupPath = @"/api/users";
     textCell = [[[IFTextCellController alloc] initWithLabel:@"Once:" andPlaceholder:@"" atKey:passwordKey inModel:model] autorelease];
 	textCell.secureTextEntry = YES;
     textCell.autocorrectionType = UITextAutocapitalizationTypeNone;
+    textCell.returnKey = UIReturnKeyNext;
     textCell.beginEditingAction = @selector(didSelectTextField:);
     textCell.beginEditingTarget = self;
+    textCell.updateAction = @selector(textFieldUpdated:);
+    textCell.updateTarget = self;
     [passwordCells addObject:textCell];
     
     textCell = [[[IFTextCellController alloc] initWithLabel:@"Twice:" andPlaceholder:@"" atKey:passwordConfirmationKey inModel:model] autorelease];
 	textCell.secureTextEntry = YES;
     textCell.autocorrectionType = UITextAutocapitalizationTypeNone;
+    textCell.returnKey = UIReturnKeyDone;
     textCell.beginEditingAction = @selector(didSelectTextField:);
     textCell.beginEditingTarget = self;
     [passwordCells addObject:textCell];
@@ -213,6 +227,78 @@ static NSString *signupPath = @"/api/users";
 
 
 }
+
+- (void)textFieldUpdated:(UITextField*)aTextField{
+    
+    if(tableGroups==nil)
+        return;
+    
+    if(aTextField.returnKeyType = UIReturnKeyNext)
+        [self nextTextFieldBecomeFirstResponder:aTextField];
+    
+}
+
+- (void)nextTextFieldBecomeFirstResponder:(UITextField*)aTextField{
+    
+    
+    NSIndexPath* currentIndexPath = [self indexPathForTextField:aTextField];
+    NSIndexPath* newIndexPath = nil;
+    
+    if([tableGroups count] > currentIndexPath.section){
+        
+        NSArray *section = [tableGroups objectAtIndex:currentIndexPath.section];
+        
+        if([section count] > (currentIndexPath.row+1))
+            newIndexPath = [NSIndexPath indexPathForRow:(currentIndexPath.row+1) inSection:currentIndexPath.section];
+        
+        else if ([tableGroups count] > (currentIndexPath.section+1))
+            newIndexPath = [NSIndexPath indexPathForRow:0 inSection:(currentIndexPath.section+1)];
+        
+    }
+    
+    if(newIndexPath!=nil){
+        
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:newIndexPath];
+        [[[self textFieldForCell:cell] nextRunloopProxy] becomeFirstResponder]; 
+    }
+    
+}
+
+
+- (UITextField*)textFieldForCell:(UITableViewCell*)aCell{
+    
+    UITextField* textField = nil;
+    
+    for(UIView* eachSubview in aCell.contentView.subviews){
+        
+        if([eachSubview isKindOfClass:[UITextField class]]){
+            textField = eachSubview;
+            break;
+        }
+    }
+    
+    
+    return textField;    
+}
+
+- (NSIndexPath*)indexPathForTextField:(UITextField*)textField{
+    
+    
+    CGRect frame = textField.frame;
+    frame = [self.tableView convertRect:frame fromView:(UIView*)textField];
+    
+    NSArray* indexPaths = nil;
+    indexPaths = [self.tableView indexPathsForRowsInRect:frame];
+    
+    NSIndexPath* indexPath = nil;
+    
+    if((indexPaths!=nil) && ([indexPaths count]>0)){
+        
+        indexPath = [indexPaths objectAtIndex:0];
+    }
+    
+}
+
 
 - (void)keyboardWillShow:(NSNotification *)note{
     
