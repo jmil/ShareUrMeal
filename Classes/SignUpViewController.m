@@ -66,12 +66,26 @@ static NSString *signupPath = @"/api/users";
     
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(keyboardWillShow:) 
+                                                 name:UIKeyboardWillShowNotification 
+                                               object:self.view.window];
+    
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(keyboardWillHide:) 
+                                                 name:UIKeyboardWillHideNotification
+                                               object:self.view.window];
     
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     
     [super viewWillDisappear:animated];
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 
     
 }
@@ -195,11 +209,30 @@ static NSString *signupPath = @"/api/users";
      look nice. If anyone at Apple is reading this, please fix rdar://problem/5863115 Thank you!
      */
     
-    self.tableView.tableFooterView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 300, 160)] autorelease];
+    self.tableView.tableFooterView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)] autorelease];
 
 
 }
 
+- (void)keyboardWillShow:(NSNotification *)note{
+    
+    CGRect t;
+    [[note.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue: &t];
+    
+    CGRect frame = self.view.frame;
+    frame.size.height -= (t.size.height + 44 + 44);
+    self.view.frame = frame;
+    
+        
+}
+
+- (void)keyboardWillHide:(NSNotification *)note{
+    
+    CGRect frame = self.view.frame;
+    frame.size.height  = 480-44-44;
+    self.view.frame = frame;
+
+}
 
 
 - (void)didSelectTextField:(UITextField*)textField{

@@ -27,6 +27,23 @@
 @synthesize signUpController;
 @synthesize loginController;
 @synthesize authenticateButton;
+@synthesize toolBar;
+@synthesize keyboardDismissalTimer;
+
+
+
+
+
+- (void)dealloc {
+    self.signUpController = nil;
+    self.loginController = nil;
+    self.toolBar = nil;
+    self.keyboardDismissalTimer = nil;
+	[loginSignupToggleBar release];
+	[loggedInView release];
+	[contentView release];
+    [super dealloc];
+}
 
 
 - (id) init
@@ -34,7 +51,9 @@
 	self = [super initWithNibName:@"AccountViewController" bundle:nil];
 	if (self != nil)
 	{
-		
+	
+        
+        
 	}
 	return self;
 }
@@ -68,7 +87,18 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissWithNote:) name:didSignUpNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dismissWithNote:) name:didLoginNotification object:nil];
-
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(keyboardWillShow:) 
+                                                 name:UIKeyboardWillShowNotification 
+                                               object:self.view.window];
+    
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(keyboardWillHide:) 
+                                                 name:UIKeyboardWillHideNotification
+                                               object:self.view.window];
+    
     
 }
 
@@ -144,6 +174,75 @@
 
 }
 
+- (void)keyboardWillShow:(NSNotification *)note{
+    
+    [keyboardDismissalTimer invalidate];
+    self.keyboardDismissalTimer = nil;
+    
+    if(toolBar.frame.origin.y>300){
+        
+        [self.view bringSubviewToFront:toolBar];
+        
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.3];
+        
+        CGRect r  = toolBar.frame;
+        CGRect t;
+        [[note.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue: &t];
+        r.origin.y -=  t.size.height;
+        toolBar.frame = r;
+        
+        if([signUpController.view superview]!=nil){
+            
+            CGRect frame = signUpController.view.frame;
+            frame.size.height -= t.size.height;
+            signUpController.view.frame = frame;
+            
+        }     
+        
+        [UIView commitAnimations];
+        
+        
+           
+    }
+    
+}
+
+- (void)keyboardWillHide:(NSNotification *)note{
+    
+    self.keyboardDismissalTimer = [NSTimer scheduledTimerWithTimeInterval:0.001 target:self selector:@selector(animateToolBarToOriginalPosition) userInfo:nil repeats:NO];
+        
+}
+
+- (void)animateToolBarToOriginalPosition{
+    
+    self.keyboardDismissalTimer = nil;
+    
+    [self.view bringSubviewToFront:toolBar];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.3];
+    
+    CGRect r  = toolBar.frame;
+    r.origin.y = 416;
+    toolBar.frame = r;
+    
+    if([signUpController.view superview]!=nil){
+        
+        CGRect frame = signUpController.view.frame;
+        frame.size.height  = 480-44-44;
+        signUpController.view.frame = frame;        
+    }    
+    
+    [UIView commitAnimations];
+    
+        
+        
+    
+}
+
+
 - (void)dismissWithNote:(NSNotification*)note{
     
     [self dismissModalViewControllerAnimated:YES];
@@ -155,7 +254,9 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:didLoginNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:didSignUpNotification object:nil];
-    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+
     [super viewWillDisappear:animated];
 
 }
@@ -178,17 +279,6 @@
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
-
-
-- (void)dealloc {
-    self.signUpController = nil;
-    self.loginController = nil;
-	[loginSignupToggleBar release];
-	[loggedInView release];
-	[contentView release];
-    [super dealloc];
-}
-
 
 - (IBAction) cancel:(id)sender
 {

@@ -17,9 +17,11 @@
 	UIView* loggedInView;
 	UINavigationBar* loginSignupToggleBar;
     UIBarButtonItem *authenticateButton;
-
+    UIToolbar *toolBar;
 	
 	BOOL isLoggedIn;  // TODO: improve
+    
+    NSTimer *keyboardDismissalTimer;
     
     SignUpViewController *signUpController;
     LoginViewController *loginController;
@@ -30,9 +32,12 @@
 @property (nonatomic, retain) IBOutlet UIView* loggedInView;
 @property (nonatomic, retain) IBOutlet UIView* contentView;
 @property (nonatomic, retain) IBOutlet UINavigationBar* loginSignupToggleBar;
-@property (nonatomic,retain)IBOutlet UIBarButtonItem *authenticateButton;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem *authenticateButton;
+@property (nonatomic, retain) IBOutlet UIToolbar *toolBar;
 
 @property (nonatomic, assign) BOOL isLoggedIn;
+
+@property(nonatomic,retain)NSTimer *keyboardDismissalTimer;
 
 @property(nonatomic,retain)SignUpViewController *signUpController;
 @property(nonatomic,retain)LoginViewController *loginController;
