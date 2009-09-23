@@ -58,9 +58,9 @@
 	
 	self.title = @"ShareUrMeal";
 	
-	UIBarButtonItem* composeBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(compose:)];
-	self.navigationItem.rightBarButtonItem = composeBarButtonItem;
-	[composeBarButtonItem release];
+//	UIBarButtonItem* composeBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(compose:)];
+//	self.navigationItem.rightBarButtonItem = composeBarButtonItem;
+//	[composeBarButtonItem release];
 	
 	UIBarButtonItem* accountBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStylePlain target:self action:@selector(showAccountView:)];
 	self.navigationItem.leftBarButtonItem = accountBarButtonItem;
