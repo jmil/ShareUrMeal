@@ -51,9 +51,6 @@
 	self = [super initWithNibName:@"AccountViewController" bundle:nil];
 	if (self != nil)
 	{
-	
-        
-        
 	}
 	return self;
 }

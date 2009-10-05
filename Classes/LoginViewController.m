@@ -47,7 +47,19 @@ static NSString *passwordTextFieldLabel = @"Password:";
 @implementation LoginViewController
 
 
+- (id) init
+{
+	self = [super initWithNibName:@"SignUpViewController" bundle:nil];
+	if (self != nil)
+	{
+		networkQueue = [[ASINetworkQueue alloc] init];
+	}
+	return self;
+}
+
+
 - (void)dealloc {
+	[networkQueue release];
     [super dealloc];
 }
 
@@ -260,23 +272,22 @@ static NSString *passwordTextFieldLabel = @"Password:";
     NSString *username = [model objectForKey:userNameKey];
     NSString *password = [model objectForKey:passwordKey];
     
-    NSString *urlString = [NSString stringWithFormat:kShareUrMealLoginURL, username, password];
-    
+//    NSString *urlString = [NSString stringWithFormat:kShareUrMealLoginURL, username, password];
+  
+	NSString *urlString = @"http://shareurmeal.com/api/users/current.json";
     NSURL *url = [NSURL URLWithString:urlString];
-    
     ASIHTTPRequest *request = [[[ASIHTTPRequest alloc] initWithURL:url] autorelease];
+	request.username = username;
+	request.password = password;
     
     [request setDelegate:self];
     [request setDidFinishSelector:@selector(requestDone:)];
     [request setDidFailSelector:@selector(requestWentWrong:)];
-    
-    networkQueue = [[ASINetworkQueue alloc] init];
-    
+
     [networkQueue addOperation:request]; //queue is an NSOperationQueue
-    
     [networkQueue go];
-    
 }
+
 
 - (void)requestDone:(ASIHTTPRequest *)request
 {

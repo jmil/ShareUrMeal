@@ -46,8 +46,20 @@ static NSString *signupPath = @"/api/users";
 
 
 
+- (id) init
+{
+	self = [super initWithNibName:@"SignUpViewController" bundle:nil];
+	if (self != nil)
+	{
+		networkQueue = [[ASINetworkQueue alloc] init];
+	}
+	return self;
+}
+
+
 - (void)dealloc {
     
+	[networkQueue release];
     [super dealloc];
 }
 
@@ -362,12 +374,8 @@ static NSString *signupPath = @"/api/users";
     [request setDidFinishSelector:@selector(requestDone:)];
     [request setDidFailSelector:@selector(requestWentWrong:)];
     
-    networkQueue = [[ASINetworkQueue alloc] init];
-
     [networkQueue addOperation:request]; //queue is an NSOperationQueue
-    
     [networkQueue go];
-
 }
 
 - (void)requestDone:(ASIHTTPRequest *)request
