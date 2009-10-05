@@ -8,10 +8,13 @@
 
 #import "ShareViewController.h"
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "LoadingView.h"
 #import "SDNextRunloopProxy.h"
 #import "AboutViewController.h"
 #import "AccountViewController.h"
+#import "ShareUrMealAppDelegate.h"
 
 #define kChoosePhotoSheetTag 12345
 
@@ -24,7 +27,7 @@
 
 @synthesize emailer;
 @synthesize postImage;
-
+@synthesize loginBarButtonItem;
 
 #pragma mark -
 #pragma mark NSObject
@@ -32,6 +35,7 @@
 - (void)dealloc {
     self.emailer = nil;
 	self.postImage = nil;
+	self.loginBarButtonItem = nil;
     [super dealloc];
 }
 
@@ -43,6 +47,7 @@
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
+
 
 
 - (void)didReceiveMemoryWarning {
@@ -62,11 +67,21 @@
 //	self.navigationItem.rightBarButtonItem = composeBarButtonItem;
 //	[composeBarButtonItem release];
 	
-	UIBarButtonItem* accountBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStylePlain target:self action:@selector(showAccountView:)];
-	self.navigationItem.leftBarButtonItem = accountBarButtonItem;
-	[accountBarButtonItem release];
+	UIBarButtonItem* loginItem = [[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStylePlain target:self action:@selector(loginLogout:)];
+	self.navigationItem.leftBarButtonItem = loginItem;
+	self.loginBarButtonItem = loginItem;
+	[loginItem release];
+	
 	
     [super viewDidLoad];
+}
+
+
+- (void) viewWillAppear:(BOOL)animated
+{
+	[self updateLoginLogoutButton];
+	
+	[super viewWillAppear:animated];
 }
 
 #pragma mark -
@@ -159,10 +174,16 @@
     
     [emailer setToRecipients:toRecipients];
 
+	// !!!: HACK: redraw the image to fix rotation problems
+	UIGraphicsBeginImageContext(self.postImage.size);
+	[self.postImage drawAtPoint:CGPointMake(0.0, 0.0)];
+	UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+	
     // Attach an image to the email
-    NSData *myData = UIImageJPEGRepresentation(self.postImage, 1);
+    NSData *myData = UIImageJPEGRepresentation(newImage, 1);
     [emailer addAttachmentData:myData mimeType:@"image/jpeg" fileName:@"ShareUrMeal"];
-    
+	
     // Fill out the email body text
     NSString *emailBody = @"My meal!";
     [emailer setMessageBody:emailBody isHTML:NO];
@@ -272,7 +293,58 @@
 }
 
 
+#pragma mark -
 
+- (IBAction) logout:(id)sender
+{		
+	[(ShareUrMealAppDelegate*)[[UIApplication sharedApplication] delegate] logout];
+	[self updateLoginLogoutButton];
+}
+
+
+- (void) updateLoginLogoutButton
+{
+	if( ![(ShareUrMealAppDelegate*)[[UIApplication sharedApplication] delegate] isLoggedIn] )
+	{
+		self.loginBarButtonItem.title = NSLocalizedString(@"Login", @"Login button title");
+	}
+	else
+	{
+		self.loginBarButtonItem.title = NSLocalizedString(@"Logout", @"Logout button title");
+	}
+}
+
+
+- (IBAction) loginLogout:(id)sender
+{
+	if( ![(ShareUrMealAppDelegate*)[[UIApplication sharedApplication] delegate] isLoggedIn] )
+	{
+		[self showAccountView:nil];
+	}
+	else
+	{
+		
+		UIAlertView *logoutAlert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Are you sure you wish to logout?", @"Logout confirmation message")
+															  message:nil
+															 delegate:self
+													cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel button title")
+													otherButtonTitles:NSLocalizedString(@"Logout", @"Logout button title"), nil];
+		[logoutAlert show];
+		[logoutAlert release];
+	}
+}
+
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+
+	// TODO: verify that it is the logout alert
+	
+	if( buttonIndex != alertView.cancelButtonIndex )
+	{
+		[self logout:nil];
+	}
+}
 
 
 @end
