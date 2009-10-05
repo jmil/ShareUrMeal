@@ -41,11 +41,11 @@
 #ifdef DEBUG
 	#define kShareUrMealSubmitEmail @"post-staging@shareurmeal.com"
 	#define kShareUrMealRootURL @"http://staging.shareurmeal.com"
-    #define kShareUrMealLoginURL @"http://%@:%@@staging.shareurmeal.com/api/users/current.json"
+    #define kShareUrMealLoginURL @"http://staging.shareurmeal.com/api/users/current.json"
 #else
 	#define kShareUrMealSubmitEmail @"post@shareurmeal.com"
 	#define kShareUrMealRootURL @"http://shareurmeal.com"
-    #define kShareUrMealLoginURL @"http://%@:%@@shareurmeal.com/api/users/current.json"
+    #define kShareUrMealLoginURL @"http://shareurmeal.com/api/users/current.json"
 
 #endif
 

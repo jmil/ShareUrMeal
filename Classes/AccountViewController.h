@@ -19,8 +19,6 @@
     UIBarButtonItem *authenticateButton;
     UIToolbar *toolBar;
 	
-	BOOL isLoggedIn;  // TODO: improve
-    
     NSTimer *keyboardDismissalTimer;
     
     SignUpViewController *signUpController;
@@ -34,8 +32,6 @@
 @property (nonatomic, retain) IBOutlet UINavigationBar* loginSignupToggleBar;
 @property (nonatomic, retain) IBOutlet UIBarButtonItem *authenticateButton;
 @property (nonatomic, retain) IBOutlet UIToolbar *toolBar;
-
-@property (nonatomic, assign) BOOL isLoggedIn;
 
 @property(nonatomic,retain)NSTimer *keyboardDismissalTimer;
 

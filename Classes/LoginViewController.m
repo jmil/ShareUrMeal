@@ -23,6 +23,7 @@
 
 #import "SDNextRunloopProxy.h"
 
+#import "NSData+MBBase64.h"
 
 NSString *const didLoginNotification = @"DidLogIn";
 
@@ -268,21 +269,23 @@ static NSString *passwordTextFieldLabel = @"Password:";
     
     loadingView = [LoadingView loadingViewInView:self.view withText:loadingViewText];
 
-    
     NSString *username = [model objectForKey:userNameKey];
     NSString *password = [model objectForKey:passwordKey];
     
-//    NSString *urlString = [NSString stringWithFormat:kShareUrMealLoginURL, username, password];
-  
-	NSString *urlString = @"http://shareurmeal.com/api/users/current.json";
+	NSString *urlString = kShareUrMealLoginURL;
+	
     NSURL *url = [NSURL URLWithString:urlString];
     ASIHTTPRequest *request = [[[ASIHTTPRequest alloc] initWithURL:url] autorelease];
-	request.username = username;
-	request.password = password;
+	request.useSessionPersistance = NO;
     
-    [request setDelegate:self];
+	NSString *tmp = [NSString stringWithFormat:@"%@:%@", username, password];
+	NSString *data = [[NSData dataWithBytes:[tmp cStringUsingEncoding:NSUTF8StringEncoding] length:[tmp length]] base64Encoding];
+	[request addRequestHeader:@"Authorization" value:[NSString stringWithFormat:@"Basic %@", data]];	
+	
+	[request setDelegate:self];
     [request setDidFinishSelector:@selector(requestDone:)];
     [request setDidFailSelector:@selector(requestWentWrong:)];
+	
 
     [networkQueue addOperation:request]; //queue is an NSOperationQueue
     [networkQueue go];

@@ -34,5 +34,11 @@
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
+@property (readonly) BOOL isLoggedIn;
+
+- (void) logout;
+
+
+
 @end
 

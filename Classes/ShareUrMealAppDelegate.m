@@ -11,6 +11,8 @@
 #import "AccountViewController.h"
 #import "ShareViewController.h"
 
+#import "ASIHTTPRequest.h"
+
 @implementation ShareUrMealAppDelegate
 
 @synthesize window;
@@ -169,6 +171,23 @@ static NSString* const kDBFileName = @"ShareUrMeal.sqlite";  // TODO: Info.plist
 	[super dealloc];
 }
 
+
+#pragma mark -
+
+- (void) logout
+{
+	NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+	[defaults removeObjectForKey:kUserDefaultsPostEmailAddressKey];
+	[defaults removeObjectForKey:kUserDefaultsUsernameKey];
+
+	[ASIHTTPRequest clearSession];
+}
+
+
+- (BOOL) isLoggedIn
+{
+	return [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsPostEmailAddressKey] != nil;
+}
 
 
 @end

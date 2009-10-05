@@ -45,6 +45,7 @@
 		B3C364F0106666D500BBB4C8 /* ShareUrMeal-back-blank1.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C364EF106666D500BBB4C8 /* ShareUrMeal-back-blank1.png */; };
 		B3C365071066682800BBB4C8 /* ShareUrMeal-logo-trans1.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C365061066682800BBB4C8 /* ShareUrMeal-logo-trans1.png */; };
 		B3C3650F10670E6200BBB4C8 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B3C3650E10670E6200BBB4C8 /* Default.png */; };
+		B3E4AAF6107A8B5F0050896D /* NSData+MBBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E4AAF5107A8B5F0050896D /* NSData+MBBase64.m */; };
 		B3E8FF091049F5AF0054E5E9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3E8FF081049F5AF0054E5E9 /* Localizable.strings */; };
 		C40D71021060609E00343268 /* NSString+SUMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D71011060609E00343268 /* NSString+SUMExtensions.m */; };
 		C4CCE4021044B5E70071D26A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C4CCE4011044B5E70071D26A /* JSONKit.m */; };
@@ -131,6 +132,8 @@
 		B3C365041066674200BBB4C8 /* Scratch.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Scratch.xib; sourceTree = "<group>"; };
 		B3C365061066682800BBB4C8 /* ShareUrMeal-logo-trans1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ShareUrMeal-logo-trans1.png"; path = "Artwork/ShareUrMeal-logo-trans1.png"; sourceTree = "<group>"; };
 		B3C3650E10670E6200BBB4C8 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = Artwork/Default.png; sourceTree = "<group>"; };
+		B3E4AAF4107A8B5F0050896D /* NSData+MBBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MBBase64.h"; sourceTree = "<group>"; };
+		B3E4AAF5107A8B5F0050896D /* NSData+MBBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MBBase64.m"; sourceTree = "<group>"; };
 		B3E8FF051049F5A90054E5E9 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C40D71001060609E00343268 /* NSString+SUMExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SUMExtensions.h"; sourceTree = "<group>"; };
 		C40D71011060609E00343268 /* NSString+SUMExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SUMExtensions.m"; sourceTree = "<group>"; };
@@ -348,6 +351,7 @@
 		B3C365F01067B5D800BBB4C8 /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
+				B3E4AAEC107A8ABA0050896D /* MBBase64 */,
 				C4D72151105099E8002F4E70 /* Loading View */,
 				C4CCE3FF1044B5D00071D26A /* JSON */,
 				C4CCE67D1044D0460071D26A /* ASI HTTP */,
@@ -369,6 +373,15 @@
 				2D9AC116101FD63D00BD388D /* RestaurantView.xib */,
 			);
 			name = Unused;
+			sourceTree = "<group>";
+		};
+		B3E4AAEC107A8ABA0050896D /* MBBase64 */ = {
+			isa = PBXGroup;
+			children = (
+				B3E4AAF4107A8B5F0050896D /* NSData+MBBase64.h */,
+				B3E4AAF5107A8B5F0050896D /* NSData+MBBase64.m */,
+			);
+			name = MBBase64;
 			sourceTree = "<group>";
 		};
 		C4CCE3FF1044B5D00071D26A /* JSON */ = {
@@ -599,6 +612,7 @@
 				C4D722601051B1B1002F4E70 /* IFTextCellController.m in Sources */,
 				C4E67F5A1051DD8E00556E28 /* SDNextRunloopProxy.m in Sources */,
 				C40D71021060609E00343268 /* NSString+SUMExtensions.m in Sources */,
+				B3E4AAF6107A8B5F0050896D /* NSData+MBBase64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

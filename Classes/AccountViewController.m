@@ -21,7 +21,6 @@
 @implementation AccountViewController
 
 @synthesize loginSignupToggleBar;
-@synthesize isLoggedIn;
 @synthesize loggedInView;
 @synthesize contentView;
 @synthesize signUpController;
@@ -60,22 +59,14 @@
 {
     [super viewDidLoad];
 	
-	if( self.isLoggedIn )
-	{
-		self.loggedInView.frame = self.contentView.bounds;
-		[self.contentView addSubview:self.loggedInView];
-	}
-	else
-	{
-		[self.view addSubview:self.loginSignupToggleBar];
-		
-		CGRect contentViewRect = self.contentView.frame;
-		contentViewRect.origin.y += self.loginSignupToggleBar.bounds.size.height;
-		contentViewRect.size.height -= self.loginSignupToggleBar.bounds.size.height;
-		self.contentView.frame = contentViewRect;
-		
-		[self loadLoginView];
-	}
+	[self.view addSubview:self.loginSignupToggleBar];
+	
+	CGRect contentViewRect = self.contentView.frame;
+	contentViewRect.origin.y += self.loginSignupToggleBar.bounds.size.height;
+	contentViewRect.size.height -= self.loginSignupToggleBar.bounds.size.height;
+	self.contentView.frame = contentViewRect;
+	
+	[self loadLoginView];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
