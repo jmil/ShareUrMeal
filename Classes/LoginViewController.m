@@ -41,6 +41,9 @@ static NSString *passwordTextFieldLabel = @"Password:";
 
 @interface LoginViewController ()
 - (void)addCancelButton;
+- (void)nextTextFieldBecomeFirstResponder:(UITextField*)aTextField;
+- (UITextField*)textFieldForCell:(UITableViewCell*)aCell;
+- (NSIndexPath*)indexPathForTextField:(UITextField*)textField;
 @end
 	
 
@@ -95,6 +98,17 @@ static NSString *passwordTextFieldLabel = @"Password:";
     
 }
 
+
+- (void)viewDidAppear:(BOOL)animated{
+    
+    [super viewDidAppear:animated];
+	
+
+	UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+	UITextField* textField = [self textFieldForCell:cell];
+	[textField becomeFirstResponder];
+
+}
 
 
 - (void)addLoginButton{
@@ -192,6 +206,8 @@ static NSString *passwordTextFieldLabel = @"Password:";
         
 }
 
+
+
 - (void)nextTextFieldBecomeFirstResponder:(UITextField*)aTextField{
     
     
@@ -226,7 +242,7 @@ static NSString *passwordTextFieldLabel = @"Password:";
     for(UIView* eachSubview in aCell.contentView.subviews){
         
         if([eachSubview isKindOfClass:[UITextField class]]){
-            textField = eachSubview;
+            textField = (UITextField*)eachSubview;
             break;
         }
     }
@@ -251,6 +267,7 @@ static NSString *passwordTextFieldLabel = @"Password:";
         indexPath = [indexPaths objectAtIndex:0];
     }
     
+	return indexPath;
 }
 
 
@@ -266,6 +283,14 @@ static NSString *passwordTextFieldLabel = @"Password:";
 }
 
 - (void)login{
+	
+	
+	UITableViewCell* cell;
+	cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+	[[self textFieldForCell:cell] resignFirstResponder];
+	cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]];
+	[[self textFieldForCell:cell] resignFirstResponder];
+	
     
     loadingView = [LoadingView loadingViewInView:self.view withText:loadingViewText];
 
@@ -333,10 +358,8 @@ static NSString *passwordTextFieldLabel = @"Password:";
         
         [[NSNotificationCenter defaultCenter] postNotificationName:didLoginNotification object:self];    
     }
-
-    
-    
 }
+
 
 - (void)requestWentWrong:(ASIHTTPRequest *)request
 {

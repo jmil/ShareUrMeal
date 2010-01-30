@@ -120,9 +120,10 @@
         self.loginController = [[[LoginViewController alloc] init] autorelease];
     
     loginController.view.frame = self.contentView.bounds;
+	
+	[loginController viewWillAppear:NO];
     [self.contentView addSubview:loginController.view];
-    
-    [loginController viewWillAppear:NO];
+	[loginController viewDidAppear:NO];
 }
 
 - (void)loadSignupView{
@@ -132,7 +133,7 @@
         
         [loginController viewWillDisappear:NO];
         [loginController.view removeFromSuperview];
-
+		[loginController viewDidDisappear:NO];
     }
     
     authenticateButton.title = @"Sign Up";
@@ -142,10 +143,10 @@
         self.signUpController = [[[SignUpViewController alloc] init] autorelease];
     
     signUpController.view.frame = self.contentView.bounds;
+	
+	[signUpController viewWillAppear:NO];
     [self.contentView addSubview:signUpController.view];
-    
-    [signUpController viewWillAppear:NO];
-    
+	[signUpController viewDidAppear:NO];
 }
 
 - (IBAction) authenticate:(id)sender{

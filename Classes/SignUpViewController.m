@@ -27,6 +27,13 @@
 
 NSString *const didSignUpNotification = @"DidSignIn";
 
+@interface SignUpViewController ()
+- (void)nextTextFieldBecomeFirstResponder:(UITextField*)aTextField;
+- (NSIndexPath*)indexPathForTextField:(UITextField*)textField;
+- (UITextField*)textFieldForCell:(UITableViewCell*)aCell;
+@end
+
+
 @implementation SignUpViewController
 
 static NSString *nameKey = @"Name";
@@ -69,7 +76,6 @@ static NSString *signupPath = @"/api/users";
     [super viewDidLoad];
     self.model = [[[IFTemporaryModel alloc] init] autorelease];
     
-    //[self addSignUpButton];
     [self addCancelButton];
     
 }
@@ -284,7 +290,7 @@ static NSString *signupPath = @"/api/users";
     for(UIView* eachSubview in aCell.contentView.subviews){
         
         if([eachSubview isKindOfClass:[UITextField class]]){
-            textField = eachSubview;
+            textField = (UITextField*)eachSubview;
             break;
         }
     }
@@ -309,6 +315,7 @@ static NSString *signupPath = @"/api/users";
         indexPath = [indexPaths objectAtIndex:0];
     }
     
+	return indexPath;
 }
 
 
