@@ -21,6 +21,7 @@
 @interface ShareViewController ()
 - (void)displayLoadingView;
 - (void)removeLoadingView;
+- (void)launchMailer;
 @end
 
 @implementation ShareViewController
@@ -89,6 +90,19 @@
 
 -(IBAction) compose:(id) sender
 {
+	if( ![MFMailComposeViewController canSendMail] )
+	{
+		UIAlertView* alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString1( @"Cannot Send Mail" )
+														message:NSLocalizedString1( @"This device is not configured to send mail. Please set up an email account and try again." )
+													   delegate:nil
+											  cancelButtonTitle:NSLocalizedString1( @"OK" ) 
+											  otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+		return;
+	}
+	
+	
 	// reset indices
 	choosePhotoFromLibraryButtonIndex = -1; 
 	takePhotoWithCameraButtonIndex = -1;
@@ -257,7 +271,7 @@
     
     
     // Add a new modal view controller to EMAIL PHOTO to the current UIImagePickerController, here named picker
-    if (YES == [MFMailComposeViewController canSendMail]) {
+    if ([MFMailComposeViewController canSendMail]) {
         
         [[self nextRunloopProxy] displayLoadingView];
         [[[self nextRunloopProxy] nextRunloopProxy] composeMail];
