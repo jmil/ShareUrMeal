@@ -29,7 +29,7 @@ static NSString* const kDBFileName = @"ShareUrMeal.sqlite";  // TODO: Info.plist
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
     
-
+#if 0 // disabling core data stuff
 	NSString* dbPath = [[self applicationDocumentsDirectory] stringByAppendingPathComponent:kDBFileName];
 	NSFileManager* fm = [NSFileManager defaultManager];
 	if( ![fm fileExistsAtPath:dbPath] )
@@ -45,6 +45,7 @@ static NSString* const kDBFileName = @"ShareUrMeal.sqlite";  // TODO: Info.plist
 			// TODO: handle error
 		}
 	}
+#endif
 	
     self.navigationController = [[[UINavigationController alloc] initWithRootViewController:shareViewController] autorelease];
     [window addSubview:navigationController.view];
