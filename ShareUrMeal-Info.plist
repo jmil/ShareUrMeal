@@ -11,7 +11,7 @@
 	<key>CFBundleIconFile</key>
 	<string>iphone_icon1</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.PhillyCocoa.ShareUrMeal</string>
+	<string>com.shareurmeal.shareurmeal</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
