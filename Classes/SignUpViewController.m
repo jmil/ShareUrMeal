@@ -24,6 +24,7 @@
 
 #import "SDNextRunloopProxy.h"
 
+#define kToolbarHeight 44
 
 NSString *const didSignUpNotification = @"DidSignIn";
 
@@ -55,7 +56,7 @@ static NSString *signupPath = @"/api/users";
 
 - (id) init
 {
-	self = [super initWithNibName:@"SignUpViewController" bundle:nil];
+	self = [super initWithNibName:nil bundle:nil];
 	if (self != nil)
 	{
 		networkQueue = [[ASINetworkQueue alloc] init];
@@ -98,6 +99,18 @@ static NSString *signupPath = @"/api/users";
                                                  name:UIKeyboardWillHideNotification
                                                object:self.view.window];
     
+}
+
+
+- (void)viewDidAppear:(BOOL)animated{
+    
+    [super viewDidAppear:animated];
+	
+	
+	UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+	UITextField* textField = [self textFieldForCell:cell];
+	[textField becomeFirstResponder];
+	
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
@@ -173,7 +186,7 @@ static NSString *signupPath = @"/api/users";
      */
 	textCell = [[[IFTextCellController alloc] initWithLabel:@"Name:" andPlaceholder:@"Your Name" atKey:nameKey inModel:model] autorelease];
     textCell.autocorrectionType = UITextAutocapitalizationTypeWords;
-    textCell.returnKey = UIReturnKeyNext;
+    //textCell.returnKey = UIReturnKeyNext;
     textCell.beginEditingAction = @selector(didSelectTextField:);
     textCell.beginEditingTarget = self;
     textCell.updateAction = @selector(textFieldUpdated:);
@@ -182,7 +195,7 @@ static NSString *signupPath = @"/api/users";
     
     textCell = [[[IFTextCellController alloc] initWithLabel:@"Email:" andPlaceholder:@"you@you.com" atKey:emailKey inModel:model] autorelease];
     textCell.autocorrectionType = UITextAutocapitalizationTypeNone;
-    textCell.returnKey = UIReturnKeyNext;
+    //textCell.returnKey = UIReturnKeyNext;
     textCell.beginEditingAction = @selector(didSelectTextField:);
     textCell.beginEditingTarget = self;
     textCell.updateAction = @selector(textFieldUpdated:);
@@ -194,7 +207,7 @@ static NSString *signupPath = @"/api/users";
     
     textCell = [[[IFTextCellController alloc] initWithLabel:@"User name:" andPlaceholder:@"MyName" atKey:userNameKey inModel:model] autorelease];
     textCell.autocorrectionType = UITextAutocapitalizationTypeNone;
-    textCell.returnKey = UIReturnKeyNext;
+    //textCell.returnKey = UIReturnKeyNext;
     textCell.beginEditingAction = @selector(didSelectTextField:);
     textCell.beginEditingTarget = self;
     textCell.updateAction = @selector(textFieldUpdated:);
@@ -208,7 +221,7 @@ static NSString *signupPath = @"/api/users";
     textCell = [[[IFTextCellController alloc] initWithLabel:@"Once:" andPlaceholder:@"" atKey:passwordKey inModel:model] autorelease];
 	textCell.secureTextEntry = YES;
     textCell.autocorrectionType = UITextAutocapitalizationTypeNone;
-    textCell.returnKey = UIReturnKeyNext;
+    //textCell.returnKey = UIReturnKeyNext;
     textCell.beginEditingAction = @selector(didSelectTextField:);
     textCell.beginEditingTarget = self;
     textCell.updateAction = @selector(textFieldUpdated:);
@@ -251,8 +264,8 @@ static NSString *signupPath = @"/api/users";
     if(tableGroups==nil)
         return;
     
-    if(aTextField.returnKeyType = UIReturnKeyNext)
-        [self nextTextFieldBecomeFirstResponder:aTextField];
+//    if(aTextField.returnKeyType == UIReturnKeyNext)
+//        [self nextTextFieldBecomeFirstResponder:aTextField];
     
 }
 
@@ -319,23 +332,40 @@ static NSString *signupPath = @"/api/users";
 }
 
 
+- (void)keyboardWillShow:(NSNotification *)note{
+        
+	CGRect frame = self.view.frame;
+	frame.size.height -= kToolbarHeight;
+	self.view.frame = frame;
+	        
+}
+
+- (void)keyboardWillHide:(NSNotification *)note{
+    
+    CGRect frame = self.view.frame;
+    frame.size.height += kToolbarHeight;
+    self.view.frame = frame;
+
+}
+
+
 - (void)didSelectTextField:(UITextField*)textField{
     
-    CGRect frame = textField.frame;
-    frame = [self.tableView convertRect:frame fromView:(UIView*)textField];
-    
-    for(UITableViewCell* eachCell in [self.tableView visibleCells]){
-        
-        CGRect cellFrame = eachCell.frame;
-        
-        if(CGRectContainsRect(cellFrame, frame) || CGRectIntersectsRect(cellFrame, frame)){
-            [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:eachCell] 
-                                  atScrollPosition:UITableViewScrollPositionTop
-                                          animated:YES];
-            break;
-            
-        } 
-    }    
+//    CGRect frame = textField.frame;
+//    frame = [self.tableView convertRect:frame fromView:(UIView*)textField];
+
+//	[self indexPathForTextField:textField];
+	
+	
+	NSIndexPath *indexPath = [self indexPathForTextField:textField];
+	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+	
+    CGRect frame = cell.frame;
+    frame = [self.tableView convertRect:frame fromView:cell];
+	
+	[self.tableView scrollToRowAtIndexPath:[self indexPathForTextField:textField] 
+						  atScrollPosition:UITableViewScrollPositionTop
+								  animated:YES];
 }
 
 
