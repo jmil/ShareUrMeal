@@ -319,27 +319,6 @@ static NSString *signupPath = @"/api/users";
 }
 
 
-- (void)keyboardWillShow:(NSNotification *)note{
-    
-    CGRect t;
-    [[note.userInfo valueForKey:UIKeyboardBoundsUserInfoKey] getValue: &t];
-    
-    CGRect frame = self.view.frame;
-    frame.size.height -= (t.size.height + 44 + 44);
-    self.view.frame = frame;
-    
-        
-}
-
-- (void)keyboardWillHide:(NSNotification *)note{
-    
-    CGRect frame = self.view.frame;
-    frame.size.height  = 480-44-44;
-    self.view.frame = frame;
-
-}
-
-
 - (void)didSelectTextField:(UITextField*)textField{
     
     CGRect frame = textField.frame;
