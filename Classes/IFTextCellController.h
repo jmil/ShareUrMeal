@@ -33,6 +33,8 @@
 	NSInteger indentationLevel;
     float fontSize;
 
+	
+	UITextField *textField;
 }
 
 @property (nonatomic, assign) SEL updateAction;

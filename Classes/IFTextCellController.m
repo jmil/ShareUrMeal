@@ -61,6 +61,9 @@
 //
 - (void)dealloc
 {
+	[textField setDelegate:nil];
+	[textField release];
+	
 	[label release];
 	[placeholder release];
 	[key release];
@@ -109,7 +112,7 @@
 		
 	// add a text field to the cell
 	CGRect frame = CGRectMake(0.0f, 0.0f, viewWidth, 21.0f);
-	UITextField *textField = [[UITextField alloc] initWithFrame:frame];
+	textField = [[UITextField alloc] initWithFrame:frame];
 	[textField addTarget:self action:@selector(updateValue:) forControlEvents:UIControlEventEditingChanged];
 	[textField setDelegate:self];
 	NSString *value = [model objectForKey:key];
@@ -126,7 +129,7 @@
     [textField setAdjustsFontSizeToFitWidth:adjustsFontSizeToWidth];
 	[textField setSecureTextEntry:secureTextEntry];
 	cell.view = textField;
-	[textField release];
+	//[textField release]; // this was breaking when the cell was scrolled out of view
 	
     return cell;
 }
